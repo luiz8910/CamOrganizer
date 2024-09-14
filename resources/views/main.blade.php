@@ -12,40 +12,40 @@
 <body class="bg-gray-100 flex">
 
 <!-- Sidebar -->
-<aside class="bg-gray-800 text-white w-64 min-h-screen">
+<aside class="bg-gray-800 text-white w-16 sm:w-64 min-h-screen">
     <div class="p-4">
-        <h1 class="text-white text-2xl font-semibold">Xampinho</h1>
+        <h1 class="text-white text-2xl font-semibold hidden sm:block">Xampinho</h1>
     </div>
     <nav>
         <ul class="space-y-2">
             <li>
-                <a href="#" class="flex items-center p-3 hover:bg-gray-700">
-                    <i class="fas fa-home mr-3"></i>
-                    <span>Home</span>
+                <a href="{{ route('home') }}" class="flex items-center p-3 hover:bg-gray-700">
+                    <i class="fas fa-home mx-auto sm:mr-3 sm:mx-0"></i>
+                    <span class="hidden sm:inline">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('clientes') }}" class="flex items-center p-3 hover:bg-gray-700">
+                    <i class="fas fa-user-friends mx-auto sm:mr-3 sm:mx-0"></i>
+                    <span class="hidden sm:inline">Clientes</span>
                 </a>
             </li>
             <li>
                 <a href="#" class="flex items-center p-3 hover:bg-gray-700">
-                    <i class="fas fa-user-friends mr-3"></i>
-                    <span>Clientes</span>
+                    <i class="fas fa-camera mx-auto sm:mr-3 sm:mx-0"></i>
+                    <span class="hidden sm:inline">DVRs</span>
                 </a>
             </li>
             <li>
                 <a href="#" class="flex items-center p-3 hover:bg-gray-700">
-                    <i class="fas fa-camera mr-3"></i>
-                    <span>Câmeras</span>
+                    <i class="fas fa-file-alt mx-auto sm:mr-3 sm:mx-0"></i>
+                    <span class="hidden sm:inline">Marcas</span>
                 </a>
             </li>
             <li>
                 <a href="#" class="flex items-center p-3 hover:bg-gray-700">
-                    <i class="fas fa-file-alt mr-3"></i>
-                    <span>Marcas</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="flex items-center p-3 hover:bg-gray-700">
-                    <i class="fas fa-sign-out-alt mr-3"></i>
-                    <span>Logout</span>
+                    <i class="fas fa-sign-out-alt mx-auto sm:mr-3 sm:mx-0"></i>
+                    <span class="hidden sm:inline">Logout</span>
                 </a>
             </li>
         </ul>
@@ -53,9 +53,10 @@
 </aside>
 
 <!-- Main Content -->
-<div class="flex-1 p-10">
-    <h1 class="text-3xl font-bold mb-6">Xamps Dashboard</h1>
-    <p>Escolha o que vai aparecer aqui, menu lateral em desenvolvimento</p>
+<div class="flex-1 p-8">
+    @if(isset($route))
+        @include($route)
+    @endif
 </div>
 
 </body>

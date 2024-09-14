@@ -15,4 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('main');
-});
+})->name('home');
+
+Route::get('/clientes-create', function (){
+    $route = 'clientes.create';
+    return view('main', compact('route'));
+})->name('clientes-create');
+
+Route::get('/clientes', function (){
+    $route = 'clientes.list';
+    return view('main', compact('route'));
+})->name('clientes');
