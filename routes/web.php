@@ -27,6 +27,6 @@ Route::get('/clientes-create', function (){
 })->name('clientes-create');
 
 Route::get('/clientes', function (){
-    $route = 'clientes.list';
+    $route = 'clientes.show';
     return view('main', compact('route'));
 })->name('clientes');

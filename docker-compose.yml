@@ -1,0 +1,22 @@
+services:
+    mysql:
+        image: mysql:8.0
+        container_name: mysql_container
+        environment:
+            - MYSQL_DATABASE=xampinho_db
+            - MYSQL_PASSWORD=xamps
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_USER=xamps
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql_data:/var/lib/mysql
+        networks:
+            - xamps_network
+
+volumes:
+    mysql_data:
+
+networks:
+    xamps_network:
+        driver: bridge
