@@ -1,4 +1,38 @@
 services:
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: image/php/xamps
+        container_name: php_xamps
+        tty: true
+        environment:
+            - SERVICE_NAME=php
+            - SERVICE_TAGS=dev
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+            - vendor_data:/var/www/vendor
+        networks:
+            - xamps_network
+
+    nginx:
+        image: nginx:alpine
+        container_name: nginx_xamps
+        restart: unless-stopped
+        volumes:
+            - .:/var/www
+            - ./nginx/:/etc/nginx/conf.d/
+        tty: true
+        ports:
+            - "8989:80"
+            - "443:443"
+        depends_on:
+            - php
+        networks:
+            - xamps_network
+
     mysql:
         image: mysql:8.0
         container_name: mysql_container
@@ -11,11 +45,14 @@ services:
             - "3306:3306"
         volumes:
             - mysql_data:/var/lib/mysql
+            - ./mysql/my.cnf:/etc/mysql/my.cnf
         networks:
             - xamps_network
 
 volumes:
+    vendor_data:
     mysql_data:
+        driver: local
 
 networks:
     xamps_network:
