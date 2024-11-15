@@ -70,13 +70,13 @@
       <!-- Sidebar Menu -->
       <div class="menu flex flex-col gap-2.5 grow" data-menu="true" id="sidebar_menu">
        <div class="menu-item">
-        <a class="menu-link rounded-[9px] border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200 w-[62px] h-[60px] flex flex-col justify-center items-center gap-1 p-2" href="html/demo8.html">
+        <a class="menu-link rounded-[9px] border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200 w-[62px] h-[60px] flex flex-col justify-center items-center gap-1 p-2" href="{{ route('test') }}">
          <span class="menu-icon menu-item-here:text-primary menu-item-active:text-primary menu-link-hover:text-primary text-gray-600">
           <i class="ki-filled ki-chart-line-star text-1.5xl">
           </i>
          </span>
          <span class="menu-title text-xs menu-item-here:text-primary menu-item-active:text-primary menu-link-hover:text-primary text-gray-600 font-medium">
-          Boards
+          Page HTML
          </span>
         </a>
        </div>

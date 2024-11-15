@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function(){
     return view('test');
-});
+})->name('test');
 
 Route::get('/', function () {
     return view('main');
@@ -26,7 +27,6 @@ Route::get('/clientes-create', function (){
     return view('main', compact('route'));
 })->name('clientes-create');
 
-Route::get('/clientes', function (){
-    $route = 'clientes.show';
-    return view('main', compact('route'));
-})->name('clientes');
+Route::get('/cliente/{id}', [CustomerController::class, 'show'])->name('cliente');
+
+Route::get('/clientes', [CustomerController::class, 'index'])->name('clientes');

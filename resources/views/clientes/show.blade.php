@@ -116,10 +116,10 @@ include('config.modal-delete') -->
           src={{ $customer->logo ?? "assets/media/avatars/factory-vector.jpg" }} />
         <div class="flex items-center gap-1.5">
           <div class="text-lg leading-5 font-semibold text-gray-900">
-            1659
+            {{ $customer->external_id }}
           </div>
           <div class="text-lg leading-5 font-semibold text-gray-900">
-            Cervejaria RT 166
+            {{ $customer->company_name }}
           </div>
           <svg class="text-primary" fill="none" height="16" viewbox="0 0 15 16" width="15"
             xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +134,7 @@ include('config.modal-delete') -->
             <i class="ki-filled ki-abstract text-gray-500 text-sm">
             </i>
             <span class="text-gray-600 font-medium">
-              01.325.325/0001-58
+              {{ $customer->cnpj }}
             </span>
           </div>
           <div class="flex gap-1.25 items-center">
@@ -148,7 +148,7 @@ include('config.modal-delete') -->
             <i class="ki-filled ki-sms text-gray-500 text-sm">
             </i>
             <a class="text-gray-600 font-medium hover:text-primary" href="mailto: jenny@kteam.com">
-              financeiro@cervejaria.com
+              {{ $customer->email }}
             </a>
           </div>
         </div>
@@ -687,4 +687,3 @@ include('config.modal-delete') -->
   <!-- End of Footer -->
 </main>
 <!-- End of Main -->
-    

@@ -6,9 +6,11 @@ use App\Models\Customer;
 
 class CustomerRepository extends BaseRepository
 {
+    protected $model;
+
     public function __construct()
     {
-        $this->model = Customer::class;
+        $this->model = new Customer();
     }
 
     public function createCustomer(array $data)
