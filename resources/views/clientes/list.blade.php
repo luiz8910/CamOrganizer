@@ -1769,11 +1769,11 @@
                     12 Projects
                 </h3>
                 <div class="btn-tabs" data-tabs="true">
-                    <a class="btn btn-icon active" data-tab-toggle="#projects_cards" href="#">
+                    <a class="btn btn-icon" data-tab-toggle="#projects_cards" href="#">
                         <i class="ki-filled ki-category">
                         </i>
                     </a>
-                    <a class="btn btn-icon" data-tab-toggle="#projects_list" href="#">
+                    <a class="btn btn-icon active" data-tab-toggle="#projects_list" href="#">
                         <i class="ki-filled ki-row-horizontal">
                         </i>
                     </a>
@@ -1781,7 +1781,7 @@
             </div>
             <!-- end: toolbar -->
             <!-- begin: cards -->
-            <div id="projects_cards">
+            <div id="projects_cards" class="hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
@@ -2446,7 +2446,7 @@
             </div>
             <!-- end: cards -->
             <!-- begin: list -->
-            <div class="hidden" id="projects_list">
+            <div id="projects_list">
                 <div class="flex flex-col gap-5 lg:gap-7.5">
                     <div class="card p-7">
                         <div class="flex items-center flex-wrap justify-between gap-5">

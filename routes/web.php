@@ -30,3 +30,9 @@ Route::get('/clientes-create', function (){
 Route::get('/cliente/{id}', [CustomerController::class, 'show'])->name('cliente');
 
 Route::get('/clientes', [CustomerController::class, 'index'])->name('clientes');
+
+Route::get('/clientes/create', [CustomerController::class, 'create'])->name('clientes-create');
+
+Route::post('/clientes', [CustomerController::class, 'store'])->name('clientes-store');
+
+Route::put('/clientes/{id}', [CustomerController::class, 'update'])->name('clientes-update');

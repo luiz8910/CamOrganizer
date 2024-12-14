@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\UseCases\Customer\CustomerUseCase;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class CustomerController extends AppBaseController
 {
     private $customerUseCase;
 
@@ -18,7 +18,7 @@ class CustomerController extends Controller
     {
         $route = 'clientes.list';
 
-        return view('main', compact('route'));
+        return $this->render(['route' => $route]);
     }
 
     public function show($id)
@@ -27,10 +27,31 @@ class CustomerController extends Controller
 
         $route = 'clientes.show';
 
-        return view('main', compact('route', 'customer'));
+        return $this->render(['route' => $route, 'customer' => $customer]);
     }
 
     public function create()
+    {
+        $route = 'clientes.create';
+
+        return $this->render(['route' => $route]);
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all(), $request->file('logo'));
+
+        $route = 'clientes.list';
+
+        return $this->render(['route' => $route]);
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function delete()
     {
 
     }

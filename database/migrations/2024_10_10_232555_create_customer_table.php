@@ -15,11 +15,17 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('external_id');
+            $table->string('external_id')->nullable();
             $table->string('company_name');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('cnpj');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('cnpj')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->string('address')->nullable();
+            $table->string('number')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('logo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
