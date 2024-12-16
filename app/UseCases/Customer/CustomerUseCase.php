@@ -18,4 +18,15 @@ class CustomerUseCase
     {
         return $this->repository->find($id);
     }
+
+    public function store($data)
+    {
+
+        if(isset($data['logo'])){
+            $path = $data['logo']->store('images', 'public');
+            $data['logo'] = $path;
+        }
+
+        return $this->repository->createCustomer($data);
+    }
 }

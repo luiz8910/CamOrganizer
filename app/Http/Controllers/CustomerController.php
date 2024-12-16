@@ -39,7 +39,7 @@ class CustomerController extends AppBaseController
 
     public function store(Request $request)
     {
-        dd($request->all(), $request->file('logo'));
+        $this->customerUseCase->store($request->all());
 
         $route = 'clientes.list';
 

@@ -11,7 +11,8 @@ class Customer extends Model
     use SoftDeletes, HasFactory;
 
     protected $fillable = [
-        'external_id', 'company_name', 'phone', 'email', 'cnpj'
+        'external_id', 'company_name', 'phone', 'email', 'cnpj',
+        'address', 'number', 'city', 'state', 'zip_code', 'logo'
     ];
 
 }
