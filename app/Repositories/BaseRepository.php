@@ -11,9 +11,11 @@ class BaseRepository
         $this->model = $model;
     }
 
-    public function all()
+    public function all($orderBy = null, $order = null)
     {
-        return $this->model->all();
+        $orderBy = $orderBy ?? 'created_at';
+        $order = $order ?? 'desc';
+        return $this->model->orderBy($orderBy, $order)->get();
     }
 
     public function find($id)

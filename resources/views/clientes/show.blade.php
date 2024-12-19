@@ -53,7 +53,7 @@
           src={{ $customer->logo ?? "assets/media/avatars/factory-vector.jpg" }} />
         <div class="flex items-center gap-1.5">
           <div class="text-lg leading-5 font-semibold text-gray-900">
-            {{ $customer->external_id }}
+            {{ $customer->external_id }} -
           </div>
           <div class="text-lg leading-5 font-semibold text-gray-900">
             {{ $customer->company_name }}

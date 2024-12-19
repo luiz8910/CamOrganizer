@@ -96,6 +96,12 @@
 
                         <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                             <label class="form-label max-w-56">
+                                ID Bling
+                            </label>
+                            <input class="input" id="external_id" name="external_id" placeholder="ID externo" type="text" value="{{ $customer->external_id ?? ""}}"/>
+                        </div>
+                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                            <label class="form-label max-w-56">
                                 Razão social
                             </label>
                             <input class="input" name="company_name" placeholder="Razão social" type="text" value="{{ $customer->company_name ?? ""}}"/>
@@ -147,8 +153,8 @@
                             <label class="form-label max-w-56">
                                 Estado
                             </label>
-                            <input class="hidden" value="{{ $customer->uf ?? "" }}"/>
-                            <select name="uf" id="uf" class="input" style="cursor: pointer;">
+                            <input class="hidden" value="{{ $customer->state ?? "" }}"/>
+                            <select name="state" id="state" class="input" style="cursor: pointer;">
                                 <option value="">Selecione</option>
                                 <option value="SP">São Paulo (SP)</option>
                                 <option value="AC">Acre (AC)</option>

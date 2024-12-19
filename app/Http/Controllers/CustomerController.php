@@ -16,9 +16,11 @@ class CustomerController extends AppBaseController
 
     public function index()
     {
+        $customers = $this->customerUseCase->list();
+
         $route = 'clientes.list';
 
-        return $this->render(['route' => $route]);
+        return $this->render(['route' => $route, 'customers' => $customers]);
     }
 
     public function show($id)
@@ -41,9 +43,7 @@ class CustomerController extends AppBaseController
     {
         $this->customerUseCase->store($request->all());
 
-        $route = 'clientes.list';
-
-        return $this->render(['route' => $route]);
+        return redirect()->route('clientes');
     }
 
     public function update()

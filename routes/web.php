@@ -22,11 +22,6 @@ Route::get('/', function () {
     return view('main');
 })->name('home');
 
-Route::get('/clientes-create', function (){
-    $route = 'clientes.create';
-    return view('main', compact('route'));
-})->name('clientes-create');
-
 Route::get('/cliente/{id}', [CustomerController::class, 'show'])->name('cliente');
 
 Route::get('/clientes', [CustomerController::class, 'index'])->name('clientes');

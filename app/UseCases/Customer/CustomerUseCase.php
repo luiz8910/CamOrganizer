@@ -14,6 +14,11 @@ class CustomerUseCase
         $this->repository = new CustomerRepository();
     }
 
+    public function list()
+    {
+        return $this->repository->getCustomers();
+    }
+
     public function show($id)
     {
         return $this->repository->find($id);

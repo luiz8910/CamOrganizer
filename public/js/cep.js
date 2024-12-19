@@ -39,11 +39,11 @@ async function buscarEndereco() {
 
         document.getElementById('address').value = data.logradouro;
         document.getElementById('city').value = data.localidade;
-        document.getElementById('uf').value = data.uf;
+        document.getElementById('state').value = data.uf;
         document.getElementById('number').focus();
 
     } catch (error) {
-        console.error('Erro na consulta:', error.message);
+        console.error('Erro na consulta:', error);
     }
 }
 

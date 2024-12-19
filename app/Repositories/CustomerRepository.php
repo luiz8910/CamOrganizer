@@ -17,4 +17,9 @@ class CustomerRepository extends BaseRepository
     {
         return $this->create($data);
     }
+
+    public function getCustomers()
+    {
+        return $this->all();
+    }
 }
