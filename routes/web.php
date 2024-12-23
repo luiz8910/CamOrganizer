@@ -30,4 +30,8 @@ Route::get('/clientes/create', [CustomerController::class, 'create'])->name('cli
 
 Route::post('/clientes', [CustomerController::class, 'store'])->name('clientes-store');
 
+Route::get('/clientes/edit/{id}', [CustomerController::class, 'edit'])->name('clientes-edit');
+
 Route::put('/clientes/{id}', [CustomerController::class, 'update'])->name('clientes-update');
+
+Route::delete('/cliente/delete/{id}', [CustomerController::class, 'destroy'])->name('clientes-destroy');

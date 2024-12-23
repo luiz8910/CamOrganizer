@@ -1,3 +1,6 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/modal-delete.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <main
     class="flex flex-col grow rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-5 m-5"
     role="content">
@@ -2354,11 +2357,11 @@
             <div id="projects_list">
                 <div class="flex flex-col gap-5 lg:gap-7.5">
                     @foreach($customers as $customer)
-                        <div class="card p-7" style="cursor: pointer;" onclick="showCustomer({{ $customer->id }})">
+                        <div class="card p-7" style="cursor: pointer;" data-customer="{{ $customer->id }}">
                             <div class="flex items-center flex-wrap justify-between gap-5">
                                 <div class="flex items-center gap-3.5">
                                     <div class="flex items-center justify-center size-14 shrink-0 rounded-lg bg-gray-100">
-                                        <img alt="" class="" src="{{ $customer->logo }}"/>
+                                        <img alt="" class="" src="{{ asset('storage/' . $customer->logo) }}">
                                     </div>
                                     <div class="flex flex-col">
                                         <a class="text-lg font-media/brand text-gray-900 hover:text-primary-active mb-px"
@@ -2404,66 +2407,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="menu" data-menu="true">
-                                            <div class="menu-item" data-menu-item-offset="0, 10px"
-                                                 data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown"
-                                                 data-menu-item-trigger="click|lg:click">
-                                                <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                    <i class="ki-filled ki-dots-vertical">
-                                                    </i>
-                                                </button>
-                                                <div class="menu-dropdown menu-default w-full max-w-[200px]"
-                                                     data-menu-dismiss="true">
-                                                    <div class="menu-item">
-                                                        <a class="menu-link"
-                                                           href="html/demo8/account/home/settings-enterprise.html">
-                  <span class="menu-icon">
-                   <i class="ki-filled ki-setting-3">
-                   </i>
-                  </span>
-                                                            <span class="menu-title">
-                   Settings
-                  </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="menu-item">
-                                                        <a class="menu-link"
-                                                           href="html/demo8/account/members/import-members.html">
-                  <span class="menu-icon">
-                   <i class="ki-filled ki-some-files">
-                   </i>
-                  </span>
-                                                            <span class="menu-title">
-                   Import
-                  </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="menu-item">
-                                                        <a class="menu-link" href="html/demo8/account/activity.html">
-                  <span class="menu-icon">
-                   <i class="ki-filled ki-cloud-change">
-                   </i>
-                  </span>
-                                                            <span class="menu-title">
-                   Activity
-                  </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="menu-item">
-                                                        <a class="menu-link" data-modal-toggle="#report_user_modal"
-                                                           href="#">
-                  <span class="menu-icon">
-                   <i class="ki-filled ki-dislike">
-                   </i>
-                  </span>
-                                                            <span class="menu-title">
-                   Report
-                  </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                        <button class="avoid-default menu-toggle btn btn-icon" style="color: red;" onclick="deleteCustomer({{ $customer->id }})">
+                                            <i class="ki-filled ki-trash">
+                                            </i>
+                                        </button>
+
                                     </div>
                                 </div>
                             </div>

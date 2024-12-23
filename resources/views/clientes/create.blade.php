@@ -33,12 +33,24 @@
     <!-- Container -->
     <div class="container-fixed">
         <div class="grid gap-5 lg:gap-7.5 xl:w-[38.75rem] mx-auto">
-            <form action="@if(isset($customer)){{ route('clientes-update', ['customer_id' => $customer->id]) }} @else {{ route('clientes-store') }} @endif " method="post" enctype="multipart/form-data">
+            @if(isset($customer))
+                <?php
+                    $route = route('clientes-update', ['id' => $customer->id]);
+                    $method = 'PUT';
+                ?>
+            @else
+                <?php
+                    $route = route('clientes-store');
+                    $method = 'POST';
+                ?>
+            @endif
+            <form action="{{ $route }}" method="post" enctype="multipart/form-data">
+                @method($method)
                 @csrf
                 <div class="card pb-2.5">
                     <div class="card-header" id="basic_settings">
                         <h3 class="card-title">
-                            {{ isset($customer) ? "Editar - " . $customer->name : 'Adicionar Clientes'}}
+                            {{ isset($customer) ? "Editar - " . $customer->company_name : 'Adicionar Cliente'}}
                         </h3>
                         <!-- <div class="flex items-center gap-2">
                           <label class="switch switch-sm">
@@ -70,7 +82,7 @@
 
                                     <!-- Preview container -->
                                     <div class="image-input-placeholder rounded-full border-2 border-success image-input-empty:border-gray-300" style="background-image:url('{{ $customer->logo ?? 'assets/media/avatars/blank.png' }}')">
-                                        <div class="image-input-preview rounded-full" id="logo_preview" style="background-image:url('{{ $customer->logo ?? 'assets/media/avatars/300-2.png' }}')">
+                                        <div class="image-input-preview rounded-full" id="logo_preview" style="background-image:url('{{ asset('storage/'.$customer->logo) ?? 'assets/media/avatars/300-2.png' }}')">
                                         </div>
                                         <div class="flex items-center justify-center cursor-pointer h-5 left-0 right-0 bottom-0 bg-dark-clarity absolute">
                                             <label for="logo_input" class="cursor-pointer text-white">
@@ -129,7 +141,7 @@
                             <label class="form-label max-w-56">
                                 CEP
                             </label>
-                            <input class="input" placeholder="Cep" id="zip_code" onchange="buscarEndereco()" name="zip_code" type="text" value="{{ $customer->zipCode ?? "" }}"/>
+                            <input class="input" placeholder="Cep" id="zip_code" onchange="buscarEndereco()" name="zip_code" type="text" value="{{ $customer->zip_code ?? "" }}"/>
                         </div>
                         <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                             <label class="form-label max-w-56">

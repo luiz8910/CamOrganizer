@@ -46,13 +46,24 @@ class CustomerController extends AppBaseController
         return redirect()->route('clientes');
     }
 
-    public function update()
+    public function edit($id)
     {
+        $route = 'clientes.create';
 
+        $customer = $this->customerUseCase->show($id);
+
+        return $this->render(['route' => $route, 'customer' => $customer]);
     }
 
-    public function delete()
+    public function update(Request $request, $id)
     {
+        $this->customerUseCase->update($request->all(), $id);
 
+        return redirect()->route('clientes');
+    }
+
+    public function destroy($id)
+    {
+        return $this->customerUseCase->delete($id);
     }
 }

@@ -49,8 +49,8 @@
     <!-- Container -->
     <div class="container-fixed">
       <div class="flex flex-col items-center gap-2 lg:gap-3.5 py-4 lg:pt-5 lg:pb-10">
-        <img class="rounded-full border-3 border-success size-[100px] shrink-0"
-          src={{ $customer->logo ?? "assets/media/avatars/factory-vector.jpg" }} />
+        <img class="rounded-full border-3 size-[100px] shrink-0"
+          src={{ asset('storage/' . $customer->logo) ?? "assets/media/avatars/factory-vector.jpg" }} />
         <div class="flex items-center gap-1.5">
           <div class="text-lg leading-5 font-semibold text-gray-900">
             {{ $customer->external_id }} -
@@ -192,11 +192,11 @@
         </div>
       </div>
       <div class="flex items-center justify-end grow lg:grow-0 lg:pb-4 gap-2.5 mb-3 lg:mb-0">
-        <button class="dropdown-toggle btn btn-sm btn-info btn-outline">
+        <a href="{{ route('clientes-edit', ['id' => $customer->id]) }}" class="dropdown-toggle btn btn-sm btn-info btn-outline">
           <i class="ki-filled ki-user-edit">
           </i>
           Editar Informações
-        </button>
+        </a>
         <div class="dropdown" data-dropdown="true" data-dropdown-placement="bottom-end"
           data-dropdown-trigger="click">
           <button class="dropdown-toggle btn btn-sm btn-primary btn-outline">

@@ -9,10 +9,11 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="assets/vendors/apexcharts/apexcharts.css" rel="stylesheet"/>
-  <link href="assets/css/styles.bundle.css" rel="stylesheet"/>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <link href="assets/css/styles.bundle.css" rel="stylesheet"/>
   <link href="assets/css/styles.css" rel="stylesheet"/>
   <link href="css/custom.css" rel="stylesheet"/>
-   
+
  </head>
  <body class="antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-header-height:60px] [--tw-sidebar-width:90px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
   <!-- Theme Mode -->
@@ -1514,12 +1515,12 @@
     <!-- End of Sidebar -->
     <!-- Main -->
      <!-- Main Content -->
-    
+
     @if(isset($route))
         @include($route)
     @endif
-    
-    
+
+
     <!-- End of Main -->
    </div>
    <!-- End of Wrapper -->
@@ -2852,7 +2853,6 @@
   <script src="assets/js/widgets/general.js">
   </script>
   <!-- jQuery CDN -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Custom JS -->
 <script src="./js/config.js"></script>
 <script src="./js/session.js"></script>

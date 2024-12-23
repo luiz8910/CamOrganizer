@@ -6,3 +6,13 @@
     max-width: 1280px;
     width: 100%;
 }
+
+.swal-icon-resize .swal2-icon.swal2-warning {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.swal-icon-resize {
+    background-color: blue !important;
+}
+

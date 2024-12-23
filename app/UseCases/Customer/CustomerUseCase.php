@@ -26,12 +26,26 @@ class CustomerUseCase
 
     public function store($data)
     {
-
         if(isset($data['logo'])){
             $path = $data['logo']->store('images', 'public');
             $data['logo'] = $path;
         }
 
         return $this->repository->createCustomer($data);
+    }
+
+    public function update($data, $id)
+    {
+        if(isset($data['logo'])){
+            $path = $data['logo']->store('images', 'public');
+            $data['logo'] = $path;
+        }
+
+        return $this->repository->update($data, $id);
+    }
+
+    public function delete($id)
+    {
+        return $this->repository->delete($id);
     }
 }
