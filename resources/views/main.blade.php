@@ -1,3 +1,5 @@
+<?php $public_path = env('APP_ENV') === 'local' ? env('APP_URL') : env('APP_URL') . 'public/'; ?>
+
 <!DOCTYPE html>
 <html class="h-full" data-theme="true" data-theme-mode="light" lang="en">
  <head><base href="../../">
@@ -8,11 +10,11 @@
   <meta content="follow, index" name="robots"/>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="{{ custom_asset('assets/vendors/apexcharts/apexcharts.css') }}" rel="stylesheet"/>
+  <link href="{{ $public_path.'assets/vendors/apexcharts/apexcharts.css' }}" rel="stylesheet"/>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <link href="{{ custom_asset('assets/css/styles.bundle.css') }}" rel="stylesheet"/>
-  <link href="{{ custom_asset('assets/css/styles.css') }}" rel="stylesheet"/>
-     <link rel="stylesheet" href="{{ custom_asset('css/custom.css') }}">
+     <link href="{{ $public_path.'assets/css/styles.bundle.css' }}" rel="stylesheet"/>
+  <link href="{{ $public_path.'assets/css/styles.css' }}" rel="stylesheet"/>
+     <link rel="stylesheet" href="{{ $public_path . 'css/custom.css' }}">
 
  </head>
  <body class="antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-header-height:60px] [--tw-sidebar-width:90px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
@@ -2846,15 +2848,15 @@
   </div>
   <!-- End of Page -->
   <!-- Scripts -->
-  <script src="{{ custom_asset('assets/js/core.bundle.js') }}">
+  <script src="{{ $public_path.'assets/js/core.bundle.js' }}">
   </script>
-  <script src="{{ custom_asset('assets/vendors/apexcharts/apexcharts.min.js') }}">
+  <script src="{{ $public_path.'assets/vendors/apexcharts/apexcharts.min.js' }}">
   </script>
-  <script src="{{ custom_asset('assets/js/widgets/general.js') }}">
+  <script src="{{ $public_path.'assets/js/widgets/general.js' }}">
   </script>
   <!-- jQuery CDN -->
 <!-- Custom JS -->
-<script src="{{ custom_asset('js/config.js') }}"></script>
-<script src="{{ custom_asset('js/session.js') }}"></script>
+<script src="{{ $public_path.'js/config.js' }}"></script>
+<script src="{{ $public_path.'js/session.js' }}"></script>
 </body>
 </html>

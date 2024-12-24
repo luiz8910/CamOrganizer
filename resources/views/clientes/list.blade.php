@@ -1,5 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ custom_asset('js/modal-delete.js') }}"></script>
+<script src="{{ $public_path.'js/modal-delete.js' }}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <main
     class="flex flex-col grow rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-5 m-5"
@@ -184,7 +184,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ custom_asset('assets/media/avatars/300-4.png')}}"/>
+                                                     src="{{ $public_path.'assets/media/avatars/300-4.png'}}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -240,7 +240,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ custom_asset('assets/media/avatars/300-5.png') }}"/>
+                                                     src="{{ $public_path.'assets/media/avatars/300-5.png' }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -284,7 +284,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_3">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ custom_asset('assets/media/avatars/300-27.png')}}"/>
+                                                     src="{{ $public_path.'assets/media/avatars/300-27.png'}}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -330,7 +330,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ custom_asset('assets/media/avatars/300-1.png') }}"/>
+                                                     src="{{ $public_path.'assets/media/avatars/300-1.png' }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -355,7 +355,7 @@
                                                 </div>
                                                 <div
                                                     class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
-                                                    <img class="h-5" src="{{ custom_asset('assets/media/file-types/pdf.svg') }}"/>
+                                                    <img class="h-5" src="{{ $public_path.'assets/media/file-types/pdf.svg' }}"/>
                                                     <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1"
                                                        href="#">
                                                         Launch_nov24.pptx
@@ -371,7 +371,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ custom_asset('assets/media/avatars/300-11.png') }}"/>
+                                                     src="{{ $public_path.'assets/media/avatars/300-11.png' }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -402,7 +402,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ custom_asset('assets/media/avatars/300-14.png') }}"/>
+                                                     src="{{ $public_path.'assets/media/avatars/300-14.png' }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -429,7 +429,7 @@
                                                     class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                                                     <div
                                                         class="flex items-center justify-center w-[26px] h-[30px] shrink-0 bg-light rounded border border-gray-200">
-                                                        <img class="h-5" src="{{ custom_asset('assets/media/file-types/figma.svg') }}"/>
+                                                        <img class="h-5" src="{{ $public_path.'assets/media/file-types/figma.svg' }}"/>
                                                     </div>
                                                     <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1"
                                                        href="#">
@@ -1132,7 +1132,7 @@
                                                     <div
                                                         class="card shadow-none flex flex-col gap-3.5 bg-light-active w-40">
                                                         <div class="bg-cover bg-no-repeat card-rounded-t shrink-0 h-24"
-                                                             style="background-image: url('assets/media/images/600x600/6.jpg')">
+                                                             style="background-image: url('{{ $public_path.'assets/media/images/600x600/6.jpg'}}')">
                                                         </div>
                                                         <div class="px-2.5 pb-2">
                                                             <a class="font-medium block text-gray-700 hover:text-primary text-xs leading-4 mb-0.5"
@@ -1150,7 +1150,7 @@
                                                     <div
                                                         class="card shadow-none flex flex-col gap-3.5 bg-light-active w-40">
                                                         <div class="bg-cover bg-no-repeat card-rounded-t shrink-0 h-24"
-                                                             style="background-image: url('assets/media/images/600x600/1.jpg')">
+                                                             style="background-image: url({{$public_path.'assets/media/images/600x600/1.jpg'}}">
                                                         </div>
                                                         <div class="px-2.5 pb-2">
                                                             <a class="font-medium block text-gray-700 hover:text-primary text-xs leading-4 mb-0.5"
@@ -1404,11 +1404,11 @@
     <!-- End of Toolbar -->
     <style>
         .hero-bg {
-            background-image: url('{{ custom_asset("assets/media/images/2600x1200/bg-1.png")}}');
+            background-image: url('{{ $public_path."assets/media/images/2600x1200/bg-1.png"}}');
         }
 
         .dark .hero-bg {
-            background-image: url('{{ custom_asset("assets/media/images/2600x1200/bg-1-dark.png") }}');
+            background-image: url('{{ $public_path."assets/media/images/2600x1200/bg-1-dark.png" }}');
         }
     </style>
 
@@ -1694,7 +1694,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ custom_asset('assets/media/brand-logos/plurk.svg') }}"/>
+                                <img alt="" class="" src="{{ $public_path.'assets/media/brand-logos/plurk.svg' }}"/>
                             </div>
                             <span class="badge badge-primary badge-outline">
             In Progress
@@ -2361,7 +2361,7 @@
                             <div class="flex items-center flex-wrap justify-between gap-5">
                                 <div class="flex items-center gap-3.5">
                                     <div class="flex items-center justify-center size-14 shrink-0 rounded-lg bg-gray-100">
-                                        <img alt="" class="" src="{{ custom_asset('storage/' . $customer->logo) }}">
+                                        <img alt="" class="" src="{{ $public_path.'storage/' . $customer->logo }}">
                                     </div>
                                     <div class="flex flex-col">
                                         <a class="text-lg font-media/brand text-gray-900 hover:text-primary-active mb-px"
@@ -2463,4 +2463,4 @@
     </footer>
     <!-- End of Footer -->
 </main>
-<script src="{{ custom_asset('js/redirect.js') }}"></script>
+<script src="{{ $public_path.'js/redirect.js' }}"></script>
