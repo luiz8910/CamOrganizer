@@ -8,10 +8,10 @@
   <meta content="follow, index" name="robots"/>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="assets/vendors/apexcharts/apexcharts.css" rel="stylesheet"/>
+  <link href="{{ asset('assets/vendors/apexcharts/apexcharts.css') }}" rel="stylesheet"/>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <link href="assets/css/styles.bundle.css" rel="stylesheet"/>
-  <link href="assets/css/styles.css" rel="stylesheet"/>
+     <link href="{{ asset('assets/css/styles.bundle.css') }}" rel="stylesheet"/>
+  <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet"/>
      <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
  </head>
@@ -2846,15 +2846,15 @@
   </div>
   <!-- End of Page -->
   <!-- Scripts -->
-  <script src="assets/js/core.bundle.js">
+  <script src="{{ asset('assets/js/core.bundle.js') }}">
   </script>
-  <script src="assets/vendors/apexcharts/apexcharts.min.js">
+  <script src="{{ asset('assets/vendors/apexcharts/apexcharts.min.js') }}">
   </script>
-  <script src="assets/js/widgets/general.js">
+  <script src="{{ asset('assets/js/widgets/general.js') }}">
   </script>
   <!-- jQuery CDN -->
 <!-- Custom JS -->
-<script src="./js/config.js"></script>
-<script src="./js/session.js"></script>
+<script src="{{ asset('js/config.js') }}"></script>
+<script src="{{ asset('js/session.js') }}"></script>
 </body>
 </html>

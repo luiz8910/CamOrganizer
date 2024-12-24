@@ -13,7 +13,7 @@
                     3 Columns
                 </h1>
                 <div class="flex items-center flex-wrap gap-1 text-sm">
-                    <a class="text-gray-700 hover:text-primary" href="html/demo8.html">
+                    <a class="text-gray-700 hover:text-primary" href="#">
                         Home
                     </a>
                     <span class="text-gray-400 text-sm">
@@ -113,7 +113,7 @@
                                             <div class="menu-dropdown menu-default w-full max-w-[175px]">
                                                 <div class="menu-item">
                                                     <a class="menu-link"
-                                                       href="html/demo8/account/home/settings-sidebar.html">
+                                                       href="#">
                   <span class="menu-icon">
                    <i class="ki-filled ki-sms">
                    </i>
@@ -125,7 +125,7 @@
                                                 </div>
                                                 <div class="menu-item">
                                                     <a class="menu-link"
-                                                       href="html/demo8/account/home/settings-sidebar.html">
+                                                       href="#">
                   <span class="menu-icon">
                    <i class="ki-filled ki-message-notify">
                    </i>
@@ -137,7 +137,7 @@
                                                 </div>
                                                 <div class="menu-item">
                                                     <a class="menu-link"
-                                                       href="html/demo8/account/home/settings-sidebar.html">
+                                                       href="#">
                   <span class="menu-icon">
                    <i class="ki-filled ki-notification-status">
                    </i>
@@ -184,7 +184,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="assets/media/avatars/300-4.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-4.png')}}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -240,7 +240,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="assets/media/avatars/300-5.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-5.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -284,7 +284,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_3">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="assets/media/avatars/300-27.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-27.png')}}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -330,7 +330,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="assets/media/avatars/300-1.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-1.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -355,7 +355,7 @@
                                                 </div>
                                                 <div
                                                     class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
-                                                    <img class="h-5" src="assets/media/file-types/pdf.svg"/>
+                                                    <img class="h-5" src="{{ asset('assets/media/file-types/pdf.svg') }}"/>
                                                     <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1"
                                                        href="#">
                                                         Launch_nov24.pptx
@@ -371,7 +371,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="assets/media/avatars/300-11.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-11.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -402,7 +402,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="assets/media/avatars/300-14.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-14.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -429,7 +429,7 @@
                                                     class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                                                     <div
                                                         class="flex items-center justify-center w-[26px] h-[30px] shrink-0 bg-light rounded border border-gray-200">
-                                                        <img class="h-5" src="assets/media/file-types/figma.svg"/>
+                                                        <img class="h-5" src="{{ asset('assets/media/file-types/figma.svg') }}"/>
                                                     </div>
                                                     <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1"
                                                        href="#">
@@ -1404,11 +1404,11 @@
     <!-- End of Toolbar -->
     <style>
         .hero-bg {
-            background-image: url('assets/media/images/2600x1200/bg-1.png');
+            background-image: url('{{ asset("assets/media/images/2600x1200/bg-1.png")}}');
         }
 
         .dark .hero-bg {
-            background-image: url('assets/media/images/2600x1200/bg-1-dark.png');
+            background-image: url('{{ asset("assets/media/images/2600x1200/bg-1-dark.png") }}');
         }
     </style>
 
@@ -1694,7 +1694,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="assets/media/brand-logos/plurk.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/plurk.svg') }}"/>
                             </div>
                             <span class="badge badge-primary badge-outline">
             In Progress
@@ -2463,4 +2463,4 @@
     </footer>
     <!-- End of Footer -->
 </main>
-<script src="js/redirect.js"></script>
+<script src="{{ asset('js/redirect.js') }}"></script>
