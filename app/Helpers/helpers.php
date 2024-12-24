@@ -10,3 +10,11 @@ if (!function_exists('custom_asset')) {
         return app('url')->asset($basePath . ltrim($path, '/'), $secure);
     }
 }
+
+
+if (!function_exists('test_helper')) {
+    function test_helper()
+    {
+        return 'Helpers are loaded!';
+    }
+}

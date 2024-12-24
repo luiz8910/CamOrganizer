@@ -22,6 +22,16 @@ Route::get('/', function () {
     return view('main');
 })->name('home');
 
+Route::get('/test-helper', function () {
+    return test_helper();
+});
+
+Route::get('/test-env', function () {
+    return env('ASSET_BASE_PATH', 'Not Found');
+});
+
+
+
 Route::get('/cliente/{id}', [CustomerController::class, 'show'])->name('cliente');
 
 Route::get('/clientes', [CustomerController::class, 'index'])->name('clientes');
