@@ -18,5 +18,5 @@ yarn-error.log
 public/.DS_Store
 public/assets/.DS_Store
 public/assets/media/.DS_Store
-public/js/modal-delete.js
 storage/.DS_Store
+public/assets/media/images/.DS_Store
