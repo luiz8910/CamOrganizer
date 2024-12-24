@@ -12,7 +12,7 @@
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
      <link href="assets/css/styles.bundle.css" rel="stylesheet"/>
   <link href="assets/css/styles.css" rel="stylesheet"/>
-  <link href="css/custom.css" rel="stylesheet"/>
+     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
  </head>
  <body class="antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-header-height:60px] [--tw-sidebar-width:90px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
