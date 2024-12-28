@@ -4,7 +4,7 @@
 <html class="h-full" data-theme="true" data-theme-mode="light" lang="en">
  <head><base href="../../">
   <title>
-   Metronic - Tailwind CSS
+   Xamps App
   </title>
   <meta charset="utf-8"/>
   <meta content="follow, index" name="robots"/>

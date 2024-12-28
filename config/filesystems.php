@@ -53,6 +53,13 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
         ],
 
+        'images' => [
+            'driver' => 'local',
+            'root' => base_path('public_html/images'),
+            'url' => env('IMAGES_URL', 'https://images.jf.tec.br'),
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*
