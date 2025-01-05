@@ -8,11 +8,11 @@
   <meta content="follow, index" name="robots"/>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="{{ 'assets/vendors/apexcharts/apexcharts.css' }}" rel="stylesheet"/>
+  <link href="{{ $app_url.'assets/vendors/apexcharts/apexcharts.css' }}" rel="stylesheet"/>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <link href="{{ 'assets/css/styles.bundle.css' }}" rel="stylesheet"/>
-  <link href="{{ 'assets/css/styles.css' }}" rel="stylesheet"/>
-     <link rel="stylesheet" href="{{ 'css/custom.css' }}">
+     <link href="{{ $app_url.'assets/css/styles.bundle.css' }}" rel="stylesheet"/>
+  <link href="{{ $app_url.'assets/css/styles.css' }}" rel="stylesheet"/>
+     <link rel="stylesheet" href="{{ $app_url.'css/custom.css' }}">
 
  </head>
  <body class="antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-header-height:60px] [--tw-sidebar-width:90px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
@@ -2846,15 +2846,15 @@
   </div>
   <!-- End of Page -->
   <!-- Scripts -->
-  <script src="{{ 'assets/js/core.bundle.js' }}">
+  <script src="{{ $app_url.'assets/js/core.bundle.js' }}">
   </script>
-  <script src="{{ 'assets/vendors/apexcharts/apexcharts.min.js' }}">
+  <script src="{{ $app_url.'assets/vendors/apexcharts/apexcharts.min.js' }}">
   </script>
-  <script src="{{ 'assets/js/widgets/general.js' }}">
+  <script src="{{ $app_url.'assets/js/widgets/general.js' }}">
   </script>
   <!-- jQuery CDN -->
 <!-- Custom JS -->
-<script src="{{ 'js/config.js' }}"></script>
-<script src="{{ 'js/session.js' }}"></script>
+<script src="{{ $app_url.'js/config.js' }}"></script>
+<script src="{{ $app_url.'js/session.js' }}"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ 'js/modal-delete.js' }}"></script>
+<script src="{{ $app_url.'js/modal-delete.js' }}"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <main
     class="flex flex-col grow rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-5 m-5"
@@ -2463,4 +2463,4 @@
     </footer>
     <!-- End of Footer -->
 </main>
-<script src="{{ 'js/redirect.js' }}"></script>
+<script src="{{ $app_url.'js/redirect.js' }}"></script>

@@ -233,6 +233,6 @@
     </footer>
     <!-- End of Footer -->
 </main>
-<script src="{{ 'js/helper.js' }}"></script>
-<script src="{{ 'js/cep.js' }}"></script>
+<script src="{{ $app_url.'js/helper.js' }}"></script>
+<script src="{{ $app_url.'js/cep.js' }}"></script>
 <!-- End of Main -->
