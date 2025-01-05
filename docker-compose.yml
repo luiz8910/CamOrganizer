@@ -9,27 +9,14 @@ services:
         environment:
             - SERVICE_NAME=php
             - SERVICE_TAGS=dev
+            - APP_ENV=local
+            - APP_DEBUG=true
         working_dir: /var/www
         volumes:
             - ./:/var/www
-            - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
             - vendor_data:/var/www/vendor
-        networks:
-            - xamps_network
-
-    nginx:
-        image: nginx:alpine
-        container_name: nginx_xamps
-        restart: unless-stopped
-        volumes:
-            - .:/var/www
-            - ./nginx/:/etc/nginx/conf.d/
-        tty: true
         ports:
-            - "8989:80"
-            - "443:443"
-        depends_on:
-            - php
+            - "8000:8000"
         networks:
             - xamps_network
 

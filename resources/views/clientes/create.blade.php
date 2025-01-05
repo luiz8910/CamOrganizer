@@ -82,7 +82,7 @@
 
                                     <!-- Preview container -->
                                     <div class="image-input-placeholder rounded-full border-2 border-success image-input-empty:border-gray-300" style="background-image:url('{{ $customer->logo ?? 'assets/media/avatars/blank.png' }}')">
-                                        <div class="image-input-preview rounded-full" id="logo_preview" style="background-image:url('{{ isset($customer) ? $public_path.'storage/'.$customer->logo : $public_path.'assets/media/avatars/300-2.png' }}')">
+                                        <div class="image-input-preview rounded-full" id="logo_preview" style="background-image:url('{{ isset($customer) ? $customer->logo : 'assets/media/avatars/300-2.png' }}')">
                                         </div>
                                         <div class="flex items-center justify-center cursor-pointer h-5 left-0 right-0 bottom-0 bg-dark-clarity absolute">
                                             <label for="logo_input" class="cursor-pointer text-white">
@@ -233,6 +233,6 @@
     </footer>
     <!-- End of Footer -->
 </main>
-<script src="{{ $public_path.'js/helper.js' }}"></script>
-<script src="{{ $public_path.'js/cep.js' }}"></script>
+<script src="{{ 'js/helper.js' }}"></script>
+<script src="{{ 'js/cep.js' }}"></script>
 <!-- End of Main -->

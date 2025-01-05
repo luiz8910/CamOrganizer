@@ -3,11 +3,13 @@
 namespace App\UseCases\Customer;
 
 use App\Repositories\CustomerRepository;
+use App\Traits\UploadImage;
+use App\Traits\Environment;
 
 class CustomerUseCase
 {
+    use UploadImage, Environment;
     private CustomerRepository $repository;
-
 
     public function __construct()
     {
@@ -27,8 +29,7 @@ class CustomerUseCase
     public function store($data)
     {
         if(isset($data['logo'])){
-            $path = $data['logo']->store('images', 'public');
-            $data['logo'] = $path;
+            $data['logo'] = $this->uploadImage($data['logo']);
         }
 
         return $this->repository->createCustomer($data);
@@ -37,8 +38,7 @@ class CustomerUseCase
     public function update($data, $id)
     {
         if(isset($data['logo'])){
-            $path = $data['logo']->store('images', 'public');
-            $data['logo'] = $path;
+            $data['logo'] = $this->uploadImage($data['logo']);
         }
 
         return $this->repository->update($data, $id);

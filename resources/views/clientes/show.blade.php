@@ -38,11 +38,11 @@
   <!-- End of Toolbar -->
   <style>
     .hero-bg {
-      background-image: url('{{ $public_path.'assets/media/images/2600x1200/bg-1.png' }}');
+      background-image: url('{{ 'assets/media/images/2600x1200/bg-1.png' }}');
     }
 
     .dark .hero-bg {
-      background-image: url('{{ $public_path.'assets/media/images/2600x1200/bg-1-dark.png' }}');
+      background-image: url('{{ 'assets/media/images/2600x1200/bg-1-dark.png' }}');
     }
   </style>
   <div class="bg-center bg-cover bg-no-repeat hero-bg">
@@ -50,7 +50,7 @@
     <div class="container-fixed">
       <div class="flex flex-col items-center gap-2 lg:gap-3.5 py-4 lg:pt-5 lg:pb-10">
         <img class="rounded-full border-3 size-[100px] shrink-0"
-          src={{ $public_path.'storage/' . $customer->logo ?? "assets/media/avatars/factory-vector.jpg" }} />
+          src={{  $customer->logo ?? "assets/media/avatars/factory-vector.jpg" }} />
         <div class="flex items-center gap-1.5">
           <div class="text-lg leading-5 font-semibold text-gray-900">
             {{ $customer->external_id }} -
