@@ -47,6 +47,7 @@
             <form action="{{ $route }}" method="post" enctype="multipart/form-data">
                 @method($method)
                 @csrf
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="card pb-2.5">
                     <div class="card-header" id="basic_settings">
                         <h3 class="card-title">
@@ -134,7 +135,7 @@
                             <label class="form-label max-w-56">
                                 Telefone
                             </label>
-                            <input class="input" placeholder="Telefone" name="phone" type="text" value="{{ $customer->phone ?? "" }}"/>
+                            <input class="input" placeholder="Telefone" id="phone" name="phone" type="text" value="{{ $customer->phone ?? "" }}"/>
                         </div>
 
                         <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
@@ -233,6 +234,8 @@
     </footer>
     <!-- End of Footer -->
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ $app_url.'js/helper.js' }}"></script>
 <script src="{{ $app_url.'js/cep.js' }}"></script>
 <!-- End of Main -->

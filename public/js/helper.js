@@ -39,4 +39,9 @@ external_id.addEventListener("input", function (event) {
     event.target.value = inputValue.replace(/[^0-9]/g, '');
 });
 
+function maskPhone() {
+    $('#phone').mask('(00) 00000-0000');
+}
+
+maskPhone();
 

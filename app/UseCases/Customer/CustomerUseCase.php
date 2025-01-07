@@ -48,4 +48,14 @@ class CustomerUseCase
     {
         return $this->repository->delete($id);
     }
+
+    public function verifyCnpj($cnpj)
+    {
+        return $this->repository->verifyCnpj($cnpj);
+    }
+
+    public function verifyExternalId($externalId)
+    {
+        return $this->repository->verifyExternalId($externalId);
+    }
 }

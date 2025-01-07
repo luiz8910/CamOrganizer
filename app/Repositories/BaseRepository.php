@@ -23,6 +23,11 @@ class BaseRepository
         return $this->model->find($id);
     }
 
+    public function where($column, $value)
+    {
+        return $this->model->where($column, $value);
+    }
+
     public function create(array $data)
     {
         return $this->model->create($data);

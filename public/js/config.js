@@ -21,6 +21,14 @@ $(function () {
     $("#hideModal").click(function () {
         $("#modal-delete").css("display", "none");
     });
+
+    $("#cnpj").change(function () {
+        verifyCnpj(this.value);
+    });
+
+    $("#external_id").change(function () {
+        verifyExternalId(this.value);
+    });
 });
 
 function deleteModel() {
@@ -41,4 +49,63 @@ function deleteModel() {
             alert("An error occurred while deleting the client.");
         },
     });
+}
+
+function verifyCnpj(cnpj) {
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: 'clientes/verify-cnpj/',
+        data: {
+            cnpj: cnpj
+        },
+        method: "POST",
+        success: function (response) {
+            if(response.exists){
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "CNPJ já cadastrado!",
+                });
+
+                $("#cnpj").val("");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Failed to verify CNPJ:", xhr.responseText);
+            alert("An error occurred while verifying the CNPJ.");
+        },
+    })
+}
+
+function verifyExternalId($externalId){
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: 'clientes/verify-external-id/',
+        data:{
+            external_id: $externalId
+        },
+        method: "GET",
+        success: function (response) {
+            if(response.exists){
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "ID Bling já cadastrado!",
+                });
+
+                $("#external_id").val("");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Failed to verify External ID:", xhr.responseText);
+            console.error("Failed to verify External ID:", status);
+            console.error("Failed to verify External ID:", error);
+            alert("An error occurred while verifying the External ID.");
+        },
+    })
 }

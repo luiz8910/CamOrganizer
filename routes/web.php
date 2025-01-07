@@ -22,15 +22,6 @@ Route::get('/', function () {
     return view('main');
 })->name('home');
 
-Route::get('/test-helper', function () {
-    return test_helper();
-});
-
-Route::get('/test-env', function () {
-    return env('ASSET_BASE_PATH', 'Not Found');
-});
-
-
 
 Route::get('/cliente/{id}', [CustomerController::class, 'show'])->name('cliente');
 
@@ -45,3 +36,7 @@ Route::get('/clientes/edit/{id}', [CustomerController::class, 'edit'])->name('cl
 Route::put('/clientes/{id}', [CustomerController::class, 'update'])->name('clientes-update');
 
 Route::delete('/cliente/delete/{id}', [CustomerController::class, 'destroy'])->name('clientes-destroy');
+
+Route::post('/clientes/verify-cnpj', [CustomerController::class, 'verifyCnpj'])->name('clientes-verify-cnpj');
+
+Route::post('/clientes/verify-external-id', [CustomerController::class, 'verifyExternalId'])->name('clientes-verify-external-id');

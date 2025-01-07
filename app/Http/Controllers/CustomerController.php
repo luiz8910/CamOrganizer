@@ -66,4 +66,22 @@ class CustomerController extends AppBaseController
     {
         return $this->customerUseCase->delete($id);
     }
+
+    public function verifyCnpj(Request $request)
+    {
+        $cnpj = $request->input('cnpj');
+
+        $response = $this->customerUseCase->verifyCnpj($cnpj);
+
+        return response()->json(['exists' => $response]);
+    }
+
+    public function verifyExternalId(Request $request)
+    {
+        $externalId = $request->input('external_id');
+
+        $response = $this->customerUseCase->verifyExternalId($externalId);
+
+        return response()->json(['exists' => $response]);
+    }
 }
