@@ -57,7 +57,7 @@ function verifyCnpj(cnpj) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: 'clientes/verify-cnpj/',
+        url: 'customers/verify-cnpj/',
         data: {
             cnpj: cnpj
         },
@@ -85,7 +85,7 @@ function verifyExternalId($externalId){
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: 'clientes/verify-external-id/',
+        url: 'customers/verify-external-id/',
         data:{
             external_id: $externalId
         },

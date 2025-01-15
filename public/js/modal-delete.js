@@ -11,7 +11,7 @@ function deleteCustomer(customerId) {
         if (result.isConfirmed) {
             // Make an AJAX request to delete the customer
             $.ajax({
-                url: `/cliente/delete/${customerId}`,
+                url: `/customers/delete/${customerId}`,
                 type: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Use "content" instead of "value"

@@ -1,6 +1,6 @@
 function showCustomer(id)
 {
-    window.location.href = "/cliente/" + id;
+    window.location.href = "/customers/" + id;
 }
 
 $(function () {

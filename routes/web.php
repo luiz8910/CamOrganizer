@@ -22,21 +22,27 @@ Route::get('/', function () {
     return view('main');
 })->name('home');
 
+Route::group(['prefix' => 'customers', 'name' => 'customers'], function () {
+    Route::get('/{id}', [CustomerController::class, 'show'])->name('.show');
 
-Route::get('/cliente/{id}', [CustomerController::class, 'show'])->name('cliente');
+    Route::get('', [CustomerController::class, 'index'])->name('.index');
 
-Route::get('/clientes', [CustomerController::class, 'index'])->name('clientes');
+    Route::get('/create', [CustomerController::class, 'create'])->name('.create');
 
-Route::get('/clientes/create', [CustomerController::class, 'create'])->name('clientes-create');
+    Route::post('', [CustomerController::class, 'store'])->name('.store');
 
-Route::post('/clientes', [CustomerController::class, 'store'])->name('clientes-store');
+    Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('.edit');
 
-Route::get('/clientes/edit/{id}', [CustomerController::class, 'edit'])->name('clientes-edit');
+    Route::put('/{id}', [CustomerController::class, 'update'])->name('.update');
 
-Route::put('/clientes/{id}', [CustomerController::class, 'update'])->name('clientes-update');
+    Route::delete('/delete/{id}', [CustomerController::class, 'destroy'])->name('.destroy');
 
-Route::delete('/cliente/delete/{id}', [CustomerController::class, 'destroy'])->name('clientes-destroy');
+    Route::post('/verify-cnpj', [CustomerController::class, 'verifyCnpj'])->name('.verify-cnpj');
 
-Route::post('/clientes/verify-cnpj', [CustomerController::class, 'verifyCnpj'])->name('clientes-verify-cnpj');
+    Route::post('/verify-external-id', [CustomerController::class, 'verifyExternalId'])->name('.verify-external-id');
+});
 
-Route::post('/clientes/verify-external-id', [CustomerController::class, 'verifyExternalId'])->name('clientes-verify-external-id');
+
+
+
+
