@@ -35,12 +35,12 @@
         <div class="grid gap-5 lg:gap-7.5 xl:w-[38.75rem] mx-auto">
             @if(isset($customer))
                 <?php
-                    $route = route('clientes-update', ['id' => $customer->id]);
+                    $route = route('customers.update', ['id' => $customer->id]);
                     $method = 'PUT';
                 ?>
             @else
                 <?php
-                    $route = route('clientes-store');
+                    $route = route('customers.store');
                     $method = 'POST';
                 ?>
             @endif

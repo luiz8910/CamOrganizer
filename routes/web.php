@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EquipmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +20,10 @@ Route::get('/test', function(){
     return view('test');
 })->name('test');
 
-Route::get('/', function () {
-    return view('main');
-})->name('home');
+Route::get('/', [MainController::class, 'main'])->name('home');
 
-Route::group(['prefix' => 'customers', 'name' => 'customers'], function () {
-    Route::get('/{id}', [CustomerController::class, 'show'])->name('.show');
+Route::group(['prefix' => 'customers', 'as' => 'customers'], function () {
+    Route::get('/details/{id}', [CustomerController::class, 'show'])->name('.show');
 
     Route::get('', [CustomerController::class, 'index'])->name('.index');
 
@@ -40,6 +40,20 @@ Route::group(['prefix' => 'customers', 'name' => 'customers'], function () {
     Route::post('/verify-cnpj', [CustomerController::class, 'verifyCnpj'])->name('.verify-cnpj');
 
     Route::post('/verify-external-id', [CustomerController::class, 'verifyExternalId'])->name('.verify-external-id');
+});
+
+Route::group(['prefix' => 'equipments', 'as' => 'equipments'], function (){
+    Route::get('/{customer_id}', [EquipmentController::class, 'index'])->name('.index');
+
+    Route::get('/create', [EquipmentController::class, 'create'])->name('.create');
+
+    Route::post('', [EquipmentController::class, 'store'])->name('.store');
+
+    Route::get('/edit/{id}', [EquipmentController::class, 'edit'])->name('.edit');
+
+    Route::put('/{id}', [EquipmentController::class, 'update'])->name('.update');
+
+    Route::delete('/delete/{id}', [EquipmentController::class, 'destroy'])->name('.destroy');
 });
 
 

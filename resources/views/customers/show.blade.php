@@ -192,7 +192,7 @@
         </div>
       </div>
       <div class="flex items-center justify-end grow lg:grow-0 lg:pb-4 gap-2.5 mb-3 lg:mb-0">
-        <a href="{{ route('clientes-edit', ['id' => $customer->id]) }}" class="dropdown-toggle btn btn-sm btn-info btn-outline">
+        <a href="{{ route('customers.edit', ['id' => $customer->id]) }}" class="dropdown-toggle btn btn-sm btn-info btn-outline">
           <i class="ki-filled ki-user-edit">
           </i>
           Editar Informações
@@ -270,58 +270,49 @@
   <div class="container-fixed">
     <!-- begin: grid -->
 
-    <div class="grid gap-5 lg:gap-7.5">
-      <div class="col-span-2">
-        <div class="card">
-          <div class="card-body">
-            <div class="flex lg:px-10 py-1.5 gap-2">
-              <div class="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
-                <span class="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
-                  100
-                </span>
-                <span class="text-gray-700 text-sm">
-                  Dispositivos
-                </span>
-              </div>
-              <span class="[&:not(:last-child)]:border-r border-r-gray-300 my-1">
-              </span>
-              <div class="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
-                <span class="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
-                  70
-                </span>
-                <span class="text-gray-700 text-sm">
-                  Cameras
-                </span>
-              </div>
-              <span class="[&:not(:last-child)]:border-r border-r-gray-300 my-1">
-              </span>
-              <div class="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
-                <span class="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
-                  5
-                </span>
-                <span class="text-gray-700 text-sm">
-                  Gravadores
-                </span>
-              </div>
-              <span class="[&:not(:last-child)]:border-r border-r-gray-300 my-1">
-              </span>
-              <div class="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
-                <span class="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
-                  25
-                </span>
-                <span class="text-gray-700 text-sm">
-                  Roteador
-                </span>
-              </div>
-              <span class="[&:not(:last-child)]:border-r border-r-gray-300 my-1">
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <div class="grid gap-5 lg:gap-7.5">
+          <div class="col-span-2">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="flex lg:px-10 py-1.5 gap-2">
+                          {{-- Calculate the total count --}}
+                          <div class="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
+                        <span class="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
+                            {{ $equipments->sum('total_count') }}
+                        </span>
+                              <span class="text-gray-700 text-sm">
+                            Dispositivos
+                        </span>
+                          </div>
+                          <span class="[&:not(:last-child)]:border-r border-r-gray-300 my-1">
+                    </span>
 
-    </br></br>
+                          {{-- Loop through each equipment --}}
+                          @foreach ($equipments as $equipment)
+                              <div class="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
+                            <span class="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
+                                {{ $equipment->total_count }}
+                            </span>
+                                  <span class="text-gray-700 text-sm">
+                                {{ $equipment->device_name }}
+                            </span>
+                              </div>
+                              @if (!$loop->last)
+                                  <span class="[&:not(:last-child)]:border-r border-r-gray-300 my-1">
+                            </span>
+                              @endif
+                          @endforeach
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+      </br></br>
 
     <div class="grid gap-5 lg:gap-7.5">
       <div class="card card-grid min-w-full">

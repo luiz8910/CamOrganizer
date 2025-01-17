@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\UseCases\Customer\CustomerUseCase;
+use App\UseCases\Equipments\GetEquipmentsUseCase;
 use Illuminate\Http\Request;
 
 class CustomerController extends AppBaseController
 {
     private $customerUseCase;
 
+    private $equipmentUseCase;
+
     public function __construct()
     {
         $this->customerUseCase = new CustomerUseCase();
+        $this->equipmentUseCase = new GetEquipmentsUseCase();
     }
 
     public function index()
     {
         $customers = $this->customerUseCase->list();
 
-        $route = 'clientes.list';
+        $route = 'customers.list';
 
         return $this->render(['route' => $route, 'customers' => $customers]);
     }
@@ -27,14 +31,20 @@ class CustomerController extends AppBaseController
     {
         $customer = $this->customerUseCase->show($id);
 
-        $route = 'clientes.show';
+        $equipments = $this->equipmentUseCase->execute($id);
 
-        return $this->render(['route' => $route, 'customer' => $customer]);
+        $route = 'customers.show';
+
+        return $this->render([
+            'route' => $route,
+            'customer' => $customer,
+            'equipments' => $equipments
+        ]);
     }
 
     public function create()
     {
-        $route = 'clientes.create';
+        $route = 'customers.create';
 
         return $this->render(['route' => $route]);
     }
@@ -43,12 +53,12 @@ class CustomerController extends AppBaseController
     {
         $this->customerUseCase->store($request->all());
 
-        return redirect()->route('clientes');
+        return redirect()->route('customers');
     }
 
     public function edit($id)
     {
-        $route = 'clientes.create';
+        $route = 'customers.create';
 
         $customer = $this->customerUseCase->show($id);
 
@@ -59,7 +69,7 @@ class CustomerController extends AppBaseController
     {
         $this->customerUseCase->update($request->all(), $id);
 
-        return redirect()->route('clientes');
+        return redirect()->route('customers');
     }
 
     public function destroy($id)

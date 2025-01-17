@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             \App\Models\User::factory()->create();
 
         $this->call([
-            CustomerSeeder::class
+            CustomerSeeder::class,
+            EquipmentSeeder::class,
+            DeviceSeeder::class,
         ]);
     }
 }

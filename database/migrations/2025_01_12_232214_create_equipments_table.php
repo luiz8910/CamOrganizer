@@ -15,18 +15,19 @@ return new class extends Migration
     {
         Schema::create('equipments', function (Blueprint $table) {
             $table->id();
+            $table->integer('device_id');
+            $table->integer('customer_id');
             $table->string('brand');
             $table->string('model');
-            $table->foreignId('customer_id')->constrained();
-            $table->foreignId('equipment_type_id')->constrained();
-            $table->string('status');
+            $table->string('serial');
+            $table->string('status')->default('active');
             $table->string('port');
             $table->string('email');
             $table->string('phone');
-            $table->string('ddns');
+            $table->string('ddns')->nullable();
             $table->string('access_ip');
-            $table->string('hd_brand');
-            $table->string('storage_capacity');
+            $table->string('hd_brand')->nullable();
+            $table->string('storage_capacity')->nullable();
             $table->string('installation_location');
             $table->string('description');
             $table->softDeletes();

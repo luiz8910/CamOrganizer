@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Facades\DB;
+
 class BaseRepository
 {
     protected $model;
@@ -11,21 +13,47 @@ class BaseRepository
         $this->model = $model;
     }
 
-    public function all($orderBy = null, $order = null)
+    public function all($orderBy = null, $order = null, array $select = ['*'])
     {
         $orderBy = $orderBy ?? 'created_at';
         $order = $order ?? 'desc';
-        return $this->model->orderBy($orderBy, $order)->get();
+        return $this
+            ->model
+            ->select($select)
+            ->orderBy($orderBy, $order)
+            ->get();
     }
 
-    public function find($id)
+    public function find(int $id, array $select = ['*'])
     {
-        return $this->model->find($id);
+        return $this->model->select($select)->find($id);
     }
 
-    public function where($column, $value)
+    public function where(array $where,
+                          string $order_column = 'created_at',
+                          string $order = 'desc',
+                          array $select = ['*'])
     {
-        return $this->model->where($column, $value);
+        return $this
+            ->model
+            ->select($select)
+            ->where($where)
+            ->orderBy($order_column, $order)
+            ->get();
+    }
+
+    public function whereCountGroupBy(array $where,
+                                 string $order_column = 'created_at',
+                                 string $order = 'desc',
+                                 string $groupBy = 'id')
+    {
+        return $this
+            ->model
+            ->select($groupBy, DB::raw('COUNT(*) as total_count'), DB::raw("MAX(created_at) as latest_$order_column"))
+            ->where($where)
+            ->orderBy("latest_$order_column", $order)
+            ->groupBy($groupBy)
+            ->get();
     }
 
     public function create(array $data)
@@ -54,5 +82,10 @@ class BaseRepository
         }
 
         return false;
+    }
+
+    public function first(array $data, array $select = ['*'])
+    {
+        return $this->model->select($select)->where($data)->first();
     }
 }

@@ -10,11 +10,13 @@ class Equipment extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'equipments';
+
     protected $fillable = [
         'brand',
         'model',
         'customer_id',
-        'equipment_type_id',
+        'device_id',
         'status',
         'port',
         'email',

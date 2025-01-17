@@ -5,15 +5,19 @@ namespace App\UseCases\Customer;
 use App\Repositories\CustomerRepository;
 use App\Traits\UploadImage;
 use App\Traits\Environment;
+use App\UseCases\Equipments\GetEquipmentsUseCase;
 
 class CustomerUseCase
 {
     use UploadImage, Environment;
     private CustomerRepository $repository;
 
+    private GetEquipmentsUseCase $equipmentUseCase;
+
     public function __construct()
     {
         $this->repository = new CustomerRepository();
+        $this->equipmentUseCase = new GetEquipmentsUseCase();
     }
 
     public function list()

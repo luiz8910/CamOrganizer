@@ -82,7 +82,7 @@
         </a>
        </div>
 	   <div class="menu-item">
-        <a href="{{ route('clientes') }}" class="menu-link rounded-[9px] border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200 w-[62px] h-[60px] flex flex-col justify-center items-center gap-1 p-2" href="html/demo8.html">
+        <a href="{{ route('customers.index') }}" class="menu-link rounded-[9px] border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200 w-[62px] h-[60px] flex flex-col justify-center items-center gap-1 p-2" href="html/demo8.html">
          <span class="menu-icon menu-item-here:text-primary menu-item-active:text-primary menu-link-hover:text-primary text-gray-600">
           <i class="ki-filled ki-profile-circle text-1.5xl">
           </i>

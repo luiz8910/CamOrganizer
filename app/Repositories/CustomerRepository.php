@@ -23,13 +23,13 @@ class CustomerRepository extends BaseRepository
         return $this->all();
     }
 
-    public function verifyCnpj($cnpj)
+    public function verifyCnpj(string $cnpj)
     {
-        return (bool)$this->where('cnpj', $cnpj)->first();
+        return (bool)$this->first(['cnpj' => $cnpj]);
     }
 
-    public function verifyExternalId($externalId)
+    public function verifyExternalId(string $externalId)
     {
-        return (bool)$this->where('external_id', $externalId)->first();
+        return (bool)$this->first(['external_id' => $externalId]);
     }
 }

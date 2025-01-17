@@ -1649,7 +1649,7 @@
             </div>
             <div class="flex items-center justify-end grow lg:grow-0 lg:pb-4 gap-2.5 mb-3 lg:mb-0">
                 <div class="dropdown" >
-                    <a href="{{ route('clientes-create') }}" class="dropdown-toggle btn btn-sm btn-primary">
+                    <a href="{{ route('customers.create') }}" class="dropdown-toggle btn btn-sm btn-primary">
                         <i class="ki-filled ki-users">
                         </i>
                         Novo Cliente
