@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Request\EquipIndexRequest;
-use App\UseCases\Equipments\GetEquipmentsUseCase;
+use App\UseCases\Equipments\GetCountEquipmentsUseCase;
 
 class EquipmentController extends AppBaseController
 {
-    private GetEquipmentsUseCase $equipmentUseCase;
+    private GetCountEquipmentsUseCase $equipmentUseCase;
 
     public function index(EquipIndexRequest $request)
     {

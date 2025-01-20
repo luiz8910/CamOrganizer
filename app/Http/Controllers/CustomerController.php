@@ -3,19 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\UseCases\Customer\CustomerUseCase;
-use App\UseCases\Equipments\GetEquipmentsUseCase;
+use App\UseCases\Equipments\GetCountEquipmentsUseCase;
+use App\UseCases\Equipments\GetEquipmentsByCustomerUseCase;
 use Illuminate\Http\Request;
 
 class CustomerController extends AppBaseController
 {
     private $customerUseCase;
 
+    private $equipmentUseCaseCount;
+
     private $equipmentUseCase;
 
     public function __construct()
     {
         $this->customerUseCase = new CustomerUseCase();
-        $this->equipmentUseCase = new GetEquipmentsUseCase();
+        $this->equipmentUseCaseCount = new GetCountEquipmentsUseCase();
+        $this->equipmentUseCase = new GetEquipmentsByCustomerUseCase();
     }
 
     public function index()
@@ -31,6 +35,8 @@ class CustomerController extends AppBaseController
     {
         $customer = $this->customerUseCase->show($id);
 
+        $equipmentsCount = $this->equipmentUseCaseCount->execute($id);
+
         $equipments = $this->equipmentUseCase->execute($id);
 
         $route = 'customers.show';
@@ -38,6 +44,7 @@ class CustomerController extends AppBaseController
         return $this->render([
             'route' => $route,
             'customer' => $customer,
+            'equipmentsCount' => $equipmentsCount,
             'equipments' => $equipments
         ]);
     }

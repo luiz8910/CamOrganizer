@@ -278,17 +278,15 @@
                           {{-- Calculate the total count --}}
                           <div class="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
                         <span class="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
-                            {{ $equipments->sum('total_count') }}
+                            {{ $equipmentsCount->sum('total_count') }}
                         </span>
                               <span class="text-gray-700 text-sm">
                             Dispositivos
                         </span>
                           </div>
-                          <span class="[&:not(:last-child)]:border-r border-r-gray-300 my-1">
-                    </span>
+                          <span class="[&:not(:last-child)]:border-r border-r-gray-300 my-1"></span>
 
-                          {{-- Loop through each equipment --}}
-                          @foreach ($equipments as $equipment)
+                          @foreach ($equipmentsCount as $equipment)
                               <div class="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
                             <span class="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
                                 {{ $equipment->total_count }}
@@ -398,54 +396,57 @@
                   </div>
                 </div>
                 <tbody>
-                  <tr>
-                    <td>
-                      <input class="checkbox checkbox-sm" data-datatable-row-check="true" type="checkbox"
-                        value="1">
-                    </td>
-                    <td>
-                      <div class="flex items-center gap-4">
-                        <div class="leading-none w-5 shrink-0">
-                          <i class="ki-filled ki-router text-gray-500 text-2xl">
-                          </i>
-                        </div>
-                        <div class="flex flex-col gap-0.5">
+                    @foreach($equipments as $equipment)
+                        <tr>
+                            <td>
+                                <input class="checkbox checkbox-sm" data-datatable-row-check="true" type="checkbox"
+                                       value="1">
+                            </td>
+                            <td>
+                                <div class="flex items-center gap-4">
+                                    <div class="leading-none w-5 shrink-0">
+                                        <i class="ki-filled ki-router text-gray-500 text-2xl">
+                                        </i>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
                           <span class="leading-none font-medium text-sm text-gray-900">
-                            DVR MHDX 1108
+                            {{ $equipment->device_name }} - {{ $equipment->model }}
                           </span>
-                          <span class="text-2sm text-gray-700 font-normal">
-                            Intelbras
+                                        <span class="text-2sm text-gray-700 font-normal">
+                            {{ $equipment->brand }}
                           </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      L56M61202FG5H
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      192.168.0.205
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      29/03/2022
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-sm text-gray-800 font-normal">
+                                {{ $equipment->serial }}
+                            </td>
+                            <td class="text-sm text-gray-800 font-normal">
+                                {{ $equipment->access_ip }}
+                            </td>
+                            <td class="text-sm text-gray-800 font-normal">
+                                {{ $equipment->created_at->format('d/m/Y') }}
+                            </td>
+                            <td class="text-sm text-gray-800 font-normal">
                       <span class="badge badge-sm badge-outline badge-success">
                         Garantia
                       </span>
-                    </td>
-                    <td>
-                      <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
-                        <i class="ki-filled ki-notepad-edit">
-                        </i>
-                      </a>
-                    </td>
-                    <td>
-                      <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
-                        <i class="ki-filled ki-trash">
-                        </i>
-                      </a>
-                    </td>
-                  </tr>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
+                                    <i class="ki-filled ki-notepad-edit">
+                                    </i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
+                                    <i class="ki-filled ki-trash">
+                                    </i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+
                   <tr>
                     <td>
                       <input class="checkbox checkbox-sm" data-datatable-row-check="true" type="checkbox"

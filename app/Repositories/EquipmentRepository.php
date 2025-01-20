@@ -13,7 +13,7 @@ class EquipmentRepository extends BaseRepository
         $this->model = new Equipment();
     }
 
-    public function getEquipments(int $customer_id)
+    public function getEquipmentsCount(int $customer_id)
     {
         return $this->whereCountGroupBy(
             where:[
@@ -29,6 +29,14 @@ class EquipmentRepository extends BaseRepository
             'status' => 'active',
             'customer_id' => $customer_id,
             'device_id' => $device_id
+        ]);
+    }
+
+    public function getEquipments(int $customer_id)
+    {
+        return $this->where([
+            'status' => 'active',
+            'customer_id' => $customer_id
         ]);
     }
 
