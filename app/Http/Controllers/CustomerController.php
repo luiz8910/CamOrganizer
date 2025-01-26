@@ -60,7 +60,7 @@ class CustomerController extends AppBaseController
     {
         $this->customerUseCase->store($request->all());
 
-        return redirect()->route('customers');
+        return redirect()->route('customers.index');
     }
 
     public function edit($id)
@@ -76,7 +76,7 @@ class CustomerController extends AppBaseController
     {
         $this->customerUseCase->update($request->all(), $id);
 
-        return redirect()->route('customers');
+        return redirect()->route('customers.index');
     }
 
     public function destroy($id)

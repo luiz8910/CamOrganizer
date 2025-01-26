@@ -77,7 +77,7 @@
           </i>
          </span>
          <span class="menu-title text-xs menu-item-here:text-primary menu-item-active:text-primary menu-link-hover:text-primary text-gray-600 font-medium">
-          Page HTML
+          Test
          </span>
         </a>
        </div>
@@ -89,6 +89,17 @@
          </span>
          <span class="menu-title text-xs menu-item-here:text-primary menu-item-active:text-primary menu-link-hover:text-primary text-gray-600 font-medium">
           Clientes
+         </span>
+        </a>
+       </div>
+       <div class="menu-item">
+        <a href="javascript:" class="menu-link rounded-[9px] border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200 w-[62px] h-[60px] flex flex-col justify-center items-center gap-1 p-2" href="html/demo8.html">
+         <span class="menu-icon menu-item-here:text-primary menu-item-active:text-primary menu-link-hover:text-primary text-gray-600">
+          <i class="ki-filled ki-setting-2 text-1.5xl">
+          </i>
+         </span>
+         <span class="menu-title text-xs menu-item-here:text-primary menu-item-active:text-primary menu-link-hover:text-primary text-gray-600 font-medium">
+          Equipamentos
          </span>
         </a>
        </div>

@@ -45,7 +45,7 @@ Route::group(['prefix' => 'customers', 'as' => 'customers'], function () {
 Route::group(['prefix' => 'equipments', 'as' => 'equipments'], function (){
     Route::get('/{customer_id}', [EquipmentController::class, 'index'])->name('.index');
 
-    Route::get('/create', [EquipmentController::class, 'create'])->name('.create');
+    Route::get('/create/{customer_id}', [EquipmentController::class, 'create'])->name('.create');
 
     Route::post('', [EquipmentController::class, 'store'])->name('.store');
 

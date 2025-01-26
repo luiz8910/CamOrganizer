@@ -43,63 +43,63 @@
                 <div class="card-body grid gap-5">
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">
+                            Cliente
+                        </label>
+                        <input class="input" type="text" value="{{ $customer->company_name }}" />
+                    </div>
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                        <label class="form-label max-w-56">
                             Marca
                         </label>
-                        <input class="input" type="text" placeholder="Marca" value="" />
+                        <input class="input" type="text" placeholder="Marca" value="" name="brand" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">
                             Modelo
                         </label>
-                        <input class="input" placeholder="Modelo" type="text" value="" />
+                        <input class="input" placeholder="Modelo" type="text" value="" name="model" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">
                             Serial
                         </label>
-                        <input class="input" placeholder="Serial" type="text" value="" />
+                        <input class="input" placeholder="Serial" type="text" value="" name="serial" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">
                             Email
                         </label>
-                        <input class="input" placeholder="Email" type="text" value="" />
+                        <input class="input" placeholder="Email" type="email" value="" name="email" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">
                             Telefone
                         </label>
-                        <input class="input" placeholder="Telefone" type="text" value="" />
+                        <input class="input" placeholder="Telefone" type="text" value="" name="phone" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">
                             Local de Instalação
                         </label>
-                        <input class="input" placeholder="Local de Instalação" type="text" value="" />
+                        <input class="input" placeholder="Local de Instalação" type="text" value="" name="installation_location" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">
                             Tamanho HDD
                         </label>
-                        <input class="input" placeholder="Tamanho HDD" type="text" value="" />
+                        <input class="input" placeholder="Tamanho HDD" type="text" value="" name="storage_size" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">
                             Marca hd
                         </label>
-                        <input class="input" placeholder="marca HDD" type="text" value="" />
-                    </div>
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">
-                            Serial hd
-                        </label>
-                        <input class="input" placeholder="Serial HDD" type="text" value="" />
+                        <input class="input" placeholder="marca HDD" type="text" value="" name="hd_brand" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">
                             Observação
                         </label>
-                        <textarea class="textarea" placeholder="Observação" rows="4" value=""></textarea>
+                        <textarea class="textarea" placeholder="Observação" rows="4" value="" name="description"></textarea>
                     </div>
                 </div>
             </div>

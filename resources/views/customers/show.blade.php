@@ -199,11 +199,11 @@
         </a>
         <div class="dropdown" data-dropdown="true" data-dropdown-placement="bottom-end"
           data-dropdown-trigger="click">
-          <button class="dropdown-toggle btn btn-sm btn-primary btn-outline">
+          <a href="{{ route('equipments.create', ['customer_id' => $customer->id]) }}" class="btn btn-sm btn-primary btn-outline">
             <i class="ki-filled ki-additem">
             </i>
             Adicionar Dispositivos
-          </button>
+          </a>
           <div class="dropdown-content menu-default w-full max-w-[220px]">
             <div class="menu-item" data-dropdown-dismiss="true">
               <a class="menu-link" data-modal-toggle="#give_award_modal" href="#">
