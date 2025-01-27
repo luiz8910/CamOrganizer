@@ -27,20 +27,18 @@ class EquipmentController extends AppBaseController
         return $this->render(['route' => $route, 'equipments' => $equipments]);
     }
 
-    public function create(int $customerId)
+    public function create(int $customerId, int $device_id)
     {
         $route = 'equipments.create';
 
         $customer = $this->customerUseCase->show($customerId);
 
-        dd($customer);
-
-        return $this->render(['route' => $route, 'customer' => $customer]);
+        return $this->render(['route' => $route, 'customer' => $customer, 'device_id' => $device_id]);
     }
 
     public function store(EquipRequest $request)
     {
-
+        dd($request->all());
     }
 
     public function edit($id)

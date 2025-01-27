@@ -13,6 +13,7 @@ class DeviceFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'icon' => $this->faker->name,
         ];
     }
 }

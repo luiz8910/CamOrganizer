@@ -39,13 +39,16 @@ class CustomerController extends AppBaseController
 
         $equipments = $this->equipmentUseCase->execute($id);
 
+        $devices = $this->equipmentUseCase->getDevices();
+
         $route = 'customers.show';
 
         return $this->render([
             'route' => $route,
             'customer' => $customer,
             'equipmentsCount' => $equipmentsCount,
-            'equipments' => $equipments
+            'equipments' => $equipments,
+            'devices' => $devices
         ]);
     }
 

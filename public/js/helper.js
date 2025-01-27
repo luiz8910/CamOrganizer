@@ -1,5 +1,5 @@
 function clearFields() {
-    $(".input").val("");
+    $(".input:not([type='hidden']):not([readonly])").val("");
 }
 
 let cnpj = document.getElementById("cnpj");
@@ -38,10 +38,4 @@ external_id.addEventListener("input", function (event) {
 
     event.target.value = inputValue.replace(/[^0-9]/g, '');
 });
-
-function maskPhone() {
-    $('#phone').mask('(00) 00000-0000');
-}
-
-maskPhone();
 

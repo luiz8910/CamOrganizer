@@ -22,9 +22,16 @@ class DeviceSeeder extends Seeder
             'Roteador',
         ];
 
+        $icon = [
+            'ki-router',
+            'ki-technology-4',
+            'ki-wlan',
+        ];
+
         while($index < count($device)) {
             Device::factory()->create([
                 'name' => $device[$index],
+                'icon' => $icon[$index],
             ]);
 
             $index++;

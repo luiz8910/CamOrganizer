@@ -89,7 +89,7 @@ function verifyExternalId($externalId){
         data:{
             external_id: $externalId
         },
-        method: "GET",
+        method: "POST",
         success: function (response) {
             if(response.exists){
                 Swal.fire({
@@ -108,4 +108,20 @@ function verifyExternalId($externalId){
             alert("An error occurred while verifying the External ID.");
         },
     })
+}
+
+$("#additional_fields_check").change(function () {
+    $("#additional_fields_check").is(":checked")
+        ? showAdditionalFields("additional_fields")
+        : hideAdditionalFields("additional_fields");
+});
+
+function showAdditionalFields(div){
+    $("#" + div)
+        .removeClass("hidden");
+}
+
+function hideAdditionalFields(div){
+    $("#" + div)
+        .addClass("hidden");
 }

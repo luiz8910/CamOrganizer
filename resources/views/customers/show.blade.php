@@ -199,24 +199,27 @@
         </a>
         <div class="dropdown" data-dropdown="true" data-dropdown-placement="bottom-end"
           data-dropdown-trigger="click">
-          <a href="{{ route('equipments.create', ['customer_id' => $customer->id]) }}" class="btn btn-sm btn-primary btn-outline">
+          <button class="dropdown-toggle btn btn-sm btn-primary btn-outline">
             <i class="ki-filled ki-additem">
             </i>
             Adicionar Dispositivos
-          </a>
+          </button>
           <div class="dropdown-content menu-default w-full max-w-[220px]">
-            <div class="menu-item" data-dropdown-dismiss="true">
-              <a class="menu-link" data-modal-toggle="#give_award_modal" href="#">
+              @foreach($devices as $device)
+                  <div class="menu-item" data-dropdown-dismiss="true">
+                      <a class="menu-link" data-modal-toggle="#" href="{{ route('equipments.create', ['customer_id' => $customer->id, 'device_id' => $device['id']]) }}">
                 <span class="menu-icon">
-                  <i class="ki-filled ki-router">
+                  <i class="ki-filled {{ $device['icon'] }}">
                   </i>
                 </span>
                 <span class="menu-title">
-                  DVRs
+                  {{ $device['name'] }}
                 </span>
-              </a>
-            </div>
-            <div class="menu-item" data-dropdown-dismiss="true">
+                      </a>
+                  </div>
+              @endforeach
+
+            {{--<div class="menu-item" data-dropdown-dismiss="true">
               <a class="menu-link" data-modal-toggle="#give_award_modal" href="#">
                 <span class="menu-icon">
                   <i class="ki-filled ki-technology-4">
@@ -237,18 +240,7 @@
                   Roteadores
                 </span>
               </a>
-            </div>
-            <div class="menu-item" data-dropdown-dismiss="true">
-              <a class="menu-link" data-modal-toggle="#give_award_modal" href="#">
-                <span class="menu-icon">
-                  <i class="ki-filled ki-laptop">
-                  </i>
-                </span>
-                <span class="menu-title">
-                  Dispositivos
-                </span>
-              </a>
-            </div>
+            </div>--}}
             <div class="menu-item" data-dropdown-dismiss="true">
               <a class="menu-link" data-modal-toggle="#give_award_modal" href="#">
                 <span class="menu-icon">
@@ -292,7 +284,7 @@
                                 {{ $equipment->total_count }}
                             </span>
                                   <span class="text-gray-700 text-sm">
-                                {{ $equipment->device_name }}
+                                {{ $equipment['device_name']['name'] }}
                             </span>
                               </div>
                               @if (!$loop->last)
@@ -410,7 +402,7 @@
                                     </div>
                                     <div class="flex flex-col gap-0.5">
                           <span class="leading-none font-medium text-sm text-gray-900">
-                            {{ $equipment->device_name }} - {{ $equipment->model }}
+                            {{ $equipment['device_name']['name'] }} - {{ $equipment->model }}
                           </span>
                                         <span class="text-2sm text-gray-700 font-normal">
                             {{ $equipment->brand }}
@@ -447,102 +439,6 @@
                         </tr>
                     @endforeach
 
-                  <tr>
-                    <td>
-                      <input class="checkbox checkbox-sm" data-datatable-row-check="true" type="checkbox"
-                        value="2">
-                    </td>
-                    <td>
-                      <div class="flex items-center gap-4">
-                        <div class="leading-none w-5 shrink-0">
-                          <i class="ki-filled ki-wlan text-gray-500 text-2xl">
-                          </i>
-                        </div>
-                        <div class="flex flex-col gap-0.5">
-                          <span class="leading-none font-medium text-sm text-gray-900">
-                            AP 1230 AC MAX
-                          </span>
-                          <span class="text-2sm text-gray-700 font-normal">
-                            Intelbras
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      L56M61202FG5H
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      234.0.155.191
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      20/01/2010
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      <span class="badge badge-sm badge-outline badge-danger">
-                        vencida
-                      </span>
-                    </td>
-                    <td>
-                      <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
-                        <i class="ki-filled ki-notepad-edit">
-                        </i>
-                      </a>
-                    </td>
-                    <td>
-                      <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
-                        <i class="ki-filled ki-trash">
-                        </i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input class="checkbox checkbox-sm" data-datatable-row-check="true" type="checkbox"
-                        value="2">
-                    </td>
-                    <td>
-                      <div class="flex items-center gap-4">
-                        <div class="leading-none w-5 shrink-0">
-                          <i class="ki-filled ki-technology-4 text-gray-500 text-2xl">
-                          </i>
-                        </div>
-                        <div class="flex flex-col gap-0.5">
-                          <span class="leading-none font-medium text-sm text-gray-900">
-                            VIP 1230 B
-                          </span>
-                          <span class="text-2sm text-gray-700 font-normal">
-                            Intelbras
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      L56M61202FG5H
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      234.0.155.191
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      20/01/2010
-                    </td>
-                    <td class="text-sm text-gray-800 font-normal">
-                      <span class="badge badge-sm badge-outline badge-warning">
-                        vencendo
-                      </span>
-                    </td>
-                    <td>
-                      <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
-                        <i class="ki-filled ki-notepad-edit">
-                        </i>
-                      </a>
-                    </td>
-                    <td>
-                      <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
-                        <i class="ki-filled ki-trash">
-                        </i>
-                      </a>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>

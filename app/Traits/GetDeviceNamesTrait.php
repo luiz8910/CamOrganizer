@@ -18,7 +18,11 @@ trait GetDeviceNamesTrait
         $device_names = [];
 
         foreach ($devices as $device) {
-            $device_names[$device->id] = $device->name;
+            $device_names[$device->id] = [
+                'id' => $device->id,
+                'name' => $device->name,
+                'icon' => $device->icon,
+            ];
         }
 
         return $device_names;

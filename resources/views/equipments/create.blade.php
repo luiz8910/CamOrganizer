@@ -34,18 +34,22 @@
     <!-- Container -->
     <div class="container-fixed">
         <div class="grid gap-5 lg:gap-7.5 xl:w-[38.75rem] mx-auto">
+            <form action="{{ route('equipments.store') }}" method="POST">
+                @csrf
             <div class="card pb-2.5">
                 <div class="card-header" id="basic_settings">
                     <h3 class="card-title">
                         Informações DVR
                     </h3>
                 </div>
+                <input type="hidden" name="customer_id" value="{{ $customer->id }}" />
+                <input type="hidden" name="device_id" value="{{ $device_id }}" />
                 <div class="card-body grid gap-5">
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">
                             Cliente
                         </label>
-                        <input class="input" type="text" value="{{ $customer->company_name }}" />
+                        <input class="input" disabled readonly type="text" value="{{ $customer->company_name }}" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">
@@ -75,7 +79,7 @@
                         <label class="form-label max-w-56">
                             Telefone
                         </label>
-                        <input class="input" placeholder="Telefone" type="text" value="" name="phone" />
+                        <input class="input" placeholder="Telefone" type="text" value="" id="phone" name="phone" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">
@@ -112,28 +116,20 @@
                 </div>
                 <div class="card-body grid gap-5">
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            MAC
-                        </label>
-                        <input class="input" placeholder="MAC" type="text" value="" />
+                        <label class="form-label max-w-56">MAC</label>
+                        <input class="input" name="network[mac]" placeholder="MAC" type="text" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            IP
-                        </label>
-                        <input class="input" placeholder="IP" type="text" value="" />
+                        <label class="form-label max-w-56">IP</label>
+                        <input class="input" name="network[ip]" placeholder="IP" type="text" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            mascara
-                        </label>
-                        <input class="input" placeholder="mascara" type="text" value="" />
+                        <label class="form-label max-w-56">Mask</label>
+                        <input class="input" name="network[mask]" placeholder="Mask" type="text" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">
-                            Gateway
-                        </label>
-                        <input class="input" placeholder="Gatway" type="text" value="" />
+                        <label class="form-label max-w-56">Gateway</label>
+                        <input class="input" name="network[gateway]" placeholder="Gateway" type="text" />
                     </div>
                 </div>
             </div>
@@ -147,38 +143,30 @@
                                         <span class="switch-label">
                                             Redes 2
                                         </span>
-                            <input checked="" name="check" type="checkbox" value="1" />
+                            <input name="check" type="checkbox" value="1" id="additional_fields_check" />
                         </label>
                     </div>
                 </div>
-                <div class="card-body grid gap-5">
+                <div class="card-body grid gap-5 hidden" id="additional_fields">
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            MAC 2
-                        </label>
-                        <input class="input" placeholder="MAC 2" type="text" value="" />
+                        <label class="form-label max-w-56">MAC</label>
+                        <input class="input" name="network_add[mac]" placeholder="MAC" type="text" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            IP 2
-                        </label>
-                        <input class="input" placeholder="IP 2" type="text" value="" />
+                        <label class="form-label max-w-56">IP</label>
+                        <input class="input" name="network_add[ip]" placeholder="IP" type="text" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            Mascara 2
-                        </label>
-                        <input class="input" placeholder="Mascara 2" type="text" value="" />
+                        <label class="form-label max-w-56">Mask</label>
+                        <input class="input" name="network_add[mask]" placeholder="Mask" type="text" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">
-                            Gateway 2
-                        </label>
-                        <input class="input" placeholder="Gateway 2" type="text" value="" />
+                        <label class="form-label max-w-56">Gateway</label>
+                        <input class="input" name="network_add[gateway]" placeholder="Gateway" type="text" />
                     </div>
                 </div>
             </div>
-            <div class="card pb-2.5">
+            {{--<div class="card pb-2.5">
                 <div class="card-header" id="basic_settings">
                     <h3 class="card-title">
                         Acesso
@@ -210,7 +198,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div>--}}
             <div class="card pb-2.5">
                 <div class="card-header" id="basic_settings">
                     <h3 class="card-title">
@@ -222,19 +210,19 @@
                         <label class="form-label max-w-56">
                             Nome Usuário
                         </label>
-                        <input class="input" placeholder="Nome Usuário" type="text" value="" />
+                        <input class="input" placeholder="Nome Usuário" type="text" value="" name="access_equip[username]" />
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">
                             Senha
                         </label>
-                        <input class="input" placeholder="Senha" type="password" value="" />
+                        <input class="input" placeholder="Senha" type="password" value="" name="access_equip[password]"/>
                     </div>
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">
                             Grupo de Usuário
                         </label>
-                        <input class="input" placeholder="Grupo de Usuário" type="text" value="" />
+                        <input class="input" placeholder="Grupo de Usuário" type="text" value="" name="access_equip[usergroup]" />
                     </div>
                     <div class="flex justify-end">
                         <button class="btn btn-outline btn-primary">
@@ -414,6 +402,17 @@
                     </div>
                 </div>
             </div>
+                <div class="flex justify-end">
+                    <button type="button" class="btn btn-outline btn-secondary mr-5" onclick="clearFields()">
+                        <i class="ki-outline ki-brush"></i>
+                        Limpar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="ki-outline ki-plus-circle"></i>
+                        Salvar
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -438,3 +437,7 @@
     </footer>
     <!-- End of Footer -->
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ $app_url.'js/helper-phone.js' }}"></script>
+<script src="{{ $app_url.'js/helper.js' }}"></script>
