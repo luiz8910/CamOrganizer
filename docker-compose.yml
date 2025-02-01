@@ -14,7 +14,8 @@ services:
         working_dir: /var/www
         volumes:
             - ./:/var/www
-            - vendor_data:/var/www/vendor
+            - ./vendor:/var/www/vendor
+            # Rodar: docker run --rm -v $(pwd):/var/www -w /var/www image/php/xamps composer install
         ports:
             - "8000:8000"
         networks:

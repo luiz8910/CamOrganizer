@@ -4,23 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Http\Request\EquipIndexRequest;
 use App\Http\Request\EquipRequest;
+use App\UseCases\Equipments\EquipmentsUseCase;
 use App\UseCases\Equipments\GetCountEquipmentsUseCase;
 use App\UseCases\Customer\CustomerUseCase;
 
 class EquipmentController extends AppBaseController
 {
-    private $equipmentUseCase;
+    private $countEquipmentsUseCase;
     private $customerUseCase;
+
+    private $equipmentsUseCase;
 
     public function __construct()
     {
-        $this->equipmentUseCase = new GetCountEquipmentsUseCase();
+        $this->countEquipmentsUseCase = new GetCountEquipmentsUseCase();
         $this->customerUseCase = new CustomerUseCase();
+        $this->equipmentsUseCase = new EquipmentsUseCase();
     }
 
     public function index(EquipIndexRequest $request)
     {
-        $equipments = $this->equipmentUseCase->execute($request->customer_id);
+        $equipments = $this->countEquipmentsUseCase->execute($request->customer_id);
 
         $route = 'equipments.index';
 
@@ -38,7 +42,15 @@ class EquipmentController extends AppBaseController
 
     public function store(EquipRequest $request)
     {
-        dd($request->all());
+        try {
+            dd($request->all());
+            $this->equipmentsUseCase->store($request->validated());
+
+            return redirect()->route('equipments.index', ['customer_id' => $request->customer_id]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Erro ao cadastrar equipamento');
+        }
+
     }
 
     public function edit($id)

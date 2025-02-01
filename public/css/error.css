@@ -1,0 +1,20 @@
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 20px auto; /* Center horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px; /* Set a maximum width */
+    width: fit-content; /* Shrink to fit content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.error-icon {
+    font-size: 20px;
+}

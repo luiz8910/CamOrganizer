@@ -27,6 +27,9 @@ class Equipment extends Model
         'storage_capacity',
         'installation_location',
         'description',
+        'network',
+        'network_add',
+        'access_equip'
     ];
 
     public function specific()

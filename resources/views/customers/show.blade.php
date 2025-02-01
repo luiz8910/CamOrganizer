@@ -397,7 +397,7 @@
                             <td>
                                 <div class="flex items-center gap-4">
                                     <div class="leading-none w-5 shrink-0">
-                                        <i class="ki-filled ki-router text-gray-500 text-2xl">
+                                        <i class="ki-filled {{ $equipment['device_name']['icon']  }} text-gray-500 text-2xl">
                                         </i>
                                     </div>
                                     <div class="flex flex-col gap-0.5">

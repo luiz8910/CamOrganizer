@@ -33,6 +33,14 @@
     <!-- End of Toolbar -->
     <!-- Container -->
     <div class="container-fixed">
+        @if ($errors->any())
+            <div class="error-message">
+                <span class="error-icon">️</span>
+                @foreach ($errors->all() as $error)
+                    <span>{{ $error }}</span>
+                @endforeach
+            </div>
+        @endif
         <div class="grid gap-5 lg:gap-7.5 xl:w-[38.75rem] mx-auto">
             <form action="{{ route('equipments.store') }}" method="POST">
                 @csrf
@@ -49,90 +57,79 @@
                         <label class="form-label max-w-56">
                             Cliente
                         </label>
-                        <input class="input" disabled readonly type="text" value="{{ $customer->company_name }}" />
+                        <input class="input" required disabled readonly type="text" value="{{ $customer->company_name }}" />
                     </div>
+
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            Marca
-                        </label>
-                        <input class="input" type="text" placeholder="Marca" value="" name="brand" />
+                        <label class="form-label max-w-56">Marca</label>
+                        <input class="input" required type="text" placeholder="Marca" value="{{ old('brand') }}" name="brand" />
+                        @error('brand') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
+
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            Modelo
-                        </label>
-                        <input class="input" placeholder="Modelo" type="text" value="" name="model" />
+                        <label class="form-label max-w-56">Modelo</label>
+                        <input class="input" required placeholder="Modelo" type="text" value="{{ old('model') }}" name="model" />
+                        @error('model') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
+
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            Serial
-                        </label>
-                        <input class="input" placeholder="Serial" type="text" value="" name="serial" />
+                        <label class="form-label max-w-56">Serial</label>
+                        <input class="input" placeholder="Serial" type="text" value="{{ old('serial') }}" name="serial" />
+                        @error('serial') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
+
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">
-                            Email
-                        </label>
-                        <input class="input" placeholder="Email" type="email" value="" name="email" />
+                        <label class="form-label max-w-56">Email</label>
+                        <input class="input" placeholder="Email" type="email" value="{{ old('email') }}" name="email" />
+                        @error('email') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
+
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">
-                            Telefone
-                        </label>
-                        <input class="input" placeholder="Telefone" type="text" value="" id="phone" name="phone" />
+                        <label class="form-label max-w-56">Telefone</label>
+                        <input class="input" placeholder="Telefone" type="text" value="{{ old('phone') }}" id="phone" name="phone" />
+                        @error('phone') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
+
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">
-                            Local de Instalação
-                        </label>
-                        <input class="input" placeholder="Local de Instalação" type="text" value="" name="installation_location" />
+                        <label class="form-label max-w-56">Local de Instalação</label>
+                        <input class="input" placeholder="Local de Instalação" type="text" value="{{ old('installation_location') }}" name="installation_location" />
+                        @error('installation_location') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
+
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">
-                            Tamanho HDD
-                        </label>
-                        <input class="input" placeholder="Tamanho HDD" type="text" value="" name="storage_size" />
+                        <label class="form-label max-w-56">Tamanho HDD</label>
+                        <input class="input" placeholder="Tamanho HDD" type="text" value="{{ old('storage_size') }}" name="storage_size" />
+                        @error('storage_size') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
+
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">
-                            Marca hd
-                        </label>
-                        <input class="input" placeholder="marca HDD" type="text" value="" name="hd_brand" />
+                        <label class="form-label max-w-56">Marca HD</label>
+                        <input class="input" placeholder="Marca HDD" type="text" value="{{ old('hd_brand') }}" name="hd_brand" />
+                        @error('hd_brand') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
+
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">
-                            Observação
-                        </label>
-                        <textarea class="textarea" placeholder="Observação" rows="4" value="" name="description"></textarea>
+                        <label class="form-label max-w-56">Observação</label>
+                        <textarea class="textarea" placeholder="Observação" rows="4" name="description">{{ old('description') }}</textarea>
+                        @error('description') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
                 </div>
             </div>
 
             <div class="card pb-2.5">
-                <div class="card-header" id="basic_settings">
-                    <h3 class="card-title">
-                        Redes
-                    </h3>
-                </div>
-                <div class="card-body grid gap-5">
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">MAC</label>
-                        <input class="input" name="network[mac]" placeholder="MAC" type="text" />
+                    <div class="card-header" id="basic_settings">
+                        <h3 class="card-title">Redes</h3>
                     </div>
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">IP</label>
-                        <input class="input" name="network[ip]" placeholder="IP" type="text" />
-                    </div>
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">Mask</label>
-                        <input class="input" name="network[mask]" placeholder="Mask" type="text" />
-                    </div>
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">Gateway</label>
-                        <input class="input" name="network[gateway]" placeholder="Gateway" type="text" />
+                    <div class="card-body grid gap-5">
+                        @foreach(['mac', 'ip', 'mask', 'gateway'] as $field)
+                            <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                                <label class="form-label max-w-56">{{ ucfirst($field) }}</label>
+                                <input class="input" name="network[{{ $field }}]" placeholder="{{ ucfirst($field) }}" type="text" value="{{ old('network.' . $field) }}" />
+                                @error("network.$field") <div class="text-danger">{{ $message }}</div> @enderror
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
             <div class="card pb-2.5">
                 <div class="card-header" id="basic_settings">
                     <h3 class="card-title">
@@ -143,27 +140,18 @@
                                         <span class="switch-label">
                                             Redes 2
                                         </span>
-                            <input name="check" type="checkbox" value="1" id="additional_fields_check" />
+                            <input type="checkbox" value="1" id="additional_fields_check" />
                         </label>
                     </div>
                 </div>
                 <div class="card-body grid gap-5 hidden" id="additional_fields">
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">MAC</label>
-                        <input class="input" name="network_add[mac]" placeholder="MAC" type="text" />
-                    </div>
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">IP</label>
-                        <input class="input" name="network_add[ip]" placeholder="IP" type="text" />
-                    </div>
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">Mask</label>
-                        <input class="input" name="network_add[mask]" placeholder="Mask" type="text" />
-                    </div>
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-                        <label class="form-label max-w-56">Gateway</label>
-                        <input class="input" name="network_add[gateway]" placeholder="Gateway" type="text" />
-                    </div>
+                    @foreach(['mac', 'ip', 'mask', 'gateway'] as $input)
+                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                            <label class="form-label max-w-56">{{ ucfirst($input) }}</label>
+                            <input class="input" name="network_add[{{ $input }}]" placeholder="{{ ucfirst($input) }}" type="text" value="{{ old('network_add.' . $input) }}" />
+                            @error("network_add.$input") <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                    @endforeach
                 </div>
             </div>
             {{--<div class="card pb-2.5">
@@ -206,26 +194,17 @@
                     </h3>
                 </div>
                 <div class="card-body grid gap-5">
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            Nome Usuário
-                        </label>
-                        <input class="input" placeholder="Nome Usuário" type="text" value="" name="access_equip[username]" />
-                    </div>
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            Senha
-                        </label>
-                        <input class="input" placeholder="Senha" type="password" value="" name="access_equip[password]"/>
-                    </div>
-                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                        <label class="form-label max-w-56">
-                            Grupo de Usuário
-                        </label>
-                        <input class="input" placeholder="Grupo de Usuário" type="text" value="" name="access_equip[usergroup]" />
-                    </div>
+                    @foreach(['username', 'password', 'usergroup'] as $field)
+                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                            <label class="form-label max-w-56">{{ ucfirst($field) }}</label>
+                            <input class="input input-user-add" id="{{ $field }}" placeholder="{{ ucfirst($field) }}" type="{{ $field === 'password' ? 'password' : 'text' }}"
+                                   value=""/>
+                            @error("$field") <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                    @endforeach
+                    <div id="users_devices_fields"></div>
                     <div class="flex justify-end">
-                        <button class="btn btn-outline btn-primary">
+                        <button type="button" onclick="getUsersData()" class="btn btn-outline btn-primary">
                             <i class="ki-outline ki-user-tick"></i>
                             Adicionar Usuário
                         </button>
@@ -237,7 +216,7 @@
                         <div data-datatable="true" data-datatable-page-size="10">
                             <div class="scrollable-x-auto">
                                 <table class="table table-auto table-border" data-datatable-table="true"
-                                       id="api_integration_table">
+                                       id="users_devices">
                                     <thead>
                                     <tr>
                                         <th class="min-w-[206px]">
@@ -282,12 +261,17 @@
                                         </td>
                                         <td>
                                             <div class="flex items-center text-gray-800 font-normal">
-                                                a1b2Xc3dY4ZxQvPlQp
-                                                <a class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active"
-                                                   href="#">
-                                                    <i class="ki-filled ki-copy">
-                                                    </i>
-                                                </a>
+                                                <span id="mask-pass-1">********</span>
+                                                <span id="show-pass-1" class="hidden">a1b2Xc3dY4ZxQvPlQp</span>
+                                                <button type="button" onclick="setClipboard(document.getElementById('show-pass-1').textContent)" class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
+                                                    <i class="ki-filled ki-copy"></i>
+                                                </button>
+                                                <button type="button" id="userToAdd-1" onclick="maskUnmaskPassword(1)"
+                                                        class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
+                                                    <i class="ki-filled ki-eye"></i>
+                                                    <i class="ki-filled ki-eye-slash hidden"></i>
+                                                    <input type="hidden" value="hidden" id="hidden-1">
+                                                </button>
                                             </div>
                                         </td>
                                         <td class="text-gray-800 font-normal">
@@ -307,7 +291,7 @@
                                                     <div class="menu-dropdown menu-default w-full max-w-[175px]"
                                                          data-menu-dismiss="true">
                                                         <div class="menu-item">
-                                                            <a class="menu-link" href="#">
+                                                            <button type="reset" class="menu-link">
                                                                                 <span class="menu-icon">
                                                                                     <i class="ki-filled ki-pencil">
                                                                                     </i>
@@ -315,12 +299,12 @@
                                                                 <span class="menu-title">
                                                                                     Edit
                                                                                 </span>
-                                                            </a>
+                                                            </button>
                                                         </div>
                                                         <div class="menu-separator">
                                                         </div>
                                                         <div class="menu-item">
-                                                            <a class="menu-link" href="#">
+                                                            <button type="reset" class="menu-link remove-user">
                                                                                 <span class="menu-icon">
                                                                                     <i class="ki-filled ki-trash">
                                                                                     </i>
@@ -328,73 +312,13 @@
                                                                 <span class="menu-title">
                                                                                     Remove
                                                                                 </span>
-                                                            </a>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-gray-800 font-normal">
-                                            Natacha_caldeirao
-                                        </td>
-                                        <td>
-                                            <div class="flex items-center text-gray-800 font-normal">
-                                                a1b2Xc3dY4ZxQvPlQp
-                                                <a class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active"
-                                                   href="#">
-                                                    <i class="ki-filled ki-copy">
-                                                    </i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td class="text-gray-800 font-normal">
-                                            user
-                                        </td>
-                                        <td>
-                                            <div class="menu inline-flex" data-menu="true">
-                                                <div class="menu-item" data-menu-item-offset="0, 10px"
-                                                     data-menu-item-placement="bottom-end"
-                                                     data-menu-item-toggle="dropdown"
-                                                     data-menu-item-trigger="click|lg:click">
-                                                    <button
-                                                        class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                        <i class="ki-filled ki-dots-vertical">
-                                                        </i>
-                                                    </button>
-                                                    <div class="menu-dropdown menu-default w-full max-w-[175px]"
-                                                         data-menu-dismiss="true">
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                                <span class="menu-icon">
-                                                                                    <i class="ki-filled ki-pencil">
-                                                                                    </i>
-                                                                                </span>
-                                                                <span class="menu-title">
-                                                                                    Editar
-                                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <a class="menu-link" href="#">
-                                                                                <span class="menu-icon">
-                                                                                    <i class="ki-filled ki-trash">
-                                                                                    </i>
-                                                                                </span>
-                                                                <span class="menu-title">
-                                                                                    Remover
-                                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -441,3 +365,4 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ $app_url.'js/helper-phone.js' }}"></script>
 <script src="{{ $app_url.'js/helper.js' }}"></script>
+<script src="{{ $app_url.'js/addUserEquip.js' }}"></script>

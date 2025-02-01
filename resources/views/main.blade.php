@@ -13,6 +13,7 @@
      <link href="{{ $app_url.'assets/css/styles.bundle.css' }}" rel="stylesheet"/>
   <link href="{{ $app_url.'assets/css/styles.css' }}" rel="stylesheet"/>
      <link rel="stylesheet" href="{{ $app_url.'css/custom.css' }}">
+     <link rel="stylesheet" href="{{ $app_url.'css/error.css' }}">
 
  </head>
  <body class="antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-header-height:60px] [--tw-sidebar-width:90px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
@@ -40,6 +41,7 @@
   <!-- End of Theme Mode -->
   <!-- Page -->
   <!-- Base -->
+  <div id="toast" class="toast">Password copied to clipboard!</div>
   <div class="flex flex-col grow">
    <!-- Header -->
    <header class="flex lg:hidden items-center fixed z-10 top-0 start-0 end-0 shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] h-[--tw-header-height]" id="header">

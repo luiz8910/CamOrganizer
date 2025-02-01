@@ -3,8 +3,11 @@
 namespace App\Http\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
-class EquipRequest extends FormRequest{
+class EquipRequest extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,19 +28,36 @@ class EquipRequest extends FormRequest{
     {
         return [
             'customer_id' => 'required|integer',
-            'brand' => 'required|string',
-            'model' => 'required|string',
+            'brand' => 'nullable|string',
+            'model' => 'nullable|string',
             'device_id' => 'required|int',
             'status' => 'nullable|string',
-            'port' => 'required|integer',
-            'email' => 'required|email',
-            'phone' => 'required|string',
-            'ddns' => 'required|string',
-            'access_ip' => 'required|string',
+            'port' => 'nullable|integer',
+            'email' => 'nullable|email',
+            'phone' => 'nullable|string',
+            'ddns' => 'nullable|string',
+            'access_ip' => 'nullable|string',
             'hd_brand' => 'nullable|string',
             'storage_capacity' => 'nullable|string',
             'installation_location' => 'nullable|string',
             'description' => 'nullable|string',
+            'mac' => 'nullable|string',
+            'ip' => 'nullable|string',
+            'mask' => 'nullable|string',
+            'gateway' => 'nullable|string',
+            'network' => 'nullable|array',
+            'network_add' => 'nullable|array',
+            'access_equip' => 'nullable|array',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            redirect()
+                ->back()
+                ->withInput($this->input())
+                ->withErrors($validator->errors())
+        );
     }
 }

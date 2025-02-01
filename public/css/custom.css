@@ -16,3 +16,24 @@
     background-color: blue !important;
 }
 
+.toast {
+    visibility: hidden;             /* Hidden by default */
+    min-width: 250px;               /* Set a minimum width */
+    background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+    color: #fff;                    /* White text color */
+    text-align: center;             /* Centered text */
+    border-radius: 4px;             /* Rounded corners */
+    padding: 16px;                  /* Some padding */
+    position: fixed;                /* Sit on top of the screen */
+    z-index: 9999;                  /* Make sure it stays on top */
+    right: 20px;                    /* Position from the right */
+    bottom: 20px;                   /* Position from the bottom */
+    font-size: 14px;
+    opacity: 0;                     /* Initial opacity */
+    transition: opacity 0.5s ease-in-out; /* Fade in/out effect */
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
