@@ -18,10 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('equip_id');
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('device_id');
-            $table->string('mac');
-            $table->string('ip');
-            $table->string('mask');
-            $table->string('gateway');
+            $table->string('mac')->nullable();
+            $table->string('ip')->nullable();
+            $table->string('mask')->nullable();
+            $table->string('gateway')->nullable();
             $table->timestamps();
         });
     }

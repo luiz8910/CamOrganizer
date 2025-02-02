@@ -13,9 +13,15 @@ class MultipleFieldsEquip extends Model
     protected $fillable = [
         'device_id',
         'customer_id',
+        'equip_id',
         'mac',
         'ip',
         'mask',
         'gateway',
     ];
+
+    public function equipment()
+    {
+        return $this->belongsTo(Equipment::class, 'equip_id');
+    }
 }

@@ -109,6 +109,24 @@
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
+                        <label class="form-label max-w-56">Porta</label>
+                        <input class="input" placeholder="Porta" type="text" value="{{ old('port') }}" name="port" />
+                        @error('port') <div class="text-danger">{{ $message }}</div> @enderror
+                    </div>
+
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
+                        <label class="form-label max-w-56">DDNS</label>
+                        <input class="input" placeholder="DDNS" type="text" value="{{ old('ddns') }}" name="ddns" />
+                        @error('ddns') <div class="text-danger">{{ $message }}</div> @enderror
+                    </div>
+
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
+                        <label class="form-label max-w-56">IP de Acesso</label>
+                        <input class="input" placeholder="IP de Acesso" type="text" value="{{ old('access_ip') }}" name="access_ip" />
+                        @error('access_ip') <div class="text-danger">{{ $message }}</div> @enderror
+                    </div>
+
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">Observação</label>
                         <textarea class="textarea" placeholder="Observação" rows="4" name="description">{{ old('description') }}</textarea>
                         @error('description') <div class="text-danger">{{ $message }}</div> @enderror
@@ -215,8 +233,8 @@
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <div data-datatable="true" data-datatable-page-size="10">
                             <div class="scrollable-x-auto">
-                                <table class="table table-auto table-border" data-datatable-table="true"
-                                       id="users_devices">
+                                <table class="table table-auto table-border @if(!isset($equipment)) hidden @endif"
+                                       data-datatable-table="true" id="users_devices" >
                                     <thead>
                                     <tr>
                                         <th class="min-w-[206px]">
@@ -255,70 +273,74 @@
                                     </thead>
 
                                     <tbody>
-                                    <tr>
-                                        <td class="text-gray-800 font-normal">
-                                            Admin
-                                        </td>
-                                        <td>
-                                            <div class="flex items-center text-gray-800 font-normal">
-                                                <span id="mask-pass-1">********</span>
-                                                <span id="show-pass-1" class="hidden">a1b2Xc3dY4ZxQvPlQp</span>
-                                                <button type="button" onclick="setClipboard(document.getElementById('show-pass-1').textContent)" class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
-                                                    <i class="ki-filled ki-copy"></i>
-                                                </button>
-                                                <button type="button" id="userToAdd-1" onclick="maskUnmaskPassword(1)"
-                                                        class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
-                                                    <i class="ki-filled ki-eye"></i>
-                                                    <i class="ki-filled ki-eye-slash hidden"></i>
-                                                    <input type="hidden" value="hidden" id="hidden-1">
-                                                </button>
-                                            </div>
-                                        </td>
-                                        <td class="text-gray-800 font-normal">
-                                            Admin
-                                        </td>
-                                        <td>
-                                            <div class="menu inline-flex" data-menu="true">
-                                                <div class="menu-item" data-menu-item-offset="0, 10px"
-                                                     data-menu-item-placement="bottom-end"
-                                                     data-menu-item-toggle="dropdown"
-                                                     data-menu-item-trigger="click|lg:click">
-                                                    <button
-                                                        class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                                                        <i class="ki-filled ki-dots-vertical">
-                                                        </i>
-                                                    </button>
-                                                    <div class="menu-dropdown menu-default w-full max-w-[175px]"
-                                                         data-menu-dismiss="true">
-                                                        <div class="menu-item">
-                                                            <button type="reset" class="menu-link">
+                                    @if(isset($equipment))
+                                        @foreach($equipment->access as $equip)
+                                            <tr>
+                                                <td class="text-gray-800 font-normal">
+                                                    {{ $equip->username }}
+                                                </td>
+                                                <td>
+                                                    <div class="flex items-center text-gray-800 font-normal">
+                                                        <span id="mask-pass-{{ $equip->id }}">********</span>
+                                                        <span id="show-pass-{{ $equip->id }}" class="hidden">{{ $equip->password }}</span>
+                                                        <button type="button" onclick="setClipboard(document.getElementById('show-pass-{{ $equip->id }}').textContent)" class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
+                                                            <i class="ki-filled ki-copy"></i>
+                                                        </button>
+                                                        <button type="button" id="userToAdd-1" onclick="maskUnmaskPassword({{ $equip->id }})"
+                                                                class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
+                                                            <i class="ki-filled ki-eye"></i>
+                                                            <i class="ki-filled ki-eye-slash hidden"></i>
+                                                            <input type="hidden" value="hidden" id="hidden-{{ $equip->id }}">
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                                <td class="text-gray-800 font-normal">
+                                                    {{ $equip->role }}
+                                                </td>
+                                                <td>
+                                                    <div class="menu inline-flex" data-menu="true">
+                                                        <div class="menu-item" data-menu-item-offset="0, 10px"
+                                                             data-menu-item-placement="bottom-end"
+                                                             data-menu-item-toggle="dropdown"
+                                                             data-menu-item-trigger="click|lg:click">
+                                                            <button
+                                                                class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                                                                <i class="ki-filled ki-dots-vertical">
+                                                                </i>
+                                                            </button>
+                                                            <div class="menu-dropdown menu-default w-full max-w-[175px]"
+                                                                 data-menu-dismiss="true">
+                                                                <div class="menu-item">
+                                                                    <button type="reset" class="menu-link">
                                                                                 <span class="menu-icon">
                                                                                     <i class="ki-filled ki-pencil">
                                                                                     </i>
                                                                                 </span>
-                                                                <span class="menu-title">
-                                                                                    Edit
+                                                                        <span class="menu-title">
+                                                                                    Editar
                                                                                 </span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="menu-separator">
-                                                        </div>
-                                                        <div class="menu-item">
-                                                            <button type="reset" class="menu-link remove-user">
+                                                                    </button>
+                                                                </div>
+                                                                <div class="menu-separator">
+                                                                </div>
+                                                                <div class="menu-item">
+                                                                    <button type="reset" class="menu-link remove-user">
                                                                                 <span class="menu-icon">
                                                                                     <i class="ki-filled ki-trash">
                                                                                     </i>
                                                                                 </span>
-                                                                <span class="menu-title">
-                                                                                    Remove
+                                                                        <span class="menu-title">
+                                                                                    Remover
                                                                                 </span>
-                                                            </button>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                     </tbody>
                                 </table>
                             </div>

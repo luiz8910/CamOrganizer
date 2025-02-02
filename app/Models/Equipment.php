@@ -17,6 +17,7 @@ class Equipment extends Model
         'model',
         'customer_id',
         'device_id',
+        'serial',
         'status',
         'port',
         'email',
@@ -35,5 +36,15 @@ class Equipment extends Model
     public function specific()
     {
         return $this->morphTo();
+    }
+
+    public function access()
+    {
+        return $this->hasMany(AccessEquip::class, 'equip_id');
+    }
+
+    public function network()
+    {
+        return $this->hasMany(MultipleFieldsEquip::class, 'equip_id');
     }
 }

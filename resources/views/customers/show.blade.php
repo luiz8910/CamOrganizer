@@ -425,7 +425,7 @@
                       </span>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
+                                <a class="btn btn-sm btn-icon btn-clear btn-light" href="{{ route('equipments.edit', ['id' => $equipment->id]) }}">
                                     <i class="ki-filled ki-notepad-edit">
                                     </i>
                                 </a>

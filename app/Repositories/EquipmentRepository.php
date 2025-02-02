@@ -47,6 +47,10 @@ class EquipmentRepository extends BaseRepository
 
     public function store($data)
     {
+        unset($data['network']);
+        unset($data['network_add']);
+        unset($data['access_equip']);
+
         return $this->create($data);
     }
 

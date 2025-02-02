@@ -68,6 +68,7 @@ function addUserEquip(data) {
     `;
 
     $("#users_devices tbody").append(append);
+    $("#users_devices").removeClass("hidden");
 }
 
 
@@ -133,4 +134,8 @@ function generateUUID() {
 $(document).on("click", ".remove-user", function (e) {
     e.preventDefault();
     $(this).closest("tr").remove();
+
+    if ($("#users_devices tbody tr").length === 0) {
+        $("#users_devices").addClass("hidden");
+    }
 });

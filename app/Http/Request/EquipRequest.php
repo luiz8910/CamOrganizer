@@ -32,6 +32,7 @@ class EquipRequest extends FormRequest
             'model' => 'nullable|string',
             'device_id' => 'required|int',
             'status' => 'nullable|string',
+            'serial' => 'nullable|string',
             'port' => 'nullable|integer',
             'email' => 'nullable|email',
             'phone' => 'nullable|string',

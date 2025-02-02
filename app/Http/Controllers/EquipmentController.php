@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Request\EquipIndexRequest;
 use App\Http\Request\EquipRequest;
+use App\UseCases\Equipments\EquipmentsGetUseCase;
 use App\UseCases\Equipments\EquipmentsUseCase;
 use App\UseCases\Equipments\GetCountEquipmentsUseCase;
 use App\UseCases\Customer\CustomerUseCase;
@@ -15,11 +16,14 @@ class EquipmentController extends AppBaseController
 
     private $equipmentsUseCase;
 
+    private $equipmentsGetUseCase;
+
     public function __construct()
     {
         $this->countEquipmentsUseCase = new GetCountEquipmentsUseCase();
         $this->customerUseCase = new CustomerUseCase();
         $this->equipmentsUseCase = new EquipmentsUseCase();
+        $this->equipmentsGetUseCase = new EquipmentsGetUseCase();
     }
 
     public function index(EquipIndexRequest $request)
@@ -43,19 +47,30 @@ class EquipmentController extends AppBaseController
     public function store(EquipRequest $request)
     {
         try {
-            dd($request->all());
+
             $this->equipmentsUseCase->store($request->validated());
 
-            return redirect()->route('equipments.index', ['customer_id' => $request->customer_id]);
+            return redirect()->route('customers.show', ['id' => $request->customer_id]);
         } catch (\Exception $e) {
+
             return redirect()->back()->with('error', 'Erro ao cadastrar equipamento');
         }
 
     }
 
-    public function edit($id)
+    public function edit(int $equipId)
     {
+        $route = 'equipments.create';
 
+        $equipment = $this->equipmentsGetUseCase->execute($equipId);
+
+        $customer = $this->customerUseCase->show($equipment['customer_id']);
+
+        return $this->render([
+            'route' => $route,
+            'customer' => $customer,
+            'device_id' => $equipment['device_id'],
+            'equipment' => $equipment]);
     }
 
     public function update($id)
