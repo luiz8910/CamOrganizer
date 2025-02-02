@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('access_equip', function (Blueprint $table) {
             $table->id();
-            $table->string('user')->nullable();
+            $table->string('username')->nullable();
             $table->string('password')->nullable();
             $table->string('group')->nullable();
             $table->integer('equip_id')->nullable();
