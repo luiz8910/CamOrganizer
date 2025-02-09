@@ -70,7 +70,8 @@ class EquipmentController extends AppBaseController
             'route' => $route,
             'customer' => $customer,
             'device_id' => $equipment['device_id'],
-            'equipment' => $equipment]);
+            'equipment' => $equipment
+        ]);
     }
 
     public function update($id)
@@ -80,6 +81,8 @@ class EquipmentController extends AppBaseController
 
     public function destroy($id)
     {
+        $this->equipmentsUseCase->destroy($id);
 
+        return true;
     }
 }

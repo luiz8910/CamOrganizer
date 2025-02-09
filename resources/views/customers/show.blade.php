@@ -1,4 +1,5 @@
 <!-- Main -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <main
   class="flex flex-col grow rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-5 m-5"
   role="content">
@@ -431,10 +432,10 @@
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-icon btn-clear btn-light" href="#">
-                                    <i class="ki-filled ki-trash">
-                                    </i>
-                                </a>
+                                <button type="button" class="btn btn-sm btn-icon btn-clear btn-light"
+                                   onclick="deleteEquipment({{ $equipment->id }})">
+                                    <i class="ki-filled ki-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     @endforeach

@@ -17,11 +17,14 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Set the working directory
 WORKDIR /var/www
 
-# Copy your Laravel project into the container
-COPY . .
+# Copy only Composer files to cache dependencies
+COPY composer.json composer.lock ./
 
-# Install Laravel dependencies
-RUN composer install
+# Run composer install
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+# Copy the rest of the application code
+COPY . .
 
 # Expose the port PHP will run on
 EXPOSE 8000

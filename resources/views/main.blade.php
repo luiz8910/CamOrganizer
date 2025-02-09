@@ -2867,7 +2867,9 @@
   </script>
   <!-- jQuery CDN -->
 <!-- Custom JS -->
-<script src="{{ $app_url.'js/config.js' }}"></script>
-<script src="{{ $app_url.'js/session.js' }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="{{ $app_url.'js/config.js' }}"></script>
+  <script src="{{ $app_url.'js/session.js' }}"></script>
+  <script src="{{ $app_url.'js/modal-delete.js' }}"></script>
 </body>
 </html>

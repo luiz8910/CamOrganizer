@@ -15,11 +15,16 @@ class AccessEquipRepository extends BaseRepository
 
     public function storeAccessEquip(array $data)
     {
-        return $this->model->create($data);
+        return $this->create($data);
     }
 
     public function updateAccessEquip(array $data, $id)
     {
         return $this->update($data, $id);
+    }
+
+    public function deleteAccessEquip(int $equipId)
+    {
+        return $this->deleteWhere('equip_id', $equipId);
     }
 }

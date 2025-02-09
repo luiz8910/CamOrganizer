@@ -15,7 +15,7 @@ class EquipmentsUseCase
     {
         $this->equipmentsRepository = new EquipmentRepository();
         $this->multipleFieldsUseCaseCreate = new EquipmentsCreateMultipleFieldsUseCase();
-        $this->accessEquipUseCase = new EquipmentsCreateAccessEquip();
+        $this->accessEquipUseCase = new EquipmentsCreateAccessEquipUseCase();
     }
 
     public function store(array $data)
@@ -39,6 +39,26 @@ class EquipmentsUseCase
             dd($e);
             //throw new \Exception('Erro ao cadastrar equipamento');
 
+        }
+    }
+
+    public function destroy(int $id)
+    {
+        $accessEquipUseCase = new EquipmentsDeleteAccessEquipUseCase();
+
+        $multipleFieldsUseCase = new EquipmentsDeleteMultipleFieldsUseCase();
+
+        try {
+            $accessEquipUseCase->execute($id);
+
+            $multipleFieldsUseCase->execute($id);
+
+            $this->equipmentsRepository->destroy($id);
+
+            return true;
+        }catch (\Exception $e) {
+            dd($e);
+            //throw new \Exception('Erro ao deletar equipamento');
         }
     }
 }

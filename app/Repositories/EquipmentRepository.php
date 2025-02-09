@@ -59,7 +59,7 @@ class EquipmentRepository extends BaseRepository
         return $this->find($id)->update($data);
     }
 
-    public function deleteEquipment($id)
+    public function destroy($id)
     {
         return $this->delete($id);
     }

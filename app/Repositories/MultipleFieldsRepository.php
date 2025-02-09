@@ -15,11 +15,16 @@ class MultipleFieldsRepository extends BaseRepository
 
     public function storeMultipleFields(array $data)
     {
-        return $this->model->create($data);
+        return $this->create($data);
     }
 
     public function updateMultipleFields(array $data, $id)
     {
         return $this->update($data, $id);
+    }
+
+    public function deleteMultipleFields(int $equipmentId)
+    {
+        return $this->deleteWhere('equip_id', $equipmentId);
     }
 }

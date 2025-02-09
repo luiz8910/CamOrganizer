@@ -4,7 +4,7 @@ namespace App\UseCases\Equipments;
 
 use App\Repositories\AccessEquipRepository;
 
-class EquipmentsCreateAccessEquip
+class EquipmentsCreateAccessEquipUseCase
 {
     private $accessEquipRepository;
 

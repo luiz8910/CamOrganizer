@@ -73,7 +73,7 @@ class BaseRepository
         return null;
     }
 
-    public function delete($id)
+    public function delete(int $id)
     {
         $model = $this->model->find($id);
 
@@ -87,5 +87,10 @@ class BaseRepository
     public function first(array $data, array $select = ['*'])
     {
         return $this->model->select($select)->where($data)->first();
+    }
+
+    public function deleteWhere(string $column, string $value)
+    {
+        return $this->model->where($column, $value)->delete();
     }
 }
