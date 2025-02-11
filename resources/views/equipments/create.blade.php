@@ -62,73 +62,121 @@
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">Marca</label>
-                        <input class="input" required type="text" placeholder="Marca" value="{{ old('brand') }}" name="brand" />
+                        @if(isset($edit))
+                            <input class="input" required type="text" placeholder="Marca" value="{{ $equipment->brand }}" name="brand" />
+                        @else
+                            <input class="input" required type="text" placeholder="Marca" value="{{ old('brand') }}" name="brand" />
+                        @endif
                         @error('brand') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">Modelo</label>
-                        <input class="input" required placeholder="Modelo" type="text" value="{{ old('model') }}" name="model" />
+                        @if(isset($edit))
+                            <input class="input" required type="text" placeholder="Modelo" value="{{ $equipment->model }}" name="model" />
+                        @else
+                            <input class="input" required placeholder="Modelo" type="text" value="{{ old('model') }}" name="model" />
+                        @endif
                         @error('model') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                         <label class="form-label max-w-56">Serial</label>
-                        <input class="input" placeholder="Serial" type="text" value="{{ old('serial') }}" name="serial" />
+                        @if(isset($edit))
+                            <input class="input" required type="text" placeholder="Serial" value="{{ $equipment->serial }}" name="serial" />
+                        @else
+                            <input class="input" placeholder="Serial" type="text" value="{{ old('serial') }}" name="serial" />
+                        @endif
                         @error('serial') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">Email</label>
-                        <input class="input" placeholder="Email" type="email" value="{{ old('email') }}" name="email" />
+                        @if(isset($edit))
+                            <input class="input" placeholder="Email" type="email" value="{{ $equipment->email }}" name="email" />
+                        @else
+                            <input class="input" placeholder="Email" type="email" value="{{ old('email') }}" name="email" />
+                        @endif
                         @error('email') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">Telefone</label>
-                        <input class="input" placeholder="Telefone" type="text" value="{{ old('phone') }}" id="phone" name="phone" />
+                        @if(isset($edit))
+                            <input class="input" placeholder="Telefone" type="text" value="{{ $equipment->phone }}" id="phone" name="phone" />
+                        @else
+                            <input class="input" placeholder="Telefone" type="text" value="{{ old('phone') }}" id="phone" name="phone" />
+                        @endif
                         @error('phone') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">Local de Instalação</label>
-                        <input class="input" placeholder="Local de Instalação" type="text" value="{{ old('installation_location') }}" name="installation_location" />
+                        @if(isset($edit))
+                            <input class="input" placeholder="Local de Instalação" type="text" value="{{ $equipment->installation_location }}" name="installation_location" />
+                        @else
+                            <input class="input" placeholder="Local de Instalação" type="text" value="{{ old('installation_location') }}" name="installation_location" />
+                        @endif
                         @error('installation_location') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">Tamanho HDD</label>
-                        <input class="input" placeholder="Tamanho HDD" type="text" value="{{ old('storage_size') }}" name="storage_size" />
-                        @error('storage_size') <div class="text-danger">{{ $message }}</div> @enderror
+                        @if(isset($edit))
+                            <input class="input" placeholder="Tamanho HDD" type="text" value="{{ $equipment->storage_capacity }}" name="storage_capacity" />
+                        @else
+                            <input class="input" placeholder="Tamanho HDD" type="text" value="{{ old('storage_capacity') }}" name="storage_capacity" />
+                        @endif
+                        @error('storage_capacity') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">Marca HD</label>
-                        <input class="input" placeholder="Marca HDD" type="text" value="{{ old('hd_brand') }}" name="hd_brand" />
+                        @if(isset($edit))
+                            <input class="input" placeholder="Marca HDD" type="text" value="{{ $equipment->hd_brand }}" name="hd_brand" />
+                        @else
+                            <input class="input" placeholder="Marca HDD" type="text" value="{{ old('hd_brand') }}" name="hd_brand" />
+                        @endif
                         @error('hd_brand') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">Porta</label>
-                        <input class="input" placeholder="Porta" type="text" value="{{ old('port') }}" name="port" />
+                        @if(isset($edit))
+                            <input class="input" placeholder="Porta" type="text" value="{{ $equipment->port }}" name="port" />
+                        @else
+                            <input class="input" placeholder="Porta" type="text" value="{{ old('port') }}" name="port" />
+                        @endif
                         @error('port') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">DDNS</label>
-                        <input class="input" placeholder="DDNS" type="text" value="{{ old('ddns') }}" name="ddns" />
+                        @if(isset($edit))
+                            <input class="input" placeholder="DDNS" type="text" value="{{ $equipment->ddns }}" name="ddns" />
+                        @else
+                            <input class="input" placeholder="DDNS" type="text" value="{{ old('ddns') }}" name="ddns" />
+                        @endif
                         @error('ddns') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">IP de Acesso</label>
-                        <input class="input" placeholder="IP de Acesso" type="text" value="{{ old('access_ip') }}" name="access_ip" />
+                        @if(isset($edit))
+                            <input class="input" placeholder="IP de Acesso" type="text" value="{{ $equipment->access_ip }}" name="access_ip" />
+                        @else
+                            <input class="input" placeholder="IP de Acesso" type="text" value="{{ old('access_ip') }}" name="access_ip" />
+                        @endif
                         @error('access_ip') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
                         <label class="form-label max-w-56">Observação</label>
-                        <textarea class="textarea" placeholder="Observação" rows="4" name="description">{{ old('description') }}</textarea>
+                        @if(isset($edit))
+                            <textarea class="textarea" placeholder="Observação" rows="4" name="description">{{ $equipment->description }}</textarea>
+                        @else
+                            <textarea class="textarea" placeholder="Observação" rows="4" name="description">{{ old('description') }}</textarea>
+                        @endif
                         @error('description') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
                 </div>
@@ -142,7 +190,12 @@
                         @foreach(['mac', 'ip', 'mask', 'gateway'] as $field)
                             <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                                 <label class="form-label max-w-56">{{ ucfirst($field) }}</label>
-                                <input class="input" name="network[{{ $field }}]" placeholder="{{ ucfirst($field) }}" type="text" value="{{ old('network.' . $field) }}" />
+                                @if(isset($edit))
+                                    <input class="input" name="network[{{ $field }}]" placeholder="{{ ucfirst($field) }}" type="text"
+                                           value="@if(isset($equipment->network)){{ $equipment->network[0]->{$field} }}@endif" />
+                                @else
+                                    <input class="input" name="network[{{ $field }}]" placeholder="{{ ucfirst($field) }}" type="text" value="{{ old('network.' . $field) }}" />
+                                @endif
                                 @error("network.$field") <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
                         @endforeach
@@ -158,15 +211,28 @@
                                         <span class="switch-label">
                                             Redes 2
                                         </span>
-                            <input type="checkbox" value="1" id="additional_fields_check" />
+                            @if(isset($edit))
+                                <input type="checkbox" value="1" id="additional_fields_check" @if(isset($equipment->network[1])) checked @endif />
+                            @else
+                                <input type="checkbox" value="1" id="additional_fields_check" />
+                            @endif
                         </label>
                     </div>
                 </div>
-                <div class="card-body grid gap-5 hidden" id="additional_fields">
+                @if(isset($equipment->network[1]))
+                    <div class="card-body grid gap-5" id="additional_fields">
+                @else
+                    <div class="card-body grid gap-5 hidden" id="additional_fields">
+                @endif
                     @foreach(['mac', 'ip', 'mask', 'gateway'] as $input)
                         <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                             <label class="form-label max-w-56">{{ ucfirst($input) }}</label>
-                            <input class="input" name="network_add[{{ $input }}]" placeholder="{{ ucfirst($input) }}" type="text" value="{{ old('network_add.' . $input) }}" />
+                            @if(isset($edit))
+                                <input class="input" name="network[{{ $input }}]" placeholder="{{ ucfirst($input) }}" type="text"
+                                   value="@if(isset($equipment->network[1])){{ $equipment->network[1]->{$input} }}@endif" />
+                            @else
+                                <input class="input" name="network_add[{{ $input }}]" placeholder="{{ ucfirst($input) }}" type="text" value="{{ old('network_add.' . $input) }}" />
+                            @endif
                             @error("network_add.$input") <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
                     @endforeach
