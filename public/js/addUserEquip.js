@@ -2,7 +2,7 @@ function getUsersData() {
     let data = {
         username: $("#username").val(),
         password: $("#password").val(),
-        role: $("#usergroup").val(),
+        group: $("#usergroup").val(),
         uuid: generateUUID()
     };
 
@@ -34,7 +34,7 @@ function addUserEquip(data) {
 
                 </div>
             </td>
-            <td class="text-gray-800 font-normal">${data.role}</td>
+            <td class="text-gray-800 font-normal">${data.group}</td>
             <td>
                 <div class="menu inline-flex" data-menu="true">
                     <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end"
@@ -48,7 +48,6 @@ function addUserEquip(data) {
                                     <span class="menu-icon">
                                         <i class="ki-filled ki-pencil"></i>
                                     </span>
-                                    <span class="menu-title">Edit</span>
                                 </button>
                             </div>
                             <div class="menu-separator"></div>
@@ -77,7 +76,7 @@ function setHiddenFields(data) {
     let append = `
         <input type="hidden" class="iterable-fields" name="access_equip[username][]" value="${data.username}">
         <input type="hidden" class="iterable-fields" name="access_equip[password][]" value="${data.password}">
-        <input type="hidden" class="iterable-fields" name="access_equip[role][]" value="${data.role}">`;
+        <input type="hidden" class="iterable-fields" name="access_equip[group][]" value="${data.group}">`;
 
     $("#users_devices_fields").append(append);
 }

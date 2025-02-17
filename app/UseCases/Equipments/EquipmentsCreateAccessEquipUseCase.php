@@ -27,8 +27,8 @@ class EquipmentsCreateAccessEquipUseCase
                 $accessEquip[$key]['password'] = $value;
             }
 
-            foreach ($data['access_equip']['role'] as $key => $value) {
-                $accessEquip[$key]['role'] = $value;
+            foreach ($data['access_equip']['group'] as $key => $value) {
+                $accessEquip[$key]['group'] = $value;
             }
 
 

@@ -56,6 +56,10 @@ class EquipmentRepository extends BaseRepository
 
     public function update($data, $id)
     {
+        unset($data['network']);
+        unset($data['network_add']);
+        unset($data['access_equip']);
+
         return $this->find($id)->update($data);
     }
 

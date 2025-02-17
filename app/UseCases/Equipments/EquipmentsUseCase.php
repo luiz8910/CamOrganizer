@@ -11,11 +11,16 @@ class EquipmentsUseCase
 
     private $accessEquipUseCase;
 
+    private $multipleFieldsUseCaseDelete;
+    private $accessEquipUseCaseDelete;
+
     public function __construct()
     {
         $this->equipmentsRepository = new EquipmentRepository();
         $this->multipleFieldsUseCaseCreate = new EquipmentsCreateMultipleFieldsUseCase();
         $this->accessEquipUseCase = new EquipmentsCreateAccessEquipUseCase();
+        $this->multipleFieldsUseCaseDelete = new EquipmentsDeleteMultipleFieldsUseCase();
+        $this->accessEquipUseCaseDelete = new EquipmentsDeleteAccessEquipUseCase();
     }
 
     public function store(array $data)
@@ -59,6 +64,32 @@ class EquipmentsUseCase
         }catch (\Exception $e) {
             dd($e);
             //throw new \Exception('Erro ao deletar equipamento');
+        }
+    }
+
+    public function update(array $data, $id)
+    {
+        try {
+
+            $this->equipmentsRepository->update($data, $id);
+
+            if (isset($data['network'])){
+                $this->multipleFieldsUseCaseDelete->execute($id);
+                $this->multipleFieldsUseCaseCreate->execute($data, $id);
+            }
+
+            if(isset($data['access_equip'])){
+                $this->accessEquipUseCaseDelete->execute($id);
+                $this->accessEquipUseCase->execute($data, $id);
+            }
+
+            return $data;
+
+        }catch (\Exception $e) {
+
+            dd($e);
+            //throw new \Exception('Erro ao atualizar equipamento');
+
         }
     }
 }

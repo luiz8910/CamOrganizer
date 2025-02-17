@@ -42,7 +42,12 @@
             </div>
         @endif
         <div class="grid gap-5 lg:gap-7.5 xl:w-[38.75rem] mx-auto">
-            <form action="{{ route('equipments.store') }}" method="POST">
+            @if(isset($edit))
+                <form action="{{ route('equipments.update', $equipment->id) }}" method="POST">
+                    @method('PUT')
+            @else
+                <form action="{{ route('equipments.store') }}" method="POST">
+            @endif
                 @csrf
             <div class="card pb-2.5">
                 <div class="card-header" id="basic_settings">
@@ -361,7 +366,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-gray-800 font-normal">
-                                                    {{ $equip->role }}
+                                                    {{ $equip->group }}
                                                 </td>
                                                 <td>
                                                     <div class="menu inline-flex" data-menu="true">

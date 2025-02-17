@@ -75,9 +75,17 @@ class EquipmentController extends AppBaseController
         ]);
     }
 
-    public function update($id)
+    public function update(EquipRequest $request, $id)
     {
+        try {
 
+            $this->equipmentsUseCase->update($request->validated(), $id);
+
+            return redirect()->route('customers.show', ['id' => $request->customer_id]);
+        } catch (\Exception $e) {
+
+            return redirect()->back()->with('error', 'Erro ao atualizar equipamento');
+        }
     }
 
     public function destroy($id)
