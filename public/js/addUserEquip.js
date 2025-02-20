@@ -132,9 +132,29 @@ function generateUUID() {
 
 $(document).on("click", ".remove-user", function (e) {
     e.preventDefault();
+    let str_user = $(this)[0].id;
+
+    let id = str_user.replace("remove-user-", "");
+
     $(this).closest("tr").remove();
 
     if ($("#users_devices tbody tr").length === 0) {
         $("#users_devices").addClass("hidden");
     }
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/equipments/delete-user-access/" + id,
+        type: "DELETE",
+        success: function (data) {
+            console.log(data);
+            showToast("Usuário excluído!");
+        },
+        error: function (data) {
+            console.log(data);
+            showToast("Erro ao excluir usuário!");
+        }
+    });
 });
