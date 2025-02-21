@@ -8,7 +8,7 @@
   <meta content="follow, index" name="robots"/>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  @if(!isset($app_url))
+  @if(empty($app_url))
          <link href="{{ 'https://teste.jf.tec.br/public/assets/vendors/apexcharts/apexcharts.css' }}" rel="stylesheet"/>
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
          <link href="{{ 'https://teste.jf.tec.br/public/assets/css/styles.bundle.css' }}" rel="stylesheet"/>
@@ -2871,7 +2871,7 @@
   <!-- jQuery CDN -->
 <!-- Custom JS -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  @if(!isset($app_url))
+  @if(empty($app_url))
       <script src="{{ 'https://teste.jf.tec.br/assets/js/core.bundle.js' }}"></script>
       <script src="{{ 'https://teste.jf.tec.br/assets/vendors/apexcharts/apexcharts.min.js' }}"></script>
       <script src="{{ 'https://teste.jf.tec.br/assets/js/widgets/general.js' }}"></script>
