@@ -236,7 +236,14 @@
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ $app_url.'js/helper.js' }}"></script>
-<script src="{{ $app_url.'js/helper-phone.js' }}"></script>
-<script src="{{ $app_url.'js/cep.js' }}"></script>
+@if(!isset($app_url))
+    <script src="{{ 'https://teste.jf.tec.br/assets/js/helper.js' }}"></script>
+    <script src="{{ 'https://teste.jf.tec.br/assets/js/helper-phone.js' }}"></script>
+    <script src="{{ 'https://teste.jf.tec.br/assets/js/cep.js' }}"></script>
+@else
+    <script src="{{ $app_url.'js/helper.js' }}"></script>
+    <script src="{{ $app_url.'js/helper-phone.js' }}"></script>
+    <script src="{{ $app_url.'js/cep.js' }}"></script>
+@endif
+
 <!-- End of Main -->

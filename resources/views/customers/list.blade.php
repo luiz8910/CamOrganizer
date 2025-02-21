@@ -2461,4 +2461,8 @@
     </footer>
     <!-- End of Footer -->
 </main>
-<script src="{{ $app_url.'js/redirect.js' }}"></script>
+@if(!isset($app_url))
+    <script src="{{ 'https://teste.jf.tec.br/assets/js/redirect.js' }}"></script>
+@else
+    <script src="{{ $app_url.'js/redirect.js' }}"></script>
+@endif
