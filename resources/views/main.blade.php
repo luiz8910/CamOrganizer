@@ -2873,6 +2873,6 @@
       <script src="{{ $app_url.'js/config.js' }}"></script>
       <script src="{{ $app_url.'js/session.js' }}"></script>
       <script src="{{ $app_url.'js/modal-delete.js' }}"></script>
- 
+
 </body>
 </html>
