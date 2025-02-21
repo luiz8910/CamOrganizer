@@ -1,3 +1,6 @@
+<?php if(!isset($app_url) || $app_url === null)
+    $app_url = "https://teste.jf.tec.br/public/";
+?>
 <!DOCTYPE html>
 <html class="h-full" data-theme="true" data-theme-mode="light" lang="en">
  <head><base href="../../">
