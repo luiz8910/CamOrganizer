@@ -27,4 +27,9 @@ class AccessEquipRepository extends BaseRepository
     {
         return $this->deleteWhere('equip_id', $equipId);
     }
+
+    public function deleteUser(int $id)
+    {
+        return $this->delete($id);
+    }
 }

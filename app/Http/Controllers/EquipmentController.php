@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Request\EquipIndexRequest;
 use App\Http\Request\EquipRequest;
+use App\UseCases\Equipments\EquipmentsDeleteAccessEquipUseCase;
+use App\UseCases\Equipments\EquipmentsDeleteUserAccessEquipUseCase;
 use App\UseCases\Equipments\EquipmentsGetUseCase;
 use App\UseCases\Equipments\EquipmentsUseCase;
 use App\UseCases\Equipments\GetCountEquipmentsUseCase;
 use App\UseCases\Customer\CustomerUseCase;
+
 
 class EquipmentController extends AppBaseController
 {
@@ -18,12 +21,15 @@ class EquipmentController extends AppBaseController
 
     private $equipmentsGetUseCase;
 
+    private $accessEquipUseCaseDelete;
+
     public function __construct()
     {
         $this->countEquipmentsUseCase = new GetCountEquipmentsUseCase();
         $this->customerUseCase = new CustomerUseCase();
         $this->equipmentsUseCase = new EquipmentsUseCase();
         $this->equipmentsGetUseCase = new EquipmentsGetUseCase();
+        $this->accessEquipUseCaseDelete = new EquipmentsDeleteUserAccessEquipUseCase();
     }
 
     public function index(EquipIndexRequest $request)
@@ -78,7 +84,6 @@ class EquipmentController extends AppBaseController
     public function update(EquipRequest $request, $id)
     {
         try {
-
             $this->equipmentsUseCase->update($request->validated(), $id);
 
             return redirect()->route('customers.show', ['id' => $request->customer_id]);
@@ -91,5 +96,10 @@ class EquipmentController extends AppBaseController
     public function destroy($id)
     {
         return $this->equipmentsUseCase->destroy($id);
+    }
+
+    public function destroyUserAccess(int $id)
+    {
+        $this->accessEquipUseCaseDelete->execute($id);
     }
 }

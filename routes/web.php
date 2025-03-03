@@ -58,6 +58,8 @@ Route::group(['prefix' => 'equipments', 'as' => 'equipments'], function (){
     Route::put('/{id}', [EquipmentController::class, 'update'])->name('.update');
 
     Route::delete('/delete/{id}', [EquipmentController::class, 'destroy'])->name('.destroy');
+
+    Route::delete('/delete-user-access/{id}', [EquipmentController::class, 'destroyUserAccess'])->name('.destroy-user-access');
 });
 
 
