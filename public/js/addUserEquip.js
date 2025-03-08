@@ -3,7 +3,7 @@ function getUsersData() {
         username: $("#username").val(),
         password: $("#password").val(),
         group: $("#usergroup").val(),
-        uuid: generateUUID()
+        id: generateUUID()
     };
 
     addUserEquip(data);
@@ -18,18 +18,18 @@ function addUserEquip(data) {
             <td class="text-gray-800 font-normal">${data.username}</td>
             <td>
                 <div class="flex items-center text-gray-800 font-normal">
-                    <span id="mask-pass-${data.uuid}">********</span>
-                    <span id="show-pass-${data.uuid}" class="hidden"> ${data.password}</span>
-                    <button type="button" onclick="setClipboard(document.getElementById('show-pass-${data.uuid}').textContent)"
+                    <span id="mask-pass-${data.id}">********</span>
+                    <span id="show-pass-${data.id}" class="hidden"> ${data.password}</span>
+                    <button type="button" onclick="setClipboard(document.getElementById('show-pass-${data.id}').textContent)"
                         class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
                         <i class="ki-filled ki-copy"></i>
                     </button>
 
-                    <button type="button" id="userToAdd-${data.uuid}" onclick="maskUnmaskPassword('${data.uuid}')"
+                    <button type="button" id="userToAdd-${data.id}" onclick="maskUnmaskPassword('${data.id}')"
                         class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
                         <i class="ki-filled ki-eye"></i>
                         <i class="ki-filled ki-eye-slash hidden"></i>
-                        <input type="hidden" id="hidden-${data.uuid}" value="hidden">
+                        <input type="hidden" id="hidden-${data.id}" value="hidden">
                     </button>
 
                 </div>
@@ -44,10 +44,11 @@ function addUserEquip(data) {
                         </button>
                         <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
                             <div class="menu-item">
-                                <button type="button" class="menu-link">
+                                <button type="button" class="menu-link edit-user">
                                     <span class="menu-icon">
                                         <i class="ki-filled ki-pencil"></i>
                                     </span>
+                                    <span class="menu-title">Editar</span>
                                 </button>
                             </div>
                             <div class="menu-separator"></div>
@@ -56,7 +57,7 @@ function addUserEquip(data) {
                                     <span class="menu-icon">
                                         <i class="ki-filled ki-trash"></i>
                                     </span>
-                                    <span class="menu-title">Remove</span>
+                                    <span class="menu-title">Remover</span>
                                 </button>
                             </div>
                         </div>
@@ -74,6 +75,7 @@ function addUserEquip(data) {
 
 function setHiddenFields(data) {
     let append = `
+        <input type="hidden" class="iterable-fields" name="access_equip[id][]" value="${data.id}">
         <input type="hidden" class="iterable-fields" name="access_equip[username][]" value="${data.username}">
         <input type="hidden" class="iterable-fields" name="access_equip[password][]" value="${data.password}">
         <input type="hidden" class="iterable-fields" name="access_equip[group][]" value="${data.group}">`;
@@ -158,3 +160,71 @@ $(document).on("click", ".remove-user", function (e) {
         }
     });
 });
+
+$(document).on("click", ".edit-user", function () {
+    let row = $(this).closest("tr");
+
+    let usernameCell = row.find("td:eq(0)");
+    let passwordCell = row.find("td:eq(1) span.hidden");
+    let groupCell = row.find("td:eq(2)");
+
+    let username = usernameCell.text().trim();
+    let password = passwordCell.text().trim();
+    let group = groupCell.text().trim();
+
+    // Replace text with input fields
+    usernameCell.html(`<input type="text" class="input-edit-user" value="${username}">`);
+    passwordCell.html(`<input type="text" class="input-edit-password" value="${password}">`);
+    groupCell.html(`<input type="text" class="input-edit-group" value="${group}">`);
+
+    // Change Edit button to Save
+    $(this).replaceWith(`
+        <button type="button" class="menu-link save-user">
+            <span class="menu-icon"><i class="ki-filled ki-check"></i></span>
+            <span class="menu-title">Salvar</span>
+        </button>
+    `);
+});
+
+$(document).on("click", ".save-user", function () {
+    let row = $(this).closest("tr");
+
+    let newUsername = row.find(".input-edit-user").val();
+    let newPassword = row.find(".input-edit-password").val();
+    let newGroup = row.find(".input-edit-group").val();
+
+    // Update the row with new values
+    row.find("td:eq(0)").html(newUsername);
+    row.find("td:eq(1)").html(`
+        <div class="flex items-center text-gray-800 font-normal">
+            <span id="mask-pass-${newUsername}">********</span>
+            <span id="show-pass-${newUsername}" class="hidden">${newPassword}</span>
+            <button type="button" onclick="setClipboard('${newPassword}')" class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
+                <i class="ki-filled ki-copy"></i>
+            </button>
+            <button type="button" onclick="maskUnmaskPassword('${newUsername}')" class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
+                <i class="ki-filled ki-eye"></i>
+                <i class="ki-filled ki-eye-slash hidden"></i>
+                <input type="hidden" id="hidden-${newUsername}" value="hidden">
+            </button>
+        </div>
+    `);
+    row.find("td:eq(2)").html(newGroup);
+
+    let userObj = {
+        username: newUsername,
+        password: newPassword,
+        group: newGroup
+    };
+
+    setHiddenFields(userObj);
+
+    // Change Save button back to Edit
+    $(this).replaceWith(`
+        <button type="button" class="menu-link edit-user">
+            <span class="menu-icon"><i class="ki-filled ki-pencil"></i></span>
+            <span class="menu-title">Editar</span>
+        </button>
+    `);
+});
+

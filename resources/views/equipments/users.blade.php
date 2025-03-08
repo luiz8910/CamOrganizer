@@ -8,8 +8,8 @@
         @foreach(['username', 'password', 'usergroup'] as $field)
             <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                 <label class="form-label max-w-56">{{ ucfirst($field) }}</label>
-                <input class="input input-user-add" id="{{ $field }}" placeholder="{{ ucfirst($field) }}" type="{{ $field === 'password' ? 'password' : 'text' }}"
-                       value=""/>
+                <input class="input input-user-add" id="{{ $field }}" placeholder="{{ ucfirst($field) }}"
+                       type="{{ $field === 'password' ? 'password' : 'text' }}" value=""/>
                 @error("$field") <div class="text-danger">{{ $message }}</div> @enderror
             </div>
         @endforeach
@@ -69,7 +69,6 @@
                         @if(isset($equipment))
                             @foreach($equipment->access as $equip)
                                 <tr>
-
                                     <td class="text-gray-800 font-normal">
                                         {{ $equip->username }}
                                     </td>
@@ -105,7 +104,7 @@
                                                 <div class="menu-dropdown menu-default w-full max-w-[175px]"
                                                      data-menu-dismiss="true">
                                                     <div class="menu-item">
-                                                        <button type="reset" class="menu-link">
+                                                        <button type="button" class="menu-link edit-user">
                                                                                 <span class="menu-icon">
                                                                                     <i class="ki-filled ki-pencil">
                                                                                     </i>
