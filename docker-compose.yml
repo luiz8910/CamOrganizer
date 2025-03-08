@@ -23,6 +23,7 @@ services:
 
     mysql:
         image: mysql:8.0
+        restart: unless-stopped
         container_name: mysql_container
         environment:
             - MYSQL_DATABASE=xampinho_db
@@ -39,7 +40,9 @@ services:
 
 volumes:
     vendor_data:
+        name: camorganizer_vendor_data
     mysql_data:
+        name: camorganizer_mysql_data
         driver: local
 
 networks:
