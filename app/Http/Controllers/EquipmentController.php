@@ -83,7 +83,6 @@ class EquipmentController extends AppBaseController
 
     public function update(EquipRequest $request, $id)
     {
-        dd($request->all());
         try {
             $this->equipmentsUseCase->update($request->validated(), $id);
 
