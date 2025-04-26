@@ -23,6 +23,8 @@
         <div></div> <!-- AJ (ajuste técnico) :) -->
         <div></div>
 
+        <input type="hidden" id="user_id" value="">
+
         <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
             <div data-datatable="true" data-datatable-page-size="10">
                 <div class="scrollable-x-auto">

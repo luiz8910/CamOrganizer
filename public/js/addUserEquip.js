@@ -1,9 +1,16 @@
 function getUsersData() {
+    let id = $("#user_id").val();
+
+    // Se for novo usuário (sem ID), gera UUID
+    if (!id) {
+        id = generateUUID();
+    }
+
     let data = {
+        id: id,
         username: $("#username").val(),
         password: $("#password").val(),
-        group: $("#usergroup").val(),
-        id: generateUUID()
+        group: $("#usergroup").val()
     };
 
     addUserEquip(data);
@@ -14,7 +21,7 @@ function getUsersData() {
 function addUserEquip(data) {
 
     let append = `
-        <tr>
+        <tr data-id="${data.id}">
             <td class="text-gray-800 font-normal">${data.username}</td>
             <td>
                 <div class="flex items-center text-gray-800 font-normal">
@@ -74,13 +81,21 @@ function addUserEquip(data) {
 
 
 function setHiddenFields(data) {
+    // remove se já existe (edição)
+    $(`input[name="access_equip[id][]"][value="${data.id}"]`).remove();
+    $(`input[name="access_equip[username][]"][data-id="${data.id}"]`).remove();
+    $(`input[name="access_equip[password][]"][data-id="${data.id}"]`).remove();
+    $(`input[name="access_equip[group][]"][data-id="${data.id}"]`).remove();
+
     let append = `
         <input type="hidden" class="iterable-fields" name="access_equip[id][]" value="${data.id}">
-        <input type="hidden" class="iterable-fields" name="access_equip[username][]" value="${data.username}">
-        <input type="hidden" class="iterable-fields" name="access_equip[password][]" value="${data.password}">
-        <input type="hidden" class="iterable-fields" name="access_equip[group][]" value="${data.group}">`;
+        <input type="hidden" class="iterable-fields" name="access_equip[username][]" value="${data.username}" data-id="${data.id}">
+        <input type="hidden" class="iterable-fields" name="access_equip[password][]" value="${data.password}" data-id="${data.id}">
+        <input type="hidden" class="iterable-fields" name="access_equip[group][]" value="${data.group}" data-id="${data.id}">`;
 
     $("#users_devices_fields").append(append);
+
+    localStorage.removeItem('edit-user');
 }
 
 function clearFields() {
@@ -171,6 +186,9 @@ $(document).on("click", ".edit-user", function () {
     let username = usernameCell.text().trim();
     let password = passwordCell.text().trim();
     let group = groupCell.text().trim();
+    let id = row.find("span[id^='show-pass-']").attr("id").replace("show-pass-", "");
+
+    localStorage.setItem("edit-user", id);
 
     // Replace text with input fields
     usernameCell.html(`<input type="text" class="input-edit-user" value="${username}">`);
@@ -188,6 +206,9 @@ $(document).on("click", ".edit-user", function () {
 
 $(document).on("click", ".save-user", function () {
     let row = $(this).closest("tr");
+    let id = localStorage.getItem("edit-user");
+
+    console.log("ID do usuário salvo:", id);
 
     let newUsername = row.find(".input-edit-user").val();
     let newPassword = row.find(".input-edit-password").val();
@@ -212,6 +233,7 @@ $(document).on("click", ".save-user", function () {
     row.find("td:eq(2)").html(newGroup);
 
     let userObj = {
+        id: id,
         username: newUsername,
         password: newPassword,
         group: newGroup

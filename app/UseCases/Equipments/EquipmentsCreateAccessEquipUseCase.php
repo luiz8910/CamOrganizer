@@ -16,36 +16,33 @@ class EquipmentsCreateAccessEquipUseCase
     public function execute(array $data, int $equipId)
     {
         try {
-
             $accessEquip = [];
 
             foreach ($data['access_equip']['username'] as $key => $value) {
-                $accessEquip[$key]['username'] = $value;
+                $accessEquip[] = [
+                    'id' => $data['access_equip']['id'][$key] ?? null,
+                    'username' => $value,
+                    'password' => $data['access_equip']['password'][$key],
+                    'group' => $data['access_equip']['group'][$key],
+                    'equip_id' => $equipId,
+                    'customer_id' => $data['customer_id'],
+                ];
             }
-
-            foreach ($data['access_equip']['password'] as $key => $value) {
-                $accessEquip[$key]['password'] = $value;
-            }
-
-            foreach ($data['access_equip']['group'] as $key => $value) {
-                $accessEquip[$key]['group'] = $value;
-            }
-
 
             foreach ($accessEquip as $item) {
-                $item['equip_id'] = $equipId;
-                $item['customer_id'] = $data['customer_id'];
-
-                $this->accessEquipRepository->storeAccessEquip($item);
+                if (!empty($item['id']) && is_numeric($item['id'])) {
+                    $this->accessEquipRepository->updateAccessEquip($item, (int) $item['id']);
+                } else {
+                    $this->accessEquipRepository->storeAccessEquip($item);
+                }
             }
 
             return true;
 
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-            dd($e);
-            throw new \Exception('Erro ao cadastrar equipamento');
-
+            throw new \Exception($e->getMessage());
         }
     }
+
 }

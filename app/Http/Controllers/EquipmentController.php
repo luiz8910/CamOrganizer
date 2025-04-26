@@ -84,7 +84,7 @@ class EquipmentController extends AppBaseController
     public function update(EquipRequest $request, $id)
     {
         try {
-            dd($request->all());
+
             $this->equipmentsUseCase->update($request->validated(), $id);
 
             return redirect()->route('customers.show', ['id' => $request->customer_id]);
