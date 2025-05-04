@@ -29,5 +29,8 @@ COPY . .
 # Expose the port PHP will run on
 EXPOSE 8000
 
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
 # Run the Laravel application using PHP's built-in server
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]

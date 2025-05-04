@@ -1,6 +1,3 @@
-@php
-    $app_url = $app_url ?? 'https://teste.jf.tec.br/public';
-@endphp
 <!DOCTYPE html>
 <html class="h-full" data-theme="true" data-theme-mode="light" lang="en">
  <head><base href="../../">
@@ -12,12 +9,12 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
-      <link href="{{ $app_url.'assets/vendors/apexcharts/apexcharts.css' }}" rel="stylesheet"/>
+      <link href="{{ 'assets/vendors/apexcharts/apexcharts.css' }}" rel="stylesheet"/>
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-         <link href="{{ $app_url.'assets/css/styles.bundle.css' }}" rel="stylesheet"/>
-      <link href="{{ $app_url.'assets/css/styles.css' }}" rel="stylesheet"/>
-         <link rel="stylesheet" href="{{ $app_url.'css/custom.css' }}">
-         <link rel="stylesheet" href="{{ $app_url.'css/error.css' }}">
+         <link href="{{ 'assets/css/styles.bundle.css' }}" rel="stylesheet"/>
+      <link href="{{ 'assets/css/styles.css' }}" rel="stylesheet"/>
+         <link rel="stylesheet" href="{{ 'css/custom.css' }}">
+         <link rel="stylesheet" href="{{ 'css/error.css' }}">
 
  </head>
  <body class="antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-header-height:60px] [--tw-sidebar-width:90px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
@@ -2867,12 +2864,12 @@
   <!-- jQuery CDN -->
 <!-- Custom JS -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="{{ $app_url.'assets/js/core.bundle.js' }}"></script>
-      <script src="{{ $app_url.'assets/vendors/apexcharts/apexcharts.min.js' }}"></script>
-      <script src="{{ $app_url.'assets/js/widgets/general.js' }}"></script>
-      <script src="{{ $app_url.'js/config.js' }}"></script>
-      <script src="{{ $app_url.'js/session.js' }}"></script>
-      <script src="{{ $app_url.'js/modal-delete.js' }}"></script>
+      <script src="{{ 'assets/js/core.bundle.js' }}"></script>
+      <script src="{{ 'assets/vendors/apexcharts/apexcharts.min.js' }}"></script>
+      <script src="{{ 'assets/js/widgets/general.js' }}"></script>
+      <script src="{{ 'js/config.js' }}"></script>
+      <script src="{{ 'js/session.js' }}"></script>
+      <script src="{{ 'js/modal-delete.js' }}"></script>
 
 </body>
 </html>

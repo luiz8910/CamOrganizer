@@ -266,7 +266,7 @@
     <script src="{{ 'https://teste.jf.tec.br/assets/js/helper.js' }}"></script>
     <script src="{{ 'https://teste.jf.tec.br/assets/js/addUserEquip.js' }}"></script>
 @else
-    <script src="{{ $app_url.'js/helper-phone.js' }}"></script>
-    <script src="{{ $app_url.'js/helper.js' }}"></script>
-    <script src="{{ $app_url.'js/addUserEquip.js' }}"></script>
+    <script src="{{ 'js/helper-phone.js' }}"></script>
+    <script src="{{ 'js/helper.js' }}"></script>
+    <script src="{{ 'js/addUserEquip.js' }}"></script>
 @endif
