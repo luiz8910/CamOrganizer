@@ -39,11 +39,11 @@
   <!-- End of Toolbar -->
   <style>
     .hero-bg {
-      background-image: url('{{ 'assets/media/images/2600x1200/bg-1.png' }}');
+      background-image: url('{{ env('APP_PATH') }}{{ 'assets/media/images/2600x1200/bg-1.png' }}');
     }
 
     .dark .hero-bg {
-      background-image: url('{{ 'assets/media/images/2600x1200/bg-1-dark.png' }}');
+      background-image: url('{{ env('APP_PATH') }}{{ 'assets/media/images/2600x1200/bg-1-dark.png' }}');
     }
   </style>
   <div class="bg-center bg-cover bg-no-repeat hero-bg">

@@ -261,12 +261,7 @@
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@if(empty($app_url))
-    <script src="{{ 'https://teste.jf.tec.br/assets/js/helper-phone.js' }}"></script>
-    <script src="{{ 'https://teste.jf.tec.br/assets/js/helper.js' }}"></script>
-    <script src="{{ 'https://teste.jf.tec.br/assets/js/addUserEquip.js' }}"></script>
-@else
-    <script src="{{ 'js/helper-phone.js' }}"></script>
-    <script src="{{ 'js/helper.js' }}"></script>
-    <script src="{{ 'js/addUserEquip.js' }}"></script>
-@endif
+<script src="{{ env('APP_PATH') }}{{ 'js/helper-phone.js' }}"></script>
+<script src="{{ env('APP_PATH') }}{{ 'js/helper.js' }}"></script>
+<script src="{{ env('APP_PATH') }}{{ 'js/addUserEquip.js' }}"></script>
+
