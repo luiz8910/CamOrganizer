@@ -1192,7 +1192,7 @@
           <div class="flex items-center justify-between flex-wrap gap-2 px-5 py-3.5">
            <div class="flex items-center flex-wrap gap-2">
             <div class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-200 size-10">
-             <img alt="" class="size-6" src="{{ env('APP_PATH') }}assets/media/brand-logos/evernote.svg"/>
+             <img alt="" class="size-6" src="{{ env('APP_PATH') }}assets/media/brand-lo gos/evernote.svg"/>
             </div>
             <div class="flex flex-col">
              <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
