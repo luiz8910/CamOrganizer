@@ -2462,5 +2462,5 @@
     <!-- End of Footer -->
 </main>
 
-<script src="{{ asset('public/js/redirect.js') }}"></script>
+<script src="{{ asset('js/redirect.js') }}"></script>
 
