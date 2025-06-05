@@ -182,7 +182,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}{{ 'assets/media/avatars/300-4.png'}}"/>
+                                                     src="{{ asset( 'assets/media/avatars/300-4.png')}}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -238,7 +238,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}{{ 'assets/media/avatars/300-5.png' }}"/>
+                                                     src="{{ asset( 'assets/media/avatars/300-5.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -282,7 +282,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_3">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}{{ 'assets/media/avatars/300-27.png'}}"/>
+                                                     src="{{ asset( 'assets/media/avatars/300-27..png')}}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -328,7 +328,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}{{ 'assets/media/avatars/300-1.png' }}"/>
+                                                     src="{{ asset( 'assets/media/avatars/300-1..png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -353,7 +353,7 @@
                                                 </div>
                                                 <div
                                                     class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
-                                                    <img class="h-5" src="{{ env('APP_PATH') }}{{ 'assets/media/file-types/pdf.svg' }}"/>
+                                                    <img class="h-5" src="{{ asset( 'assets/media/file-types/pdf.svg') }}"/>
                                                     <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1"
                                                        href="#">
                                                         Launch_nov24.pptx
@@ -369,7 +369,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}{{ 'assets/media/avatars/300-11.png' }}"/>
+                                                     src="{{ asset( 'assets/media/avatars/300-11..png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -400,7 +400,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}{{ 'assets/media/avatars/300-14.png' }}"/>
+                                                     src="{{ asset( 'assets/media/avatars/300-14..png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -427,7 +427,7 @@
                                                     class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                                                     <div
                                                         class="flex items-center justify-center w-[26px] h-[30px] shrink-0 bg-light rounded border border-gray-200">
-                                                        <img class="h-5" src="{{ env('APP_PATH') }}{{ 'assets/media/file-types/figma.svg' }}"/>
+                                                        <img class="h-5" src="{{ asset( 'assets/media/file-types/figma.svg') }}"/>
                                                     </div>
                                                     <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1"
                                                        href="#">
@@ -462,7 +462,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_13">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-25.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-25..png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -540,7 +540,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-34.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-34.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -566,7 +566,7 @@
                                                 <div
                                                     class="card shadow-none flex items-center justify-between flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                                                     <div class="flex items-center gap-1.5">
-                                                        <img class="h-6" src="{{ env('APP_PATH') }}assets/media/file-types/xls.svg"/>
+                                                        <img class="h-6" src="{{ asset('assets/media/file-types/xls.svg') }}"/>
                                                         <div class="flex flex-col gap-0.5">
                                                             <a class="hover:text-primary-active font-medium text-gray-700 text-xs"
                                                                href="#">
@@ -602,7 +602,7 @@
                                         <div class="flex grow gap-2 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-29.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-29.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -645,12 +645,12 @@
                                                             <div class="flex">
                                                                 <img
                                                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-3.png"/>
+                                                                    src="{{ asset('assets/media/avatars/300-3.png') }}"/>
                                                             </div>
                                                             <div class="flex">
                                                                 <img
                                                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+                                                                    src="{{ asset('assets/media/avatars/300-2.png') }}"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -670,7 +670,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_3">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-30.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-30.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -714,7 +714,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-24.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-24.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -764,7 +764,7 @@
                                         <div class="flex grow gap-2 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-15.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-15.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -817,17 +817,17 @@
                                                             <div class="flex">
                                                                 <img
                                                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+                                                                    src="{{ asset('assets/media/avatars/300-4.png') }}"/>
                                                             </div>
                                                             <div class="flex">
                                                                 <img
                                                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+                                                                    src="{{ asset('assets/media/avatars/300-1.png') }}"/>
                                                             </div>
                                                             <div class="flex">
                                                                 <img
                                                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6"
-                                                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+                                                                    src="{{ asset('assets/media/avatars/300-2.png') }}"/>
                                                             </div>
                                                             <div class="flex">
                     <span
@@ -855,7 +855,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-6.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-6.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -887,7 +887,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-12.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-12.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -913,7 +913,7 @@
                                                 <div
                                                     class="card shadow-none flex items-center justify-between flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                                                     <div class="flex items-center gap-1.5">
-                                                        <img class="h-6" src="{{ env('APP_PATH') }}assets/media/file-types/word.svg"/>
+                                                        <img class="h-6" src="{{ asset('assets/media/file-types/word.svg') }}"/>
                                                         <div class="flex flex-col gap-0.5">
                                                             <a class="hover:text-primary-active font-medium text-gray-700 text-xs"
                                                                href="#">
@@ -945,7 +945,7 @@
                                                 <div
                                                     class="card shadow-none flex items-center justify-between flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                                                     <div class="flex items-center gap-1.5">
-                                                        <img class="h-6" src="{{ env('APP_PATH') }}assets/media/file-types/svg.svg"/>
+                                                        <img class="h-6" src="{{ asset('assets/media/file-types/svg.svg') }}"/>
                                                         <div class="flex flex-col gap-0.5">
                                                             <a class="hover:text-primary-active font-medium text-gray-700 text-xs"
                                                                href="#">
@@ -981,7 +981,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-21.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-21.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -1036,7 +1036,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_3">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-13.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-13.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -1099,7 +1099,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-1.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -1171,7 +1171,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_3">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-19.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-19.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -1198,7 +1198,7 @@
                                                     class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                                                     <div
                                                         class="flex items-center justify-center w-[26px] h-[30px] shrink-0 bg-white rounded border border-gray-200">
-                                                        <img class="h-5" src="{{ env('APP_PATH') }}assets/media/brand-logos/jira.svg"/>
+                                                        <img class="h-5" src="{{ asset('assets/media/brand-logos/jira.svg') }}"/>
                                                     </div>
                                                     <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1"
                                                        href="#">
@@ -1225,7 +1225,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-17.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-17.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -1263,7 +1263,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-34.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-34.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -1294,7 +1294,7 @@
                                         <div class="flex grow gap-2.5 px-5">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-9.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-9.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -1334,7 +1334,7 @@
                                         <div class="flex grow gap-2.5 px-5" id="notification_request_3">
                                             <div class="relative shrink-0 mt-0.5">
                                                 <img alt="" class="rounded-full size-8"
-                                                     src="{{ env('APP_PATH') }}assets/media/avatars/300-13.png"/>
+                                                     src="{{ asset('assets/media/avatars/300-13.png') }}"/>
                                                 <span
                                                     class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
                 </span>
@@ -1692,7 +1692,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}{{ 'assets/media/brand-logos/plurk.svg' }}"/>
+                                <img alt="" class="" src="{{ asset( 'assets/media/brand-logos/plurk.svg') }}"/>
                             </div>
                             <span class="badge badge-primary badge-outline">
             In Progress
@@ -1728,12 +1728,12 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+                                    src="{{ asset('assets/media/avatars/300-4.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+                                    src="{{ asset('assets/media/avatars/300-2.png') }}"/>
                             </div>
                             <div class="flex">
             <span
@@ -1746,7 +1746,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/telegram.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/telegram.svg') }}"/>
                             </div>
                             <span class="badge badge-success badge-outline">
             Completed
@@ -1782,19 +1782,19 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-24.png"/>
+                                    src="{{ asset('assets/media/avatars/300-24.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-7.png"/>
+                                    src="{{ asset('assets/media/avatars/300-7.png') }}"/>
                             </div>
                         </div>
                     </div>
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/kickstarter.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/kickstarter.svg') }}"/>
                             </div>
                             <span class="badge badge-outline">
             Upcoming
@@ -1830,17 +1830,17 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-21.png"/>
+                                    src="{{ asset('assets/media/avatars/300-21.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+                                    src="{{ asset('assets/media/avatars/300-1.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+                                    src="{{ asset('assets/media/avatars/300-2.png') }}"/>
                             </div>
                             <div class="flex">
             <span
@@ -1853,7 +1853,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/quickbooks.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/quickbooks.svg') }}"/>
                             </div>
                             <span class="badge badge-primary badge-outline">
             In Progress
@@ -1889,12 +1889,12 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+                                    src="{{ asset('assets/media/avatars/300-1.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+                                    src="{{ asset('assets/media/avatars/300-2.png') }}"/>
                             </div>
                             <div class="flex">
             <span
@@ -1907,7 +1907,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/google-analytics.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/google-analytics.svg') }}"/>
                             </div>
                             <span class="badge badge-outline">
             Upcoming
@@ -1943,24 +1943,24 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-5.png"/>
+                                    src="{{ asset('assets/media/avatars/300-5.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-17.png"/>
+                                    src="{{ asset('assets/media/avatars/300-17.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-16.png"/>
+                                    src="{{ asset('assets/media/avatars/300-16.png') }}"/>
                             </div>
                         </div>
                     </div>
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/google-webdev.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/google-webdev.svg') }}"/>
                             </div>
                             <span class="badge badge-success badge-outline">
             Completed
@@ -1996,17 +1996,17 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-6.png"/>
+                                    src="{{ asset('assets/media/avatars/300-6.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-23.png"/>
+                                    src="{{ asset('assets/media/avatars/300-23.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-12.png"/>
+                                    src="{{ asset('assets/media/avatars/300-12.png') }}"/>
                             </div>
                             <div class="flex">
             <span
@@ -2019,7 +2019,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/figma.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/figma.svg') }}"/>
                             </div>
                             <span class="badge badge-outline">
             Upcoming
@@ -2055,29 +2055,29 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-14.png"/>
+                                    src="{{ asset('assets/media/avatars/300-14.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-3.png"/>
+                                    src="{{ asset('assets/media/avatars/300-3.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-19.png"/>
+                                    src="{{ asset('assets/media/avatars/300-19.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-9.png"/>
+                                    src="{{ asset('assets/media/avatars/300-9.png') }}"/>
                             </div>
                         </div>
                     </div>
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/btcchina.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/btcchina.svg') }}"/>
                             </div>
                             <span class="badge badge-primary badge-outline">
             In Progress
@@ -2113,17 +2113,17 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-21.png"/>
+                                    src="{{ asset('assets/media/avatars/300-21.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-32.png"/>
+                                    src="{{ asset('assets/media/avatars/300-32.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+                                    src="{{ asset('assets/media/avatars/300-2.png') }}"/>
                             </div>
                             <div class="flex">
             <span
@@ -2136,7 +2136,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/patientory.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/patientory.svg') }}"/>
                             </div>
                             <span class="badge badge-outline">
             Upcoming
@@ -2172,12 +2172,12 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+                                    src="{{ asset('assets/media/avatars/300-4.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+                                    src="{{ asset('assets/media/avatars/300-2.png') }}"/>
                             </div>
                             <div class="flex">
             <span
@@ -2190,7 +2190,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/jira.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/jira.svg') }}"/>
                             </div>
                             <span class="badge badge-success badge-outline">
             Completed
@@ -2226,17 +2226,17 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-12.png"/>
+                                    src="{{ asset('assets/media/avatars/300-12.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-20.png"/>
+                                    src="{{ asset('assets/media/avatars/300-20.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-3.png"/>
+                                    src="{{ asset('assets/media/avatars/300-3.png') }}"/>
                             </div>
                             <div class="flex">
             <span
@@ -2249,7 +2249,7 @@
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/plastic-scm.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/plastic-scm.svg') }}"/>
                             </div>
                             <span class="badge badge-outline">
             Upcoming
@@ -2285,14 +2285,14 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-16.png"/>
+                                    src="{{ asset('assets/media/avatars/300-16.png') }}"/>
                             </div>
                         </div>
                     </div>
                     <div class="card p-7.5">
                         <div class="flex items-center justify-between mb-3 lg:mb-6">
                             <div class="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-                                <img alt="" class="" src="{{ env('APP_PATH') }}assets/media/brand-logos/perrier.svg"/>
+                                <img alt="" class="" src="{{ asset('assets/media/brand-logos/perrier.svg') }}"/>
                             </div>
                             <span class="badge badge-primary badge-outline">
             In Progress
@@ -2328,12 +2328,12 @@
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+                                    src="{{ asset('assets/media/avatars/300-4.png') }}"/>
                             </div>
                             <div class="flex">
                                 <img
                                     class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                    src="{{ env('APP_PATH') }}assets/media/avatars/300-9.png"/>
+                                    src="{{ asset('assets/media/avatars/300-9.png') }}"/>
                             </div>
                             <div class="flex">
             <span
@@ -2359,7 +2359,7 @@
                             <div class="flex items-center flex-wrap justify-between gap-5">
                                 <div class="flex items-center gap-3.5">
                                     <div class="flex items-center justify-center size-14 shrink-0 rounded-lg bg-gray-100">
-                                        <img alt="" class="" src="{{ env('APP_PATH') }}{{ $customer->logo }}">
+                                        <img alt="" class="" src="{{ $customer->logo }}">
                                     </div>
                                     <div class="flex flex-col">
                                         <a class="text-lg font-media/brand text-gray-900 hover:text-primary-active mb-px"
@@ -2390,12 +2390,12 @@
                                                 <div class="flex">
                                                     <img
                                                         class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                                        src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+                                                        src="{{ asset('assets/media/avatars/300-4.png') }}"/>
                                                 </div>
                                                 <div class="flex">
                                                     <img
                                                         class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]"
-                                                        src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+                                                        src="{{ asset('assets/media/avatars/300-2.png') }}"/>
                                                 </div>
                                                 <div class="flex">
                 <span
@@ -2462,5 +2462,5 @@
     <!-- End of Footer -->
 </main>
 
-<script src="{{ env('APP_PATH') }}{{ 'js/redirect.js' }}"></script>
+<script src="{{ asset('public/js/redirect.js') }}"></script>
 

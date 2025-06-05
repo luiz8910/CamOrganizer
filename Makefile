@@ -6,6 +6,9 @@ CONTAINER_NAME=php_xamps
 composer-install:
 	docker run --rm -v $$(pwd):/var/www -w /var/www $(PHP_IMAGE) composer install
 
+composer-update:
+	docker run --rm -v $$(pwd):/var/www -w /var/www $(PHP_IMAGE) composer update
+
 # Build da imagem PHP
 build:
 	docker compose build

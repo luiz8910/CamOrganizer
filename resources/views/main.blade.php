@@ -9,12 +9,12 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
-      <link href="{{ 'assets/vendors/apexcharts/apexcharts.css' }}" rel="stylesheet"/>
+      <link href="{{ asset('public/assets/vendors/apexcharts/apexcharts.css') }}" rel="stylesheet"/>
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-         <link href="{{ 'assets/css/styles.bundle.css' }}" rel="stylesheet"/>
-      <link href="{{ env('APP_PATH') }}{{ 'assets/css/styles.css' }}" rel="stylesheet"/>
-         <link rel="stylesheet" href="{{ env('APP_PATH').'css/custom.css' }}">
-         <link rel="stylesheet" href="{{ env('APP_PATH').'css/error.css' }}">
+         <link href="{{ asset('public/assets/css/styles.bundle.css') }}" rel="stylesheet"/>
+      <link href="{{ asset('public/assets/css/styles.css') }}" rel="stylesheet"/>
+         <link rel="stylesheet" href="{{ asset('public/css/custom.css') }}">
+         <link rel="stylesheet" href="{{ asset('public/css/error.css') }}">
 
  </head>
  <body class="antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-header-height:60px] [--tw-sidebar-width:90px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
@@ -49,8 +49,8 @@
     <!-- Container -->
     <div class="container-fixed flex items-center justify-between flex-wrap gap-3">
      <a href="#">
-      <img class="dark:hidden min-h-[30px]" src="{{ env('APP_PATH') }}assets/media/app/mini-logo-gray.svg"/>
-      <img class="hidden dark:block min-h-[30px]" src="{{ env('APP_PATH') }}assets/media/app/mini-logo-gray-dark.svg"/>
+      <img class="dark:hidden min-h-[30px]" src="{{ asset('public/assets/media/app/mini-logo-gray.svg') }}" />
+      <img class="hidden dark:block min-h-[30px]" src="{{ asset('public/assets/media/app/mini-logo-gray-dark.svg') }}"/>
      </a>
      <button class="btn btn-icon btn-light btn-clear btn-sm -me-1" data-drawer-toggle="#sidebar">
       <i class="ki-filled ki-menu">
@@ -66,8 +66,8 @@
     <div class="fixed top-0 bottom-0 z-20 hidden lg:flex flex-col items-stretch shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]" data-drawer="true" data-drawer-class="drawer drawer-start flex" data-drawer-enable="true|lg:false" id="sidebar">
      <div class="hidden lg:flex items-center justify-center shrink-0 pt-8 pb-3.5" id="sidebar_header">
       <a href="#">
-       <img class="dark:hidden min-h-[42px]" src="{{ env('APP_PATH') }}assets/media/app/mini-logo-square-gray.svg"/>
-       <img class="hidden dark:block min-h-[42px]" src="{{ env('APP_PATH') }}assets/media/app/mini-logo-square-gray-dark.svg"/>
+          <img class="dark:hidden min-h-[42px]" src="{{ asset('public/assets/media/app/mini-logo-gray.svg') }}" />
+       <img class="hidden dark:block min-h-[42px]" src="{{ asset('public/assets/media/app/mini-logo-square-gray-dark.svg') }}"/>
       </a>
      </div>
      <div class="scrollable-y-hover grow gap-2.5 shrink-0 flex items-center pt-5 lg:pt-0 ps-3 pe-3 lg:pe-0 flex-col" data-scrollable="true" data-scrollable-dependencies="#sidebar_header,#sidebar_footer" data-scrollable-height="auto" data-scrollable-offset="80px" data-scrollable-wrappers="#sidebar_menu_wrapper" id="sidebar_menu_wrapper">
@@ -847,7 +847,7 @@
            <div class="flex items-center justify-between flex-wrap gap-2 px-5">
             <div class="flex items-center flex-wrap gap-2">
              <div class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-200 size-11">
-              <img alt="" class="size-7" src="{{ env('APP_PATH') }}assets/media/brand-logos/gitlab.svg"/>
+              <img alt="" class="size-7" src="{{ asset('public/assets/media/brand-logos/gitlab.svg') }}"/>
              </div>
              <div class="flex flex-col">
               <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -861,13 +861,13 @@
             <div class="flex items-center gap-2.5">
              <div class="flex -space-x-2">
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]" src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]" src="{{ asset('public/assets/media/avatars/300-4.png') }}"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]" src="{{ asset('public/assets/media/avatars/300-1.png') }}"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]" src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-[30px]" src="{{ asset('public/assets/media/avatars/300-2.png') }}"/>
               </div>
               <div class="flex">
                <span class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-[30px] text-success-inverse size-6 ring-success-light bg-success">
@@ -875,88 +875,7 @@
                </span>
               </div>
              </div>
-             <div class="menu" data-menu="true">
-              <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:hover">
-               <button class="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                <i class="ki-filled ki-dots-vertical">
-                </i>
-               </button>
-               <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
-                <div class="menu-item">
-                 <a class="menu-link" href="html/demo8/account/members/teams.html">
-                  <span class="menu-icon">
-                   <i class="ki-filled ki-users">
-                   </i>
-                  </span>
-                  <span class="menu-title">
-                   Invite Users
-                  </span>
-                 </a>
-                </div>
-                <div class="menu-item" data-menu-item-offset="-15px, 0" data-menu-item-placement="right-start" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:hover">
-                 <div class="menu-link">
-                  <span class="menu-icon">
-                   <i class="ki-filled ki-people">
-                   </i>
-                  </span>
-                  <span class="menu-title">
-                   Team
-                  </span>
-                  <span class="menu-arrow">
-                   <i class="ki-filled ki-right text-3xs">
-                   </i>
-                  </span>
-                 </div>
-                 <div class="menu-dropdown menu-default w-full max-w-[175px]">
-                  <div class="menu-item">
-                   <a class="menu-link" href="html/demo8/account/members/import-members.html">
-                    <span class="menu-icon">
-                     <i class="ki-filled ki-shield-search">
-                     </i>
-                    </span>
-                    <span class="menu-title">
-                     Find Members
-                    </span>
-                   </a>
-                  </div>
-                  <div class="menu-item">
-                   <a class="menu-link" href="html/demo8/account/members/import-members.html">
-                    <span class="menu-icon">
-                     <i class="ki-filled ki-calendar">
-                     </i>
-                    </span>
-                    <span class="menu-title">
-                     Meetings
-                    </span>
-                   </a>
-                  </div>
-                  <div class="menu-item">
-                   <a class="menu-link" href="html/demo8/account/members/import-members.html">
-                    <span class="menu-icon">
-                     <i class="ki-filled ki-filter-edit">
-                     </i>
-                    </span>
-                    <span class="menu-title">
-                     Group Settings
-                    </span>
-                   </a>
-                  </div>
-                 </div>
-                </div>
-                <div class="menu-item">
-                 <a class="menu-link" href="html/demo8/account/security/privacy-settings.html">
-                  <span class="menu-icon">
-                   <i class="ki-filled ki-setting-3">
-                   </i>
-                  </span>
-                  <span class="menu-title">
-                   Settings
-                  </span>
-                 </a>
-                </div>
-               </div>
-              </div>
-             </div>
+
             </div>
            </div>
           </div>
@@ -964,7 +883,7 @@
          <div class="scrollable-y-auto" data-scrollable="true" data-scrollable-dependencies="#header" data-scrollable-max-height="auto" data-scrollable-offset="280px">
           <div class="flex flex-col gap-5 py-5">
            <div class="flex items-end gap-3.5 px-5">
-            <img alt="" class="rounded-full size-9" src="{{ env('APP_PATH') }}assets/media/avatars/300-5.png"/>
+            <img alt="" class="rounded-full size-9" src="{{ asset('public/assets/media/avatars/300-5.png') }}"/>
             <div class="flex flex-col gap-1.5">
              <div class="card shadow-none flex flex-col bg-gray-100 gap-2.5 p-3 rounded-bl-none">
               <p class="text-2sm font-medium text-gray-700">
@@ -994,13 +913,13 @@
              </div>
             </div>
             <div class="relative shrink-0">
-             <img alt="" class="rounded-full size-9" src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+             <img alt="" class="rounded-full size-9" src="{{ asset('public/assets/media/avatars/300-2.png') }}"/>
              <span class="size-[4.8px] badge badge-circle badge-success absolute top-7 end-0 transform -translate-y-1/2">
              </span>
             </div>
            </div>
            <div class="flex items-end gap-3.5 px-5">
-            <img alt="" class="rounded-full size-9" src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+            <img alt="" class="rounded-full size-9" src="{{ asset('public/assets/media/avatars/300-4.png') }}"/>
             <div class="flex flex-col gap-1.5">
              <div class="card shadow-none flex flex-col bg-gray-100 gap-2.5 p-3 rounded-bl-none">
               <p class="text-2sm font-medium text-gray-700">
@@ -1013,7 +932,7 @@
             </div>
            </div>
            <div class="flex items-end gap-3.5 px-5">
-            <img alt="" class="rounded-full size-9" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+            <img alt="" class="rounded-full size-9" src="{{ asset('public/assets/media/avatars/300-1.png') }}"/>
             <div class="flex flex-col gap-1.5">
              <div class="card shadow-none flex flex-col bg-gray-100 gap-2.5 p-3 rounded-bl-none">
               <p class="text-2sm font-medium text-gray-700">
@@ -1041,7 +960,7 @@
              </div>
             </div>
             <div class="relative shrink-0">
-             <img alt="" class="rounded-full size-9" src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+             <img alt="" class="rounded-full size-9" src="{{ asset('public/assets/media/avatars/300-2.png') }}"/>
              <span class="size-[4.8px] badge badge-circle badge-success absolute top-7 end-0 transform -translate-y-1/2">
              </span>
             </div>
@@ -1062,13 +981,13 @@
              </div>
             </div>
             <div class="relative shrink-0">
-             <img alt="" class="rounded-full size-9" src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+             <img alt="" class="rounded-full size-9" src="{{ asset('public/assets/media/avatars/300-2.png') }}"/>
              <span class="size-[4.8px] badge badge-circle badge-success absolute top-7 end-0 transform -translate-y-1/2">
              </span>
             </div>
            </div>
            <div class="flex items-end gap-3.5 px-5">
-            <img alt="" class="rounded-full size-9" src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+            <img alt="" class="rounded-full size-9" src="{{ asset('public/assets/media/avatars/300-4.png') }}"/>
             <div class="flex flex-col gap-1.5">
              <div class="card shadow-none flex flex-col bg-gray-100 gap-2.5 p-3 rounded-bl-none">
               <p class="text-2sm font-medium text-gray-700">
@@ -1085,7 +1004,7 @@
          <div class="mb-2.5">
           <div class="flex grow gap-2 p-5 bg-gray-100 mb-2.5" id="join_request">
            <div class="relative shrink-0">
-            <img alt="" class="rounded-full size-8" src="{{ env('APP_PATH') }}assets/media/avatars/300-14.png"/>
+            <img alt="" class="rounded-full size-8" src="{{ asset('public/assets/media/avatars/300-14.png') }}"/>
             <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
             </span>
            </div>
@@ -1117,7 +1036,7 @@
            </div>
           </div>
           <div class="relative grow mx-5">
-           <img alt="" class="rounded-full size-[30px] absolute left-0 top-2/4 -translate-y-2/4 ms-2.5" src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+           <img alt="" class="rounded-full size-[30px] absolute left-0 top-2/4 -translate-y-2/4 ms-2.5" src="{{ asset('public/assets/media/avatars/300-2.png') }}"/>
            <input class="input h-auto py-4 ps-12 bg-transparent" placeholder="Write a message..." type="text" value=""/>
            <div class="flex items-center gap-2.5 absolute right-3 top-1/2 -translate-y-1/2">
             <button class="btn btn-sm btn-icon btn-light btn-clear">
@@ -1152,7 +1071,7 @@
           <div class="flex items-center justify-between flex-wrap gap-2 px-5 py-3.5">
            <div class="flex items-center flex-wrap gap-2">
             <div class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-200 size-10">
-             <img alt="" class="size-6" src="{{ env('APP_PATH') }}assets/media/brand-logos/jira.svg"/>
+             <img alt="" class="size-6" src="{{ asset('public/assets/media/brand-logos/jira.svg') }}"/>
             </div>
             <div class="flex flex-col">
              <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -1172,7 +1091,7 @@
           <div class="flex items-center justify-between flex-wrap gap-2 px-5 py-3.5">
            <div class="flex items-center flex-wrap gap-2">
             <div class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-200 size-10">
-             <img alt="" class="size-6" src="{{ env('APP_PATH') }}assets/media/brand-logos/inferno.svg"/>
+             <img alt="" class="size-6" src="{{ asset('public/assets/media/brand-logos/inferno.svg') }}"/>
             </div>
             <div class="flex flex-col">
              <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -1192,7 +1111,7 @@
           <div class="flex items-center justify-between flex-wrap gap-2 px-5 py-3.5">
            <div class="flex items-center flex-wrap gap-2">
             <div class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-200 size-10">
-             <img alt="" class="size-6" src="{{ env('APP_PATH') }}assets/media/brand-lo gos/evernote.svg"/>
+             <img alt="" class="size-6" src="{{ asset('public/assets/media/brand-lo gos/evernote.svg') }}"/>
             </div>
             <div class="flex flex-col">
              <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -1212,7 +1131,7 @@
           <div class="flex items-center justify-between flex-wrap gap-2 px-5 py-3.5">
            <div class="flex items-center flex-wrap gap-2">
             <div class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-200 size-10">
-             <img alt="" class="size-6" src="{{ env('APP_PATH') }}assets/media/brand-logos/gitlab.svg"/>
+             <img alt="" class="size-6" src="{{ asset('public/assets/media/brand-logos/gitlab.svg') }}"/>
             </div>
             <div class="flex flex-col">
              <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -1232,7 +1151,7 @@
           <div class="flex items-center justify-between flex-wrap gap-2 px-5 py-3.5">
            <div class="flex items-center flex-wrap gap-2">
             <div class="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-200 size-10">
-             <img alt="" class="size-6" src="{{ env('APP_PATH') }}assets/media/brand-logos/google-webdev.svg"/>
+             <img alt="" class="size-6" src="{{ asset('public/assets/media/brand-logos/google-webdev.svg') }}"/>
             </div>
             <div class="flex flex-col">
              <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -1258,281 +1177,18 @@
         </div>
        </div>
       </div>
-      <div class="menu" data-menu="true">
-       <div class="menu-item" data-menu-item-offset="-20px, 28px" data-menu-item-overflow="true" data-menu-item-placement="right-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
-        <div class="menu-toggle btn btn-icon">
-         <img alt="" class="size-8 justify-center rounded-lg border border-gray-500 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/gray/5.png">
-         </img>
-        </div>
-        <div class="menu-dropdown menu-default light:border-gray-300 w-screen max-w-[250px]">
-         <div class="flex items-center justify-between px-5 py-1.5 gap-1.5">
-          <div class="flex items-center gap-2">
-           <img alt="" class="size-9 rounded-full border-2 border-success" src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png">
-            <div class="flex flex-col gap-1.5">
-             <span class="text-sm text-gray-800 font-semibold leading-none">
-              Cody Fisher
-             </span>
-             <a class="text-xs text-gray-600 hover:text-primary font-medium leading-none" href="html/demo8/account/home/get-started.html">
-              c.fisher@gmail.com
-             </a>
-            </div>
-           </img>
-          </div>
-          <span class="badge badge-xs badge-primary badge-outline">
-           Pro
-          </span>
-         </div>
-         <div class="menu-separator">
-         </div>
-         <div class="flex flex-col">
-          <div class="menu-item">
-           <a class="menu-link" href="html/demo8/public-profile/profiles/default.html">
-            <span class="menu-icon">
-             <i class="ki-filled ki-badge">
-             </i>
-            </span>
-            <span class="menu-title">
-             Public Profile
-            </span>
-           </a>
-          </div>
-          <div class="menu-item">
-           <a class="menu-link" href="html/demo8/account/home/user-profile.html">
-            <span class="menu-icon">
-             <i class="ki-filled ki-profile-circle">
-             </i>
-            </span>
-            <span class="menu-title">
-             My Profile
-            </span>
-           </a>
-          </div>
-          <div class="menu-item" data-menu-item-offset="-50px, 0" data-menu-item-placement="left-start" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:hover">
-           <div class="menu-link">
-            <span class="menu-icon">
-             <i class="ki-filled ki-setting-2">
-             </i>
-            </span>
-            <span class="menu-title">
-             My Account
-            </span>
-            <span class="menu-arrow">
-             <i class="ki-filled ki-right text-3xs">
-             </i>
-            </span>
-           </div>
-           <div class="menu-dropdown menu-default light:border-gray-300 w-full max-w-[220px]">
-            <div class="menu-item">
-             <a class="menu-link" href="html/demo8/account/home/get-started.html">
-              <span class="menu-icon">
-               <i class="ki-filled ki-coffee">
-               </i>
-              </span>
-              <span class="menu-title">
-               Get Started
-              </span>
-             </a>
-            </div>
-            <div class="menu-item">
-             <a class="menu-link" href="html/demo8/account/home/user-profile.html">
-              <span class="menu-icon">
-               <i class="ki-filled ki-some-files">
-               </i>
-              </span>
-              <span class="menu-title">
-               My Profile
-              </span>
-             </a>
-            </div>
-            <div class="menu-item">
-             <a class="menu-link" href="#">
-              <span class="menu-icon">
-               <i class="ki-filled ki-icon">
-               </i>
-              </span>
-              <span class="menu-title">
-               Billing
-              </span>
-              <span class="menu-badge" data-tooltip="true" data-tooltip-placement="top">
-               <i class="ki-filled ki-information-2 text-md text-gray-500">
-               </i>
-               <span class="tooltip" data-tooltip-content="true">
-                Payment and subscription info
-               </span>
-              </span>
-             </a>
-            </div>
-            <div class="menu-item">
-             <a class="menu-link" href="html/demo8/account/security/overview.html">
-              <span class="menu-icon">
-               <i class="ki-filled ki-medal-star">
-               </i>
-              </span>
-              <span class="menu-title">
-               Security
-              </span>
-             </a>
-            </div>
-            <div class="menu-item">
-             <a class="menu-link" href="html/demo8/account/members/teams.html">
-              <span class="menu-icon">
-               <i class="ki-filled ki-setting">
-               </i>
-              </span>
-              <span class="menu-title">
-               Members & Roles
-              </span>
-             </a>
-            </div>
-            <div class="menu-item">
-             <a class="menu-link" href="html/demo8/account/integrations.html">
-              <span class="menu-icon">
-               <i class="ki-filled ki-switch">
-               </i>
-              </span>
-              <span class="menu-title">
-               Integrations
-              </span>
-             </a>
-            </div>
-            <div class="menu-separator">
-            </div>
-            <div class="menu-item">
-             <a class="menu-link" href="html/demo8/account/security/overview.html">
-              <span class="menu-icon">
-               <i class="ki-filled ki-shield-tick">
-               </i>
-              </span>
-              <span class="menu-title">
-               Notifications
-              </span>
-              <label class="switch switch-sm">
-               <input checked="" name="check" type="checkbox" value="1">
-               </input>
-              </label>
-             </a>
-            </div>
-           </div>
-          </div>
-          <div class="menu-item">
-           <a class="menu-link" href="https://devs.keenthemes.com">
-            <span class="menu-icon">
-             <i class="ki-filled ki-message-programming">
-             </i>
-            </span>
-            <span class="menu-title">
-             Dev Forum
-            </span>
-           </a>
-          </div>
-          <div class="menu-item" data-menu-item-offset="-10px, 0" data-menu-item-placement="left-start" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:hover">
-           <div class="menu-link">
-            <span class="menu-icon">
-             <i class="ki-filled ki-icon">
-             </i>
-            </span>
-            <span class="menu-title">
-             Language
-            </span>
-            <div class="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
-             English
-             <img alt="" class="inline-block size-3.5 rounded-full" src="{{ env('APP_PATH') }}assets/media/flags/united-states.svg"/>
-            </div>
-           </div>
-           <div class="menu-dropdown menu-default light:border-gray-300 w-full max-w-[170px]">
-            <div class="menu-item active">
-             <a class="menu-link h-10" href="#">
-              <span class="menu-icon">
-               <img alt="" class="inline-block size-4 rounded-full" src="{{ env('APP_PATH') }}assets/media/flags/united-states.svg"/>
-              </span>
-              <span class="menu-title">
-               English
-              </span>
-              <span class="menu-badge">
-               <i class="ki-solid ki-check-circle text-success text-base">
-               </i>
-              </span>
-             </a>
-            </div>
-            <div class="menu-item">
-             <a class="menu-link h-10" href="#">
-              <span class="menu-icon">
-               <img alt="" class="inline-block size-4 rounded-full" src="{{ env('APP_PATH') }}assets/media/flags/spain.svg"/>
-              </span>
-              <span class="menu-title">
-               Spanish
-              </span>
-             </a>
-            </div>
-            <div class="menu-item">
-             <a class="menu-link h-10" href="#">
-              <span class="menu-icon">
-               <img alt="" class="inline-block size-4 rounded-full" src="{{ env('APP_PATH') }}assets/media/flags/germany.svg"/>
-              </span>
-              <span class="menu-title">
-               German
-              </span>
-             </a>
-            </div>
-            <div class="menu-item">
-             <a class="menu-link h-10" href="#">
-              <span class="menu-icon">
-               <img alt="" class="inline-block size-4 rounded-full" src="{{ env('APP_PATH') }}assets/media/flags/japan.svg"/>
-              </span>
-              <span class="menu-title">
-               Japanese
-              </span>
-             </a>
-            </div>
-            <div class="menu-item">
-             <a class="menu-link h-10" href="#">
-              <span class="menu-icon">
-               <img alt="" class="inline-block size-4 rounded-full" src="{{ env('APP_PATH') }}assets/media/flags/france.svg"/>
-              </span>
-              <span class="menu-title">
-               French
-              </span>
-             </a>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="menu-separator">
-         </div>
-         <div class="flex flex-col">
-          <div class="menu-item mb-0.5">
-           <div class="menu-link">
-            <span class="menu-icon">
-             <i class="ki-filled ki-moon">
-             </i>
-            </span>
-            <span class="menu-title">
-             Dark Mode
-            </span>
-            <label class="switch switch-sm">
-             <input data-theme-state="dark" data-theme-toggle="true" name="check" type="checkbox" value="1">
-             </input>
-            </label>
-           </div>
-          </div>
-          <div class="menu-item px-4 py-1.5">
-           <a class="btn btn-sm btn-light justify-center" href="html/demo8/authentication/classic/sign-in.html">
-            Log out
-           </a>
-          </div>
-         </div>
-        </div>
-       </div>
+
       </div>
      </div>
-    </div>
+       @if(isset($route))
+           @include($route)
+       @endif
+   </div>
     <!-- End of Sidebar -->
     <!-- Main -->
      <!-- Main Content -->
 
-    @if(isset($route))
-        @include($route)
-    @endif
+
 
 
     <!-- End of Main -->
@@ -1724,7 +1380,7 @@
            <div class="menu-link flex items-center jistify-between gap-2">
             <div class="flex items-center grow gap-2">
              <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-              <img alt="" class="size-6 shrink-0" src="{{ env('APP_PATH') }}assets/media/brand-logos/jira.svg"/>
+              <img alt="" class="size-6 shrink-0" src="{{ asset('public/assets/media/brand-logos/jira.svg') }}"/>
              </div>
              <div class="flex flex-col gap-0.5">
               <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -1738,13 +1394,13 @@
             <div class="flex justify-end shrink-0">
              <div class="flex -space-x-2">
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-4.png') }}"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-1.png') }}"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-2.png') }}"/>
               </div>
               <div class="flex">
                <span class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse size-6 ring-success-light bg-success">
@@ -1759,7 +1415,7 @@
            <div class="menu-link flex items-center jistify-between gap-2">
             <div class="flex items-center grow gap-2">
              <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-              <img alt="" class="size-6 shrink-0" src="{{ env('APP_PATH') }}assets/media/brand-logos/inferno.svg"/>
+              <img alt="" class="size-6 shrink-0" src="{{ asset('public/assets/media/brand-logos/inferno.svg') }}"/>
              </div>
              <div class="flex flex-col gap-0.5">
               <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -1773,13 +1429,13 @@
             <div class="flex justify-end shrink-0">
              <div class="flex -space-x-2">
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-14.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-14.png') }}"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-12.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-12.png') }}"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-9.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-9.png') }}"/>
               </div>
              </div>
             </div>
@@ -1798,7 +1454,7 @@
            <div class="menu-item">
             <div class="menu-link flex justify-between gap-2">
              <div class="flex items-center gap-2.5">
-              <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-3.png"/>
+              <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-3.png') }}"/>
               <div class="flex flex-col">
                <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
                 Tyler Hero
@@ -1824,7 +1480,7 @@
            <div class="menu-item">
             <div class="menu-link flex justify-between gap-2">
              <div class="flex items-center gap-2.5">
-              <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+              <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-1.png') }}"/>
               <div class="flex flex-col">
                <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
                 Esther Howard
@@ -1967,7 +1623,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="{{ env('APP_PATH') }}assets/media/brand-logos/jira.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ asset('public/assets/media/brand-logos/jira.svg') }}"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -1981,13 +1637,13 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-4.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-4.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-1.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-2.png') }}"/>
             </div>
             <div class="flex">
              <span class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse size-6 ring-success-light bg-success">
@@ -2002,7 +1658,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="{{ env('APP_PATH') }}assets/media/brand-logos/inferno.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ asset('public/assets/media/brand-logos/inferno.svg') }}"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -2016,13 +1672,13 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-14.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-14.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-12.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-12.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-9.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-9.png') }}"/>
             </div>
            </div>
           </div>
@@ -2032,7 +1688,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="{{ env('APP_PATH') }}assets/media/brand-logos/evernote.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ asset('public/assets/media/brand-logos/evernote.svg') }}"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -2046,16 +1702,16 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-6.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-6.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-3.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-3.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-1.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-8.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-8.png') }}"/>
             </div>
            </div>
           </div>
@@ -2065,7 +1721,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="{{ env('APP_PATH') }}assets/media/brand-logos/gitlab.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ asset('public/assets/media/brand-logos/gitlab.svg') }}"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -2079,10 +1735,10 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-18.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-18.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-17.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-17.png') }}"/>
             </div>
            </div>
           </div>
@@ -2092,7 +1748,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="{{ env('APP_PATH') }}assets/media/brand-logos/google-webdev.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ asset('public/assets/media/brand-logos/google-webdev.svg') }}"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -2106,13 +1762,13 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-14.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-14.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-20.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-20.png') }}"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ env('APP_PATH') }}assets/media/avatars/300-21.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ asset('public/assets/media/avatars/300-21.png') }}"/>
             </div>
            </div>
           </div>
@@ -2131,7 +1787,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-3.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-3.png') }}"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               Tyler Hero
@@ -2157,7 +1813,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-1.png') }}"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               Esther Howard
@@ -2183,7 +1839,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-11.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-11.png') }}"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               Jacob Jones
@@ -2209,7 +1865,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-5.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-5.png') }}"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               TLeslie Alexander
@@ -2235,7 +1891,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-2.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-2.png') }}"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               Cody Fisher
@@ -2272,7 +1928,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="{{ env('APP_PATH') }}assets/media/file-types/pdf.svg"/>
+            <img src="{{ asset('public/assets/media/file-types/pdf.svg') }}"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               Project-pitch.pdf
@@ -2291,7 +1947,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="{{ env('APP_PATH') }}assets/media/file-types/doc.svg"/>
+            <img src="{{ asset('public/assets/media/file-types/doc.svg') }}"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               Report-v1.docx
@@ -2310,7 +1966,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="{{ env('APP_PATH') }}assets/media/file-types/javascript.svg"/>
+            <img src="{{ asset('public/assets/media/file-types/javascript.svg') }}"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               Framework-App.js
@@ -2329,7 +1985,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="{{ env('APP_PATH') }}assets/media/file-types/ai.svg"/>
+            <img src="{{ asset('public/assets/media/file-types/ai.svg') }}"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               Framework-App.js
@@ -2348,7 +2004,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="{{ env('APP_PATH') }}assets/media/file-types/php.svg"/>
+            <img src="{{ asset('public/assets/media/file-types/php.svg') }}"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               appController.js
@@ -2375,8 +2031,8 @@
       <div class="hidden" id="search_modal_empty">
        <div class="flex flex-col text-center py-9 gap-5">
         <div class="flex justify-center">
-         <img alt="image" class="dark:hidden max-h-[113px]" src="{{ env('APP_PATH') }}assets/media/illustrations/33.svg"/>
-         <img alt="image" class="light:hidden max-h-[113px]" src="{{ env('APP_PATH') }}assets/media/illustrations/33-dark.svg"/>
+         <img alt="image" class="dark:hidden max-h-[113px]" src="{{ asset('public/assets/media/illustrations/33.svg') }}"/>
+         <img alt="image" class="light:hidden max-h-[113px]" src="{{ asset('public/assets/media/illustrations/33-dark.svg') }}"/>
         </div>
         <div class="flex flex-col gap-1.5">
          <h3 class="text-base font-semibold text-gray-900 text-center">
@@ -2399,8 +2055,8 @@
       <div class="hidden" id="search_modal_no-results">
        <div class="flex flex-col text-center py-9 gap-5">
         <div class="flex justify-center">
-         <img alt="image" class="dark:hidden max-h-[113px]" src="{{ env('APP_PATH') }}assets/media/illustrations/33.svg"/>
-         <img alt="image" class="light:hidden max-h-[113px]" src="{{ env('APP_PATH') }}assets/media/illustrations/33-dark.svg"/>
+         <img alt="image" class="dark:hidden max-h-[113px]" src="{{ asset('public/assets/media/illustrations/33.svg') }}"/>
+         <img alt="image" class="light:hidden max-h-[113px]" src="{{ asset('public/assets/media/illustrations/33-dark.svg') }}"/>
         </div>
         <div class="flex flex-col gap-1.5">
          <h3 class="text-base font-semibold text-gray-900 text-center">
@@ -2474,7 +2130,7 @@
       <div class="flex flex-col px-5 gap-3">
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-3.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-3.png') }}"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Tyler Hero
@@ -2498,7 +2154,7 @@
        </div>
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-1.png') }}""/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Esther Howard
@@ -2522,7 +2178,7 @@
        </div>
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-11.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-11.png') }}"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Jacob Jones
@@ -2640,7 +2296,7 @@
       <div class="flex flex-col px-5 gap-3">
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-3.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-3.png') }}"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Tyler Hero
@@ -2664,7 +2320,7 @@
        </div>
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-1.png') }}"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Esther Howard
@@ -2688,7 +2344,7 @@
        </div>
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="{{ env('APP_PATH') }}assets/media/avatars/300-11.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ asset('public/assets/media/avatars/300-11.png') }}"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Jacob Jones
@@ -2768,7 +2424,7 @@
      <div class="p-5">
       <div class="grid place-items-center gap-1">
        <div class="flex justify-center items-center rounded-full">
-        <img class="rounded-full max-h-[55px] max-w-full" src="{{ env('APP_PATH') }}assets/media/avatars/300-1.png"/>
+        <img class="rounded-full max-h-[55px] max-w-full" src="{{ asset('public/assets/media/avatars/300-1.png') }}"/>
        </div>
        <div class="flex items-center justify-center gap-1">
         <a class="hover:text-primary-active text-2sm leading-5 font-semibold text-gray-900" href="#">
@@ -2864,12 +2520,12 @@
   <!-- jQuery CDN -->
 <!-- Custom JS -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="{{ env('APP_PATH') }}{{ 'assets/js/core.bundle.js' }}"></script>
-      <script src="{{ env('APP_PATH') }}{{ 'assets/vendors/apexcharts/apexcharts.min.js' }}"></script>
-      <script src="{{ env('APP_PATH') }}{{ 'assets/js/widgets/general.js' }}"></script>
-      <script src="{{ env('APP_PATH') }}{{ 'js/config.js' }}"></script>
-      <script src="{{ env('APP_PATH') }}{{ 'js/session.js' }}"></script>
-      <script src="{{ env('APP_PATH') }}{{ 'js/modal-delete.js' }}"></script>
+      <script src="{{ asset('public/assets/js/core.bundle.js') }}"></script>
+      <script src="{{ asset('public/assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
+      <script src="{{ asset('public/assets/js/widgets/general.js') }}"></script>
+      <script src="{{ asset('public/js/config.js') }}"></script>
+      <script src="{{ asset('public/js/session.js') }}"></script>
+      <script src="{{ asset('public/js/modal-delete.js') }}"></script>
 
 </body>
 </html>
