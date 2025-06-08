@@ -241,7 +241,7 @@
                   Roteadores
                 </span>
               </a>
-            </div>--}}
+            </div>
             <div class="menu-item" data-dropdown-dismiss="true">
               <a class="menu-link" data-modal-toggle="#give_award_modal" href="#">
                 <span class="menu-icon">
@@ -252,7 +252,7 @@
                   Projetos
                 </span>
               </a>
-            </div>
+            </div>--}}
           </div>
         </div>
       </div>

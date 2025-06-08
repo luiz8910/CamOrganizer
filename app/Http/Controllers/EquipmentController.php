@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\EquipmentEnum;
 use App\Http\Request\EquipIndexRequest;
 use App\Http\Request\EquipRequest;
 use App\UseCases\Equipments\EquipmentsDeleteAccessEquipUseCase;
@@ -43,7 +44,9 @@ class EquipmentController extends AppBaseController
 
     public function create(int $customerId, int $device_id)
     {
-        $route = 'equipments.create';
+        $device = EquipmentEnum::getValue($device_id);
+
+        $route = "equipments.$device.create";
 
         $customer = $this->customerUseCase->show($customerId);
 
@@ -66,9 +69,11 @@ class EquipmentController extends AppBaseController
 
     public function edit(int $equipId)
     {
-        $route = 'equipments.create';
-
         $equipment = $this->equipmentsGetUseCase->execute($equipId);
+
+        $device = EquipmentEnum::getValue($equipment['device_id']);
+
+        $route = "equipments.$device.create";
 
         $customer = $this->customerUseCase->show($equipment['customer_id']);
 
