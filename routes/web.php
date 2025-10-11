@@ -41,9 +41,9 @@ Route::group(['prefix' => 'customers', 'as' => 'customers'], function () {
 
     Route::delete('/delete/{id}', [CustomerController::class, 'destroy'])->name('.destroy');
 
-    Route::post('/verify-cnpj', [CustomerController::class, 'verifyCnpj'])->name('.verify-cnpj');
+    Route::post('/verify-cnpj', [CustomerController::class, 'verifyCnpj'])->name('.verifyCnpj');
 
-    Route::post('/verify-external-id', [CustomerController::class, 'verifyExternalId'])->name('.verify-external-id');
+    Route::post('/verify-external-id', [CustomerController::class, 'verifyExternalId'])->name('.verifyExternalId');
 });
 
 Route::group(['prefix' => 'equipments', 'as' => 'equipments'], function (){

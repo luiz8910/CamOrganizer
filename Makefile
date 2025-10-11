@@ -28,3 +28,21 @@ bash:
 # Roda os testes (ajuste conforme sua estrutura de testes)
 test:
 	docker exec -it $(CONTAINER_NAME) php artisan test
+
+# Limpa caches do Laravel
+cache-clear:
+	docker exec -it $(CONTAINER_NAME) php artisan cache:clear
+	docker exec -it $(CONTAINER_NAME) php artisan config:clear
+	docker exec -it $(CONTAINER_NAME) php artisan route:clear
+	docker exec -it $(CONTAINER_NAME) php artisan view:clear
+
+# Otimiza o Laravel
+optimize:
+	docker exec -it $(CONTAINER_NAME) php artisan optimize
+	docker exec -it $(CONTAINER_NAME) php artisan config:cache
+	docker exec -it $(CONTAINER_NAME) php artisan route:cache
+	docker exec -it $(CONTAINER_NAME) php artisan view:cache
+
+# Lista de rotas do Laravel
+routes-list:
+	docker exec -it $(CONTAINER_NAME) php artisan route:list

@@ -1,4 +1,10 @@
 $(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    });
+
     $(".delete-model").click(function () {
         $("#modal-delete").css("display", "block");
 
@@ -54,10 +60,7 @@ function deleteModel() {
 function verifyCnpj(cnpj) {
 
     $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: 'customers/verify-cnpj/',
+        url: window.appRoutes.verifyCnpj,
         data: {
             cnpj: cnpj
         },
@@ -73,8 +76,8 @@ function verifyCnpj(cnpj) {
                 $("#cnpj").val("");
             }
         },
-        error: function (xhr, status, error) {
-            console.error("Failed to verify CNPJ:", xhr.responseText);
+        error: function (xhr) {
+            console.error("Falha ao verificar CNPJ:", xhr?.responseText ?? xhr);
             alert("An error occurred while verifying the CNPJ.");
         },
     })
@@ -82,10 +85,7 @@ function verifyCnpj(cnpj) {
 
 function verifyExternalId($externalId){
     $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: 'customers/verify-external-id/',
+        url: window.appRoutes.verifyExternalId,
         data:{
             external_id: $externalId
         },
@@ -101,10 +101,8 @@ function verifyExternalId($externalId){
                 $("#external_id").val("");
             }
         },
-        error: function (xhr, status, error) {
-            console.error("Failed to verify External ID:", xhr.responseText);
-            console.error("Failed to verify External ID:", status);
-            console.error("Failed to verify External ID:", error);
+        error: function (xhr) {
+            console.error("Falha ao verificar ID externo:", xhr?.responseText ?? xhr);
             alert("An error occurred while verifying the External ID.");
         },
     })

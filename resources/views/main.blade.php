@@ -16,6 +16,17 @@
          <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
          <link rel="stylesheet" href="{{ asset('css/error.css') }}">
 
+     <!-- CSRF para AJAX -->
+     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+     <!-- Rotas absolutas para evitar problemas com <base href="../../"> -->
+     <script>
+         window.appRoutes = {
+             verifyCnpj: "{{ route('customers.verifyCnpj') }}",
+             verifyExternalId: "{{ route('customers.verifyExternalId') }}"
+         };
+     </script>
+
  </head>
  <body class="antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-header-height:60px] [--tw-sidebar-width:90px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
   <!-- Theme Mode -->
