@@ -123,7 +123,7 @@
     <!-- End of Footer -->
 </main>
 
-<script src="{{ asset('js/redirect.js') }}"></script>
-<script src="{{ asset('js/search.js') }}"></script>
+<script defer src="{{ asset('js/redirect.js') }}"></script>
+<script defer src="{{ asset('js/search.js') }}"></script>
 
 

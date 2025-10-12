@@ -2529,14 +2529,21 @@
   <!-- Scripts -->
 
   <!-- jQuery CDN -->
+  @php
+      $asset = function (string $path) {
+          $full = public_path($path);
+          $v = file_exists($full) ? filemtime($full) : time();
+          return asset($path) . '?v=' . $v;
+      };
+  @endphp
 <!-- Custom JS -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="{{ asset('assets/js/core.bundle.js') }}"></script>
-      <script src="{{ asset('assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
-      <script src="{{ asset('assets/js/widgets/general.js') }}"></script>
-      <script src="{{ asset('js/config.js') }}"></script>
-      <script src="{{ asset('js/session.js') }}"></script>
-      <script src="{{ asset('js/modal-delete.js') }}"></script>
+      <script defer src="{{ asset('assets/js/core.bundle.js') }}"></script>
+      <script defer src="{{ asset('assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
+      <script defer src="{{ asset('assets/js/widgets/general.js') }}"></script>
+      <script defer src="{{ asset('js/config.js') }}"></script>
+      <script defer src="{{ asset('js/session.js') }}"></script>
+      <script defer src="{{ asset('js/modal-delete.js') }}"></script>
 
 </body>
 </html>
