@@ -8,7 +8,7 @@
                 <label class="form-label max-w-56">{{ ucfirst($field) }}</label>
                 @if(isset($edit))
                     <input class="input" name="network[{{ $field }}]" placeholder="{{ ucfirst($field) }}" type="text"
-                           value="@if(isset($equipment->network)){{ $equipment->network[0]->{$field} }}@endif" />
+                           value="@if(isset($equipment->network[0])){{ $equipment->network[0]->{$field} }}@endif" />
                 @else
                     <input class="input" name="network[{{ $field }}]" placeholder="{{ ucfirst($field) }}" type="text" value="{{ old('network.' . $field) }}" />
                 @endif

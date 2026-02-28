@@ -47,4 +47,9 @@ class Equipment extends Model
     {
         return $this->hasMany(MultipleFieldsEquip::class, 'equip_id');
     }
+
+    public function wifi()
+    {
+        return $this->hasOne(Wifi::class, 'equip_id');
+    }
 }

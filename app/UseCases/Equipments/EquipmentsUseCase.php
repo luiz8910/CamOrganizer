@@ -3,6 +3,7 @@
 namespace App\UseCases\Equipments;
 
 use App\Repositories\EquipmentRepository;
+use App\Models\Wifi;
 
 class EquipmentsUseCase
 {
@@ -37,6 +38,15 @@ class EquipmentsUseCase
                 $this->accessEquipUseCase->execute($data, $equip->id);
             }
 
+            if(!empty($data['wifi_ssid']) || !empty($data['wifi_password'])){
+                Wifi::create([
+                    'ssid' => $data['wifi_ssid'] ?? null,
+                    'password' => $data['wifi_password'] ?? null,
+                    'customer_id' => $data['customer_id'],
+                    'equip_id' => $equip->id,
+                ]);
+            }
+
             return $data;
 
         }catch (\Exception $e) {
@@ -57,6 +67,8 @@ class EquipmentsUseCase
             $accessEquipUseCase->execute($id);
 
             $multipleFieldsUseCase->execute($id);
+
+            Wifi::where('equip_id', $id)->delete();
 
             $this->equipmentsRepository->destroy($id);
 
@@ -81,7 +93,19 @@ class EquipmentsUseCase
 
             if(isset($data['access_equip'])){
                 $this->accessEquipUseCase->execute($data, $id);
+            }
 
+            if(!empty($data['wifi_ssid']) || !empty($data['wifi_password'])){
+                Wifi::updateOrCreate(
+                    ['equip_id' => $id],
+                    [
+                        'ssid' => $data['wifi_ssid'] ?? null,
+                        'password' => $data['wifi_password'] ?? null,
+                        'customer_id' => $data['customer_id'],
+                    ]
+                );
+            } else {
+                Wifi::where('equip_id', $id)->delete();
             }
 
             return $data;

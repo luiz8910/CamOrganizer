@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\AiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,50 +19,84 @@ use App\Http\Controllers\EquipmentController;
 |
 */
 
-Route::get('/test', function(){
-    return view('test');
-})->name('test');
+// =============================================
+// Rotas de Autenticação (guest)
+// =============================================
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
-Route::get('/test2', function(){
-    return view('test2');
-})->name('test2');
+    // Esqueci minha senha
+    Route::get('/esqueci-senha', [ForgotPasswordController::class, 'showForgotForm'])->name('password.forgot');
+    Route::post('/esqueci-senha', [ForgotPasswordController::class, 'sendResetCode'])->name('password.send-code');
 
-Route::get('/', [MainController::class, 'main'])->name('home');
+    // Verificar código
+    Route::get('/verificar-codigo', [ForgotPasswordController::class, 'showVerifyCodeForm'])->name('password.verify-code');
+    Route::post('/verificar-codigo', [ForgotPasswordController::class, 'verifyCode'])->name('password.verify-code.submit');
 
-Route::group(['prefix' => 'customers', 'as' => 'customers'], function () {
-    Route::get('/details/{id}', [CustomerController::class, 'show'])->name('.show');
-
-    Route::get('', [CustomerController::class, 'index'])->name('.index');
-
-    Route::get('/create', [CustomerController::class, 'create'])->name('.create');
-
-    Route::post('', [CustomerController::class, 'store'])->name('.store');
-
-    Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('.edit');
-
-    Route::put('/{id}', [CustomerController::class, 'update'])->name('.update');
-
-    Route::delete('/delete/{id}', [CustomerController::class, 'destroy'])->name('.destroy');
-
-    Route::post('/verify-cnpj', [CustomerController::class, 'verifyCnpj'])->name('.verifyCnpj');
-
-    Route::post('/verify-external-id', [CustomerController::class, 'verifyExternalId'])->name('.verifyExternalId');
+    // Redefinir senha
+    Route::get('/redefinir-senha', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset-form');
+    Route::post('/redefinir-senha', [ForgotPasswordController::class, 'resetPassword'])->name('password.reset.submit');
 });
 
-Route::group(['prefix' => 'equipments', 'as' => 'equipments'], function (){
-    Route::get('/{customer_id}', [EquipmentController::class, 'index'])->name('.index');
+// Logout (precisa estar autenticado)
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-    Route::get('/create/{customer_id}/{device_id}', [EquipmentController::class, 'create'])->name('.create');
+// =============================================
+// Rotas protegidas (auth)
+// =============================================
+Route::middleware('auth')->group(function () {
 
-    Route::post('', [EquipmentController::class, 'store'])->name('.store');
+    Route::get('/test', function(){
+        return view('test');
+    })->name('test');
 
-    Route::get('/edit/{id}', [EquipmentController::class, 'edit'])->name('.edit');
+    Route::get('/test2', function(){
+        return view('test2');
+    })->name('test2');
 
-    Route::put('/{id}', [EquipmentController::class, 'update'])->name('.update');
+    Route::get('/', [MainController::class, 'main'])->name('home');
 
-    Route::delete('/delete/{id}', [EquipmentController::class, 'destroy'])->name('.destroy');
+    // IA Command Bar
+    Route::post('/ai/plan', [AiController::class, 'plan'])->name('ai.plan');
+    Route::post('/ai/execute', [AiController::class, 'execute'])->name('ai.execute');
 
-    Route::delete('/delete-user-access/{id}', [EquipmentController::class, 'destroyUserAccess'])->name('.destroy-user-access');
+    Route::group(['prefix' => 'customers', 'as' => 'customers'], function () {
+        Route::get('/details/{id}', [CustomerController::class, 'show'])->name('.show');
+
+        Route::get('', [CustomerController::class, 'index'])->name('.index');
+
+        Route::get('/create', [CustomerController::class, 'create'])->name('.create');
+
+        Route::post('', [CustomerController::class, 'store'])->name('.store');
+
+        Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('.edit');
+
+        Route::put('/{id}', [CustomerController::class, 'update'])->name('.update');
+
+        Route::delete('/delete/{id}', [CustomerController::class, 'destroy'])->name('.destroy');
+
+        Route::post('/verify-cnpj', [CustomerController::class, 'verifyCnpj'])->name('.verifyCnpj');
+
+        Route::post('/verify-external-id', [CustomerController::class, 'verifyExternalId'])->name('.verifyExternalId');
+    });
+
+    Route::group(['prefix' => 'equipments', 'as' => 'equipments'], function (){
+        Route::get('/{customer_id}', [EquipmentController::class, 'index'])->name('.index');
+
+        Route::get('/create/{customer_id}/{device_id}', [EquipmentController::class, 'create'])->name('.create');
+
+        Route::post('', [EquipmentController::class, 'store'])->name('.store');
+
+        Route::get('/edit/{id}', [EquipmentController::class, 'edit'])->name('.edit');
+
+        Route::put('/{id}', [EquipmentController::class, 'update'])->name('.update');
+
+        Route::delete('/delete/{id}', [EquipmentController::class, 'destroy'])->name('.destroy');
+
+        Route::delete('/delete-user-access/{id}', [EquipmentController::class, 'destroyUserAccess'])->name('.destroy-user-access');
+    });
+
 });
 
 

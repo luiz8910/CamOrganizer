@@ -46,3 +46,11 @@ optimize:
 # Lista de rotas do Laravel
 routes-list:
 	docker exec -it $(CONTAINER_NAME) php artisan route:list
+
+# Roda as seeds do Laravel
+db-seed:
+	docker exec -it $(CONTAINER_NAME) php artisan db:seed
+
+# Roda as migrations do Laravel
+db-migrate:
+	docker exec -it $(CONTAINER_NAME) php artisan migrate

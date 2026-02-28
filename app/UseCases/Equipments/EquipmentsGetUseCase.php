@@ -17,7 +17,10 @@ class EquipmentsGetUseCase
     {
         try {
 
-            return $this->equipmentsRepository->show($equipId);
+            $equipment = $this->equipmentsRepository->show($equipId);
+            $equipment->load('wifi');
+
+            return $equipment;
 
         }catch (\Exception $e) {
 

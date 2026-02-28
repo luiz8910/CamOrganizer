@@ -50,6 +50,8 @@ class EquipmentRepository extends BaseRepository
         unset($data['network']);
         unset($data['network_add']);
         unset($data['access_equip']);
+        unset($data['wifi_ssid']);
+        unset($data['wifi_password']);
 
         return $this->create($data);
     }
@@ -59,6 +61,8 @@ class EquipmentRepository extends BaseRepository
         unset($data['network']);
         unset($data['network_add']);
         unset($data['access_equip']);
+        unset($data['wifi_ssid']);
+        unset($data['wifi_password']);
 
         return $this->find($id)->update($data);
     }

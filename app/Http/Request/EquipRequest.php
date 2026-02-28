@@ -49,6 +49,8 @@ class EquipRequest extends FormRequest
             'network' => 'nullable|array',
             'network_add' => 'nullable|array',
             'access_equip' => 'nullable|array',
+            'wifi_ssid' => 'nullable|string',
+            'wifi_password' => 'nullable|string',
         ];
     }
 

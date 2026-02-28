@@ -1189,10 +1189,21 @@
        </div>
       </div>
 
+      <!-- Logout Button -->
+      <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <button type="submit" class="btn btn-icon btn-icon-xl rounded-md size-9 border border-transparent hover:bg-red-50 hover:text-red-500 hover:border-red-200 text-gray-600" title="Sair">
+              <span class="menu-icon">
+                  <i class="ki-filled ki-exit-right"></i>
+              </span>
+          </button>
+      </form>
       </div>
      </div>
        @if(isset($route))
            @include($route)
+       @else
+           @include('ai.command-bar')
        @endif
    </div>
     <!-- End of Sidebar -->
