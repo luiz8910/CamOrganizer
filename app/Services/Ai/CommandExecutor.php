@@ -213,12 +213,75 @@ class CommandExecutor
         return null;
     }
 
+    /**
+     * Resolve o customer_id de um comando de equipment.
+     *
+     * Prioridade: customer_id explícito > cnpj > company_name.
+     *
+     * @return array{status: string, customer_id: int|null, errors?: array}
+     *               status 'ok' com customer_id (int ou null se não informado)
+     *               ou status 'error' com errors[_message].
+     */
+    protected function resolveEquipmentCustomerId(array $args): array
+    {
+        if (!empty($args['customer_id'])) {
+            return ['status' => 'ok', 'customer_id' => (int) $args['customer_id']];
+        }
+
+        if (!empty($args['cnpj'])) {
+            $cnpj     = preg_replace('/\D/', '', $args['cnpj']);
+            $customer = $this->customerService->findByCnpj($cnpj);
+            if (!$customer) {
+                return [
+                    'status'      => 'error',
+                    'customer_id' => null,
+                    'errors'      => ['_message' => "Nenhum cliente encontrado com o CNPJ {$cnpj}."],
+                ];
+            }
+            return ['status' => 'ok', 'customer_id' => (int) $customer->id];
+        }
+
+        if (!empty($args['company_name'])) {
+            $matches = $this->customerService->searchByName($args['company_name']);
+            if ($matches->count() === 0) {
+                return [
+                    'status'      => 'error',
+                    'customer_id' => null,
+                    'errors'      => ['_message' => 'Nenhum cliente encontrado com esse nome.'],
+                ];
+            }
+            if ($matches->count() > 1) {
+                return [
+                    'status'      => 'error',
+                    'customer_id' => null,
+                    'errors'      => ['_message' => 'Múltiplos clientes encontrados com esse nome. Especifique o CNPJ ou o id do cliente.'],
+                ];
+            }
+            return ['status' => 'ok', 'customer_id' => (int) $matches->first()->id];
+        }
+
+        return ['status' => 'ok', 'customer_id' => null];
+    }
+
     // ============================
     // EQUIPMENT
     // ============================
 
     protected function equipmentCreate(array $args): array
     {
+        // Resolver customer_id a partir de cnpj ou company_name quando o
+        // usuário identifica o cliente sem informar o id diretamente.
+        $resolution = $this->resolveEquipmentCustomerId($args);
+        if ($resolution['status'] === 'error') {
+            return ['status' => 'error', 'errors' => $resolution['errors']];
+        }
+        if ($resolution['customer_id'] !== null) {
+            $args['customer_id'] = $resolution['customer_id'];
+        }
+        // cnpj/company_name são apenas para localizar o cliente: não pertencem
+        // à tabela equipments e não devem chegar ao validator/service.
+        unset($args['cnpj'], $args['company_name']);
+
         // Extrair e transformar sub-tabelas dos flat fields
         $subData = $this->extractEquipmentSubData($args);
         $equipArgs = $subData['equipArgs'];

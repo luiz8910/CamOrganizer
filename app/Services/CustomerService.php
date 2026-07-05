@@ -67,7 +67,14 @@ class CustomerService
     public function findByCnpj(string $cnpj): ?Customer
     {
         $cnpj = preg_replace('/\D/', '', $cnpj);
-        return Customer::where('cnpj', $cnpj)->first();
+
+        // Compara somente dígitos dos dois lados: o CNPJ pode estar armazenado
+        // formatado (12.345.678/0001-99) ou apenas com dígitos, dependendo de
+        // como o cliente foi cadastrado (formulário x IA).
+        return Customer::whereRaw(
+            "REPLACE(REPLACE(REPLACE(REPLACE(cnpj, '.', ''), '/', ''), '-', ''), ' ', '') = ?",
+            [$cnpj]
+        )->first();
     }
 
     /**
