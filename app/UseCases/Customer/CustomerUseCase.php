@@ -4,12 +4,11 @@ namespace App\UseCases\Customer;
 
 use App\Repositories\CustomerRepository;
 use App\Traits\UploadImage;
-use App\Traits\Environment;
 use App\UseCases\Equipments\GetCountEquipmentsUseCase;
 
 class CustomerUseCase
 {
-    use UploadImage, Environment;
+    use UploadImage;
     private CustomerRepository $repository;
 
     private GetCountEquipmentsUseCase $equipmentUseCase;

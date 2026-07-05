@@ -2,14 +2,10 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
-use Aws\S3\Exception\S3Exception;
 
 trait UploadImage
 {
-    use Environment;
-
     public function uploadImage($file)
     {
         try {
@@ -19,17 +15,18 @@ trait UploadImage
 
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
 
-            // Retrieve AWS configuration directly from env.json using getKeys method
-            $region = $this->getKeys('env.AWS_DEFAULT_REGION');
-            $bucket = $this->getKeys('env.AWS_BUCKET');
-            $key = $this->getKeys('env.AWS_ACCESS_KEY_ID');
-            $secret = $this->getKeys('env.AWS_SECRET_ACCESS_KEY');
+            // Config do S3 vem de config/filesystems.php (disco 's3'), que lê do
+            // .env (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION,
+            // AWS_BUCKET, AWS_URL). Antes isso era lido de um env.json avulso.
+            $region = config('filesystems.disks.s3.region');
+            $bucket = config('filesystems.disks.s3.bucket');
+            $key = config('filesystems.disks.s3.key');
+            $secret = config('filesystems.disks.s3.secret');
 
             if (!$bucket || !$key || !$secret || !$region) {
                 throw new \Exception('Missing AWS S3 credentials');
             }
 
-            // Instantiate S3 client with retrieved credentials
             $s3Client = new \Aws\S3\S3Client([
                 'version' => 'latest',
                 'region' => $region,
@@ -39,17 +36,16 @@ trait UploadImage
                 ],
             ]);
 
-            // Upload the file to S3
+            // Sem ACL: o bucket concede leitura pública via bucket policy e tem
+            // ACLs desabilitadas (Object Ownership = Bucket owner enforced), então
+            // enviar 'public-read' faria o upload falhar.
             $s3Client->putObject([
                 'Bucket' => $bucket,
                 'Key' => $fileName,
                 'Body' => file_get_contents($file),
             ]);
 
-            // Generate the public URL for the uploaded file
-            $publicUrl = $s3Client->getObjectUrl($bucket, $fileName);
-
-            return $publicUrl;
+            return $s3Client->getObjectUrl($bucket, $fileName);
 
         } catch (\Aws\S3\Exception\S3Exception $e) {
             Log::error('AWS S3 Error', [
@@ -67,10 +63,4 @@ trait UploadImage
             throw new \Exception('Error uploading image: ' . $e->getMessage());
         }
     }
-
-    private function getKeys($keys)
-    {
-        return $this->getEnvJsonValue($keys);
-    }
-
 }
