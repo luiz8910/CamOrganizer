@@ -32,8 +32,11 @@ class ActionSchema
                 'target' => ['id', 'cnpj'],
             ],
             'equipment.create' => [
-                'required' => ['customer_id', 'device_id'],
+                'required' => ['device_id'],
                 'optional' => [
+                    // Identificação do cliente dono do equipamento:
+                    // customer_id direto OU cnpj/company_name (resolvidos no executor)
+                    'customer_id', 'cnpj', 'company_name',
                     'brand', 'model', 'serial', 'status', 'port',
                     'email', 'phone', 'ddns', 'access_ip',
                     'hd_brand', 'storage_capacity',

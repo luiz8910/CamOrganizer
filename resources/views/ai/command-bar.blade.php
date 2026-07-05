@@ -171,7 +171,7 @@
 
 <script>
 (function() {
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     const btnPlan    = document.getElementById('btn-plan');
     const btnExec    = document.getElementById('btn-execute');
     const btnClear   = document.getElementById('btn-clear');
@@ -372,6 +372,73 @@
     }
 
     // =====================
+    // Requisições com renovação de CSRF
+    // =====================
+
+    // Busca a página atual e extrai um token CSRF fresco do <meta>.
+    // Retorna 'ok' | 'expired' (sessão caiu / redirecionou p/ login) | 'fail'.
+    async function refreshCsrfToken() {
+        try {
+            const r = await fetch(window.location.href, {
+                headers: { 'Accept': 'text/html' },
+                credentials: 'same-origin',
+            });
+            // Se a sessão expirou, o auth middleware redireciona para o login.
+            if (r.redirected && /login/i.test(r.url)) {
+                return 'expired';
+            }
+            const html = await r.text();
+            const m = html.match(/name="csrf-token"\s+content="([^"]+)"/i);
+            if (m && m[1]) {
+                csrfToken = m[1];
+                const meta = document.querySelector('meta[name="csrf-token"]');
+                if (meta) meta.setAttribute('content', csrfToken);
+                return 'ok';
+            }
+            return 'expired';
+        } catch (e) {
+            return 'fail';
+        }
+    }
+
+    // POST JSON com header CSRF. Em caso de 419 (token expirado), renova o
+    // token e tenta novamente uma vez. Se a sessão caiu, sinaliza p/ relogin.
+    async function postJson(url, payload) {
+        function doFetch() {
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(payload),
+            });
+        }
+
+        let resp = await doFetch();
+        if (resp.status === 419) {
+            const state = await refreshCsrfToken();
+            if (state === 'expired') {
+                const err = new Error('session_expired');
+                err.sessionExpired = true;
+                throw err;
+            }
+            if (state === 'ok') {
+                resp = await doFetch();
+            }
+        }
+        return resp;
+    }
+
+    function handleSessionExpired() {
+        showLoading(false);
+        alert('Sua sessão expirou. Você será redirecionado para o login. Faça login novamente e repita o comando.');
+        window.location.reload();
+    }
+
+    // =====================
     // Pedir à IA
     // =====================
     btnPlan.addEventListener('click', async function() {
@@ -385,15 +452,7 @@
         showLoading(true);
 
         try {
-            const resp = await fetch("{{ route('ai.plan') }}", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken,
-                },
-                body: JSON.stringify({ text: text }),
-            });
+            const resp = await postJson("{{ route('ai.plan') }}", { text: text });
 
             const data = await resp.json();
             showLoading(false);
@@ -440,6 +499,7 @@
             }
 
         } catch (err) {
+            if (err && err.sessionExpired) { handleSessionExpired(); return; }
             showLoading(false);
             console.error(err);
             alert('Erro de comunicação com o servidor.');
@@ -456,15 +516,7 @@
         showLoading(true);
 
         try {
-            const resp = await fetch("{{ route('ai.execute') }}", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken,
-                },
-                body: JSON.stringify({ plan: lastPlan }),
-            });
+            const resp = await postJson("{{ route('ai.execute') }}", { plan: lastPlan });
 
             const data = await resp.json();
             showLoading(false);
@@ -497,6 +549,7 @@
             resultArea.style.display = 'block';
 
         } catch (err) {
+            if (err && err.sessionExpired) { handleSessionExpired(); return; }
             showLoading(false);
             console.error(err);
             alert('Erro de comunicação com o servidor.');
