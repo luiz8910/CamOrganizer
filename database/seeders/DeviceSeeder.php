@@ -29,10 +29,10 @@ class DeviceSeeder extends Seeder
         ];
 
         while($index < count($device)) {
-            Device::factory()->create([
-                'name' => $device[$index],
-                'icon' => $icon[$index],
-            ]);
+            Device::updateOrCreate(
+                ['name' => $device[$index]],
+                ['icon' => $icon[$index]]
+            );
 
             $index++;
         }
