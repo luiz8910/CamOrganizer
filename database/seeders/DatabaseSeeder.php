@@ -18,11 +18,13 @@ class DatabaseSeeder extends Seeder
         if(!User::first())
             \App\Models\User::factory()->create();
 
+        // Ordem importa: devices e customers precisam existir antes de
+        // EquipmentSeeder, que referencia device_id e customer_id.
         $this->call([
             UserSeeder::class,
+            DeviceSeeder::class,
             CustomerSeeder::class,
             EquipmentSeeder::class,
-            DeviceSeeder::class,
         ]);
     }
 }
