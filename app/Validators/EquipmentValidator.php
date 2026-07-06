@@ -13,7 +13,7 @@ class EquipmentValidator
     {
         $validator = Validator::make($data, [
             'customer_id'           => 'required|integer|exists:customers,id',
-            'device_id'             => 'required|integer|in:1,2,3',
+            'device_id'             => 'required|integer|in:1,2,3,4',
             'brand'                 => 'nullable|string|max:255',
             'model'                 => 'nullable|string|max:255',
             'serial'                => 'nullable|string|max:255',
@@ -43,7 +43,7 @@ class EquipmentValidator
     {
         $validator = Validator::make($data, [
             'customer_id'           => 'sometimes|integer|exists:customers,id',
-            'device_id'             => 'sometimes|integer|in:1,2,3',
+            'device_id'             => 'sometimes|integer|in:1,2,3,4',
             'brand'                 => 'nullable|string|max:255',
             'model'                 => 'nullable|string|max:255',
             'serial'                => 'nullable|string|max:255',
@@ -72,7 +72,7 @@ class EquipmentValidator
             'customer_id.required' => 'O cliente (customer_id) é obrigatório.',
             'customer_id.exists'   => 'O cliente informado não existe.',
             'device_id.required'   => 'O tipo de dispositivo (device_id) é obrigatório.',
-            'device_id.in'         => 'O tipo de dispositivo deve ser 1 (DVR), 2 (Câmera) ou 3 (Roteador).',
+            'device_id.in'         => 'O tipo de dispositivo deve ser 1 (DVR), 2 (Câmera), 3 (Roteador) ou 4 (Facial).',
             'email.email'          => 'O e-mail informado não é válido.',
             'port.integer'         => 'A porta deve ser um número inteiro.',
         ];
