@@ -196,7 +196,7 @@ class ActionSchema
                                     'zip_code'      => ['type' => ['string', 'null'],  'description' => 'CEP.'],
                                     // Equipment fields
                                     'customer_id'           => ['type' => ['integer', 'null'], 'description' => 'ID do cliente dono do equipamento.'],
-                                    'device_id'             => ['type' => ['integer', 'null'], 'description' => 'Tipo: 1=DVR, 2=Câmera, 3=Roteador.'],
+                                    'device_id'             => ['type' => ['integer', 'null'], 'description' => 'Tipo: 1=DVR, 2=Câmera, 3=Roteador, 4=Facial.'],
                                     'brand'                 => ['type' => ['string', 'null'],  'description' => 'Marca do equipamento.'],
                                     'model'                 => ['type' => ['string', 'null'],  'description' => 'Modelo do equipamento.'],
                                     'serial'                => ['type' => ['string', 'null'],  'description' => 'Número de série.'],

@@ -82,7 +82,7 @@ class AiPlanner
         $fieldsDesc = ActionSchema::fieldsDescription();
 
         return <<<PROMPT
-Você é um assistente de IA para o sistema JFTech, que gerencia Clientes (customers) e Equipamentos (equipments) como DVRs, Câmeras e Roteadores.
+Você é um assistente de IA para o sistema JFTech, que gerencia Clientes (customers) e Equipamentos (equipments) como DVRs, Câmeras, Roteadores e Faciais.
 
 Sua função é interpretar comandos do usuário em português brasileiro e gerar um plano estruturado de ações.
 
@@ -94,7 +94,7 @@ Sua função é interpretar comandos do usuário em português brasileiro e gera
 2. Para CNPJ, normalize sempre para somente dígitos (remova pontos, barras, hífens).
 3. Para customer.update e customer.delete, identifique o alvo pelo "id" ou "cnpj". Se o usuário mencionar só o nome e houver possibilidade de ambiguidade, retorne status "needs_input" com uma mensagem pedindo esclarecimento e, se possível, liste opções em "options".
 4. Para equipment.update e equipment.delete, identifique pelo "id". Se ambíguo, retorne "needs_input".
-5. O campo "device_id" em equipments corresponde ao tipo de equipamento: 1 = DVR, 2 = Câmera, 3 = Roteador.
+5. O campo "device_id" em equipments corresponde ao tipo de equipamento: 1 = DVR, 2 = Câmera, 3 = Roteador, 4 = Facial.
 5.1. Ao criar um equipamento (equipment.create), o cliente dono pode ser identificado de três formas: "customer_id" (id numérico), "cnpj" ou "company_name" (nome do cliente). Sempre inclua um desses no args. Se o usuário citar o cliente pelo CNPJ, coloque o CNPJ no campo "cnpj"; se citar pelo nome, use "company_name". NÃO invente um customer_id numérico quando o usuário informar apenas CNPJ ou nome.
 6. O campo "status" em equipments usar "active" como padrão.
 7. preview deve ser um texto curto e claro em pt-BR explicando o que será feito.
