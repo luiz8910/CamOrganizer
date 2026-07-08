@@ -544,17 +544,20 @@ class CommandExecutor
                 $customerId = $matches->first()->id;
             } elseif ($matches->count() > 1) {
                 return ['status' => 'error', 'errors' => ['_message' => 'Múltiplos clientes encontrados com esse nome. Especifique o customer_id.']];
+            } else {
+                return ['status' => 'error', 'errors' => ['_message' => 'Nenhum cliente encontrado com esse nome.']];
             }
         }
 
-        if (empty($customerId)) {
-            return ['status' => 'error', 'errors' => ['_message' => 'customer_id ou company_name é obrigatório para listar equipamentos.']];
+        // Nenhum cliente informado: lista todos os equipamentos de todos os clientes.
+        $query = Equipment::whereNull('deleted_at')
+            ->with(['network', 'access']);
+
+        if (!empty($customerId)) {
+            $query->where('customer_id', (int) $customerId);
         }
 
-        $equips = Equipment::where('customer_id', (int) $customerId)
-            ->whereNull('deleted_at')
-            ->with(['network', 'access'])
-            ->get();
+        $equips = $query->get();
 
         $data = $equips->map(function ($equip) {
             $arr = $equip->toArray();
