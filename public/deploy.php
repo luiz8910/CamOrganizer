@@ -139,8 +139,10 @@ $root   = escapeshellarg(PROJECT_ROOT);
 $git    = escapeshellarg($gitBin);
 
 // Reset defensivo do ponteiro + fast-forward pull da branch de deploy.
+// Buscamos apenas o remote `origin` (não `--all`) para não falhar caso o
+// servidor tenha outros remotes inacessíveis configurados (ex.: `dev`).
 $command = sprintf(
-    '%s -C %s fetch --all 2>&1 && %s -C %s reset --hard origin/%s 2>&1',
+    '%s -C %s fetch origin 2>&1 && %s -C %s reset --hard origin/%s 2>&1',
     $git, $root, $git, $root, escapeshellarg($branch)
 );
 
