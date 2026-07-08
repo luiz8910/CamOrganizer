@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\App;
 
@@ -17,6 +18,13 @@ class AppServiceProvider extends ServiceProvider
     {
         // Define o tamanho padrão de string para evitar erros em versões antigas do MySQL
         Schema::defaultStringLength(191);
+
+        // Em ambiente local, redireciona TODOS os e-mails para um único destinatário
+        // (o Resend em conta pessoal só entrega para o e-mail dono da conta).
+        // Vazio em produção => envio normal para o destinatário real.
+        if ($override = env('MAIL_TO_OVERRIDE')) {
+            Mail::alwaysTo($override);
+        }
 
         // Tenta definir o locale para pt_BR
         try {
