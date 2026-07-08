@@ -26,6 +26,11 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
+    // Verificação em duas etapas (2FA por código de e-mail)
+    Route::get('/login/verificar', [LoginController::class, 'showTwoFactorForm'])->name('login.2fa');
+    Route::post('/login/verificar', [LoginController::class, 'verifyTwoFactor'])->name('login.2fa.submit');
+    Route::post('/login/verificar/reenviar', [LoginController::class, 'resendTwoFactor'])->name('login.2fa.resend');
+
     // Esqueci minha senha
     Route::get('/esqueci-senha', [ForgotPasswordController::class, 'showForgotForm'])->name('password.forgot');
     Route::post('/esqueci-senha', [ForgotPasswordController::class, 'sendResetCode'])->name('password.send-code');

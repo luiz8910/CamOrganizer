@@ -20,12 +20,14 @@ class DeviceSeeder extends Seeder
             'DVR',
             'Camera',
             'Roteador',
+            'Facial',
         ];
 
         $icon = [
             'ki-router',
             'ki-technology-4',
             'ki-wlan',
+            'ki-scan-barcode',
         ];
 
         while($index < count($device)) {

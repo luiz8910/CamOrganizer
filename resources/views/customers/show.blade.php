@@ -72,7 +72,7 @@
             <i class="ki-filled ki-abstract text-gray-500 text-sm">
             </i>
             <span class="text-gray-600 font-medium">
-              {{ $customer->cnpj }}
+              {{ $customer->cnpj_formatted }}
             </span>
           </div>
           <div class="flex gap-1.25 items-center">
@@ -101,94 +101,25 @@
       <div class="grid">
         <div class="scrollable-x-auto">
           <div class="menu gap-3" data-menu="true">
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary here"
-              data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown"
-              data-menu-item-trigger="click|lg:hover">
-              <div class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" tabindex="0">
-                <span
-                  class="menu-title text-nowrap text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-medium menu-item-here:text-primary menu-item-here:font-medium menu-item-show:text-primary menu-link-hover:text-primary">
-                  Geral
-                </span>
-                <span class="menu-arrow">
-                  <i
-                    class="ki-filled ki-down text-2xs text-gray-500 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:text-primary">
-                  </i>
-                </span>
-              </div>
-            </div>
-
-
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary">
-              <a class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" href="html/demo8/public-profile/works.html"
-                tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
-                  DVRS
-                </span>
-              </a>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary">
-              <a class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" href="html/demo8/public-profile/teams.html"
-                tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
-                  Câmeras
-                </span>
-              </a>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary">
-              <a class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" href="html/demo8/public-profile/network.html"
-                tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
-                  Roteadores
-                </span>
-              </a>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary">
-              <a class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" href="html/demo8/public-profile/activity.html"
-                tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
+            {{-- Filtros por tipo de dispositivo (Item 9). "Dispositivos" = todos;
+                 os demais são gerados dinamicamente a partir do catálogo ($devices),
+                 então "Facial" aparece automaticamente. --}}
+            <div class="menu-item equip-filter-item border-b-2 border-b-primary">
+              <button type="button" class="equip-filter-tab active menu-link gap-1.5 pb-2 lg:pb-4 px-2" data-filter="all">
+                <span class="menu-title text-nowrap font-medium text-sm text-primary font-semibold">
                   Dispositivos
                 </span>
-              </a>
+              </button>
             </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary">
-              <a class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" href="html/demo8/public-profile/activity.html"
-                tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
-                  Serial
-                </span>
-              </a>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary">
-              <a class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" href="html/demo8/public-profile/activity.html"
-                tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
-                  Plano de IP
-                </span>
-              </a>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary">
-              <a class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" href="html/demo8/public-profile/activity.html"
-                tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
-                  Projetos
-                </span>
-              </a>
-            </div>
+            @foreach($devices as $device)
+              <div class="menu-item equip-filter-item border-b-2 border-b-transparent">
+                <button type="button" class="equip-filter-tab menu-link gap-1.5 pb-2 lg:pb-4 px-2" data-filter="{{ $device['id'] }}">
+                  <span class="menu-title text-nowrap font-medium text-sm text-gray-700 hover:text-primary">
+                    {{ $device['name'] }}
+                  </span>
+                </button>
+              </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -307,13 +238,20 @@
 
     <div class="grid gap-5 lg:gap-7.5">
       <div class="card card-grid min-w-full">
-        <div class="card-header py-5 flex-wrap">
+        <div class="card-header py-5 flex-wrap gap-3">
           <h3 class="card-title">
             Dispositivos
           </h3>
+          {{-- Busca instantânea (Item 6) --}}
+          <div class="flex items-center gap-2">
+            <div class="input input-sm max-w-64">
+              <i class="ki-filled ki-magnifier"></i>
+              <input id="equipmentSearch" type="text" placeholder="Buscar dispositivo..." autocomplete="off" />
+            </div>
+          </div>
         </div>
         <div class="card-body">
-          <div data-datatable="true" data-datatable-page-size="10" class="datatable-initialized">
+          <div>
             <div class="scrollable-x-auto">
               <table class="table table-auto table-border" data-datatable-table="true" id="devices_table">
                 <thead>
@@ -351,7 +289,7 @@
                     <th class="min-w-[165px]">
                       <span class="sort">
                         <span class="sort-label text-gray-700 text-2sm font-normal">
-                          Data
+                          Local de Instalação
                         </span>
                         <span class="sort-icon">
                         </span>
@@ -390,7 +328,7 @@
                 </div>
                 <tbody>
                     @foreach($equipments as $equipment)
-                        <tr>
+                        <tr class="equipment-row" data-device-id="{{ $equipment->device_id }}">
                             <td>
                                 <input class="checkbox checkbox-sm" data-datatable-row-check="true" type="checkbox"
                                        value="1">
@@ -418,7 +356,7 @@
                                 {{ $equipment->access_ip }}
                             </td>
                             <td class="text-sm text-gray-800 font-normal">
-                                {{ $equipment->created_at->format('d/m/Y') }}
+                                {{ $equipment->installation_location }}
                             </td>
                             <td class="text-sm text-gray-800 font-normal">
                       <span class="badge badge-sm badge-outline badge-success">
@@ -439,33 +377,16 @@
                             </td>
                         </tr>
                     @endforeach
-
+                    <tr id="equipmentEmptyRow" style="display: none;">
+                      <td colspan="8" class="text-center text-sm text-gray-600 py-6">
+                        Nenhum dispositivo encontrado
+                      </td>
+                    </tr>
                 </tbody>
               </table>
             </div>
-            <div
-              class="card-footer justify-center md:justify-between flex-col md:flex-row gap-5 text-gray-600 text-2sm font-medium">
-              <div class="flex items-center gap-2 order-2 md:order-1">
-                Mostrar
-                <select class="select select-sm w-16" data-datatable-size="true" name="perpage">
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                  <option value="50">50</option>
-                </select>
-                por pagina
-              </div>
-              <div class="flex items-center gap-4 order-1 md:order-2">
-                <span data-datatable-info="true">1-10 of 31</span>
-                <div class="pagination" data-datatable-pagination="true">
-                  <div class="pagination"><button class="btn disabled" disabled=""><i
-                        class="ki-outline ki-black-left"></i></button><button class="btn active disabled"
-                      disabled="">1</button><button class="btn">2</button><button class="btn">3</button><button
-                      class="btn">...</button><button class="btn"><i
-                        class="ki-outline ki-black-right"></i></button></div>
-                </div>
-              </div>
+            <div class="card-footer justify-center md:justify-end text-gray-600 text-2sm font-medium">
+              <span id="equipmentCount">{{ count($equipments) }}</span>&nbsp;dispositivo(s)
             </div>
           </div>
         </div>
@@ -513,3 +434,5 @@
   <!-- End of Footer -->
 </main>
 <!-- End of Main -->
+
+<script defer src="{{ asset('js/equipment-search.js') }}"></script>

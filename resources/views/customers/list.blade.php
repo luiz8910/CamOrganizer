@@ -83,7 +83,7 @@
                                             {{ $customer->company_name }}
                                         </a>
                                         <span class="text-sm text-gray-700">
-                                            CNPJ: {{ $customer->cnpj }}
+                                            CNPJ: {{ $customer->cnpj_formatted }}
                                         </span>
                                         <span class="text-sm text-gray-700">
                                             Fone: {{ $customer->phone }}

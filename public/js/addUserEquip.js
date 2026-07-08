@@ -1,5 +1,36 @@
+function notifyUserError(message) {
+    if (window.Swal) {
+        Swal.fire({ icon: 'error', title: 'Ops...', text: message });
+    } else {
+        console.error(message);
+    }
+}
+
 function getUsersData() {
     let id = $("#user_id").val();
+
+    let username = ($("#username").val() || "").trim();
+    let password = ($("#password").val() || "").trim();
+    let group = $("#usergroup").val();
+
+    // Nome e senha são obrigatórios
+    if (!username || !password) {
+        notifyUserError("Informe o nome e a senha do usuário de acesso.");
+        return;
+    }
+
+    // Validação de duplicidade: mesmo nome já adicionado neste equipamento
+    let duplicate = false;
+    $('input[name="access_equip[username][]"]').each(function () {
+        const existing = ($(this).val() || "").trim().toLowerCase();
+        if (existing === username.toLowerCase() && String($(this).data("id")) !== String(id)) {
+            duplicate = true;
+        }
+    });
+    if (duplicate) {
+        notifyUserError("Já existe um usuário de acesso com este nome.");
+        return;
+    }
 
     // Se for novo usuário (sem ID), gera UUID
     if (!id) {
@@ -8,9 +39,9 @@ function getUsersData() {
 
     let data = {
         id: id,
-        username: $("#username").val(),
-        password: $("#password").val(),
-        group: $("#usergroup").val()
+        username: username,
+        password: password,
+        group: group
     };
 
     addUserEquip(data);

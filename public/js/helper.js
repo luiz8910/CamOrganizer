@@ -2,40 +2,18 @@ function clearFields() {
     $(".input:not([type='hidden']):not([readonly])").val("");
 }
 
-let cnpj = document.getElementById("cnpj");
-
-cnpj.addEventListener("input", function (event) {
-
-    let inputValue = event.target.value;
-
-    // Sanitize by allowing only numbers and the dot
-    let sanitizedValue = inputValue.replace(/[^0-9-/.]/g, '');
-
-    if (sanitizedValue.length > 18) {
-        sanitizedValue = sanitizedValue.substring(0, 18);
+(function () {
+    // Máscara de CNPJ via jQuery Mask (Item 4).
+    // Guardas de null: este arquivo também é carregado em páginas sem #cnpj/#external_id.
+    var cnpj = document.getElementById("cnpj");
+    if (cnpj && window.jQuery && typeof jQuery.fn.mask === "function") {
+        jQuery(cnpj).mask("00.000.000/0000-00");
     }
 
-    if(event.inputType !== "deleteContentBackward"){
-        if (sanitizedValue.length > 2 && sanitizedValue[2] !== '.') {
-            sanitizedValue = sanitizedValue.substring(0, 2) + '.' + sanitizedValue.substring(2);
-        }
-        else if (sanitizedValue.length === 6 && sanitizedValue[6] !== '.'){
-            sanitizedValue = sanitizedValue.substring(0, 6) + '.' + sanitizedValue.substring(6);
-        }
-        else if (sanitizedValue.length === 10 && sanitizedValue[10] !== '.'){
-            sanitizedValue = sanitizedValue.substring(0, 10) + '/0001-' + sanitizedValue.substring(10);
-        }
+    var external_id = document.getElementById("external_id");
+    if (external_id) {
+        external_id.addEventListener("input", function (event) {
+            event.target.value = event.target.value.replace(/[^0-9]/g, '');
+        });
     }
-
-    // Update the input field value
-    event.target.value = sanitizedValue;
-});
-
-let external_id = document.getElementById("external_id");
-
-external_id.addEventListener("input", function (event) {
-    let inputValue = event.target.value;
-
-    event.target.value = inputValue.replace(/[^0-9]/g, '');
-});
-
+})();
