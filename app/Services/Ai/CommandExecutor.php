@@ -286,6 +286,17 @@ class CommandExecutor
         $subData = $this->extractEquipmentSubData($args);
         $equipArgs = $subData['equipArgs'];
 
+        // Impedir duplicação: mesmo serial ou mesmo IP de acesso já
+        // cadastrados no cliente (mesma regra do formulário manual).
+        $duplicate = $this->findDuplicateEquipment(
+            (int) ($args['customer_id'] ?? 0),
+            $equipArgs['serial'] ?? null,
+            $equipArgs['access_ip'] ?? null
+        );
+        if ($duplicate !== null) {
+            return ['status' => 'error', 'errors' => ['_message' => $duplicate]];
+        }
+
         $validation = EquipmentValidator::validateCreate($equipArgs);
         if (!$validation['valid']) {
             return ['status' => 'error', 'errors' => $validation['errors']];
@@ -323,6 +334,58 @@ class CommandExecutor
         return ['status' => 'ok', 'data' => $result];
     }
 
+    /**
+     * Verifica se já existe um equipamento com o mesmo serial ou IP de acesso
+     * no cliente, delegando a checagem ao EquipmentService (mesma regra do
+     * formulário manual). Retorna a mensagem de erro ou null.
+     *
+     * @param  int|null  $exceptId  ID a ignorar (o próprio registro, em updates)
+     */
+    protected function findDuplicateEquipment(int $customerId, ?string $serial, ?string $accessIp, ?int $exceptId = null): ?string
+    {
+        if ($customerId <= 0) {
+            return null;
+        }
+
+        $serial   = trim((string) $serial);
+        $accessIp = trim((string) $accessIp);
+
+        if ($serial !== '') {
+            $existing = $this->equipmentService->findDuplicateSerial($customerId, $serial, $exceptId);
+            if ($existing) {
+                return $this->duplicateMessage('serial', $serial, $existing);
+            }
+        }
+
+        if ($accessIp !== '') {
+            $existing = $this->equipmentService->findDuplicateAccessIp($customerId, $accessIp, $exceptId);
+            if ($existing) {
+                return $this->duplicateMessage('IP', $accessIp, $existing);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Monta a mensagem informando qual equipamento já está cadastrado.
+     */
+    protected function duplicateMessage(string $field, string $value, Equipment $existing): string
+    {
+        $description = trim(implode(' ', array_filter([$existing->brand, $existing->model])));
+        if ($description === '') {
+            $description = 'sem marca/modelo';
+        }
+
+        $location = $existing->installation_location
+            ? ", local: {$existing->installation_location}"
+            : '';
+
+        return "Já existe um equipamento cadastrado com o mesmo {$field} '{$value}': "
+            . "equipamento #{$existing->id} ({$description}{$location}). "
+            . 'Cadastro cancelado para evitar duplicação.';
+    }
+
     protected function equipmentUpdate(array $args): array
     {
         if (empty($args['id'])) {
@@ -337,6 +400,18 @@ class CommandExecutor
         // Extrair e transformar sub-tabelas dos flat fields
         $subData = $this->extractEquipmentSubData($args);
         $equipArgs = array_diff_key($subData['equipArgs'], array_flip(['id']));
+
+        // Impedir duplicação de serial/IP no cliente, ignorando o próprio
+        // registro que está sendo atualizado.
+        $duplicate = $this->findDuplicateEquipment(
+            (int) $equip->customer_id,
+            $equipArgs['serial'] ?? null,
+            $equipArgs['access_ip'] ?? null,
+            (int) $equip->id
+        );
+        if ($duplicate !== null) {
+            return ['status' => 'error', 'errors' => ['_message' => $duplicate]];
+        }
 
         $validation = EquipmentValidator::validateUpdate($equipArgs, $equip->id);
         if (!$validation['valid']) {
