@@ -1,15 +1,22 @@
 <div class="card pb-2.5">
-    <div class="card-header" id="basic_settings">
+    <div class="card-header flex items-center justify-between" id="basic_settings">
         <h3 class="card-title">
             Usuários
         </h3>
+        <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-sm btn-light">
+            <i class="ki-outline ki-arrow-left"></i>
+            Voltar
+        </a>
     </div>
     <div class="card-body grid gap-5">
         @foreach(['username', 'password', 'usergroup'] as $field)
             <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                 <label class="form-label max-w-56">{{ ucfirst($field) }}</label>
                 <input class="input input-user-add" id="{{ $field }}" placeholder="{{ ucfirst($field) }}"
-                       type="{{ $field === 'password' ? 'password' : 'text' }}" value=""/>
+                       type="{{ $field === 'password' ? 'password' : 'text' }}" value=""
+                       autocomplete="{{ $field === 'password' ? 'new-password' : 'off' }}"
+                       spellcheck="false"
+                       @if($field === 'password') data-lpignore="true" @endif/>
                 @error("$field") <div class="text-danger">{{ $message }}</div> @enderror
             </div>
         @endforeach

@@ -219,27 +219,53 @@ $(document).on("click", ".edit-user", function () {
     let group = groupCell.text().trim();
     let id = row.find("span[id^='show-pass-']").attr("id").replace("show-pass-", "");
 
+    // Guarda o id no próprio <tr> para não depender de estado global ao salvar
+    row.attr("data-edit-id", id);
     localStorage.setItem("edit-user", id);
 
-    // Replace text with input fields
-    usernameCell.html(`<input type="text" class="input-edit-user" value="${username}">`);
-    passwordCell.html(`<input type="text" class="input-edit-password" value="${password}">`);
-    groupCell.html(`<input type="text" class="input-edit-group" value="${group}">`);
+    // Replace text with input fields (autocomplete off para não sofrer autofill do navegador)
+    usernameCell.html(`<input type="text" class="input-edit-user" value="${username}" autocomplete="off" spellcheck="false">`);
+    passwordCell.html(`<input type="text" class="input-edit-password" value="${password}" autocomplete="off" spellcheck="false">`);
+    groupCell.html(`<input type="text" class="input-edit-group" value="${group}" autocomplete="off" spellcheck="false">`);
 
-    // Change Edit button to Save
+    // Change Edit button to Save (mantido como fallback; o salvamento principal ocorre no blur)
     $(this).replaceWith(`
         <button type="button" class="menu-link save-user">
             <span class="menu-icon"><i class="ki-filled ki-check"></i></span>
             <span class="menu-title">Salvar</span>
         </button>
     `);
+
+    usernameCell.find("input").trigger("focus");
 });
 
-$(document).on("click", ".save-user", function () {
+// Salva a edição quando o foco sai da linha (sem precisar clicar em "Salvar").
+// Se o foco apenas migrou para outro campo editável da mesma linha, aguarda.
+$(document).on("focusout", ".input-edit-user, .input-edit-password, .input-edit-group", function (e) {
     let row = $(this).closest("tr");
-    let id = localStorage.getItem("edit-user");
+    let related = e.relatedTarget;
 
-    console.log("ID do usuário salvo:", id);
+    if (related &&
+        $(related).closest("tr")[0] === row[0] &&
+        $(related).is(".input-edit-user, .input-edit-password, .input-edit-group")) {
+        return; // ainda editando outro campo desta linha
+    }
+
+    saveUserRow(row);
+});
+
+// Fallback: clicar em "Salvar" também persiste a linha
+$(document).on("click", ".save-user", function () {
+    saveUserRow($(this).closest("tr"));
+});
+
+function saveUserRow(row) {
+    // Se os inputs de edição já não existem, a linha já foi salva
+    if (row.find(".input-edit-user").length === 0) {
+        return;
+    }
+
+    let id = row.attr("data-edit-id") || localStorage.getItem("edit-user");
 
     let newUsername = row.find(".input-edit-user").val();
     let newPassword = row.find(".input-edit-password").val();
@@ -249,15 +275,15 @@ $(document).on("click", ".save-user", function () {
     row.find("td:eq(0)").html(newUsername);
     row.find("td:eq(1)").html(`
         <div class="flex items-center text-gray-800 font-normal">
-            <span id="mask-pass-${newUsername}">********</span>
-            <span id="show-pass-${newUsername}" class="hidden">${newPassword}</span>
-            <button type="button" onclick="setClipboard('${newPassword}')" class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
+            <span id="mask-pass-${id}">********</span>
+            <span id="show-pass-${id}" class="hidden">${newPassword}</span>
+            <button type="button" onclick="setClipboard(document.getElementById('show-pass-${id}').textContent)" class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
                 <i class="ki-filled ki-copy"></i>
             </button>
-            <button type="button" onclick="maskUnmaskPassword('${newUsername}')" class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
+            <button type="button" id="userToAdd-${id}" onclick="maskUnmaskPassword('${id}')" class="btn btn-sm btn-icon btn-clear text-gray-500 hover:text-primary-active">
                 <i class="ki-filled ki-eye"></i>
                 <i class="ki-filled ki-eye-slash hidden"></i>
-                <input type="hidden" id="hidden-${newUsername}" value="hidden">
+                <input type="hidden" id="hidden-${id}" value="hidden">
             </button>
         </div>
     `);
@@ -272,12 +298,14 @@ $(document).on("click", ".save-user", function () {
 
     setHiddenFields(userObj);
 
+    row.removeAttr("data-edit-id");
+
     // Change Save button back to Edit
-    $(this).replaceWith(`
+    row.find(".save-user").replaceWith(`
         <button type="button" class="menu-link edit-user">
             <span class="menu-icon"><i class="ki-filled ki-pencil"></i></span>
             <span class="menu-title">Editar</span>
         </button>
     `);
-});
+}
 
