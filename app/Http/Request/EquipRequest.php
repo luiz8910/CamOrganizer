@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Models\Equipment;
+use App\Services\EquipmentService;
 
 class EquipRequest extends FormRequest
 {
@@ -74,24 +75,21 @@ class EquipRequest extends FormRequest
      */
     protected function validateDuplicateEquipment(Validator $validator): void
     {
-        $customerId = $this->input('customer_id');
+        $customerId = (int) $this->input('customer_id');
         $serial     = trim((string) $this->input('serial'));
         $accessIp   = trim((string) $this->input('access_ip'));
 
-        if (!$customerId || ($serial === '' && $accessIp === '')) {
+        if ($customerId <= 0 || ($serial === '' && $accessIp === '')) {
             return;
         }
 
         // No update, ignora o próprio registro.
-        $currentId = $this->route('id');
+        $currentId = $this->route('id') ? (int) $this->route('id') : null;
 
-        $base = Equipment::where('customer_id', $customerId);
-        if ($currentId) {
-            $base->where('id', '!=', $currentId);
-        }
+        $service = new EquipmentService();
 
         if ($serial !== '') {
-            $dup = (clone $base)->where('serial', $serial)->first();
+            $dup = $service->findDuplicateSerial($customerId, $serial, $currentId);
             if ($dup) {
                 $validator->errors()->add(
                     'serial',
@@ -101,7 +99,7 @@ class EquipRequest extends FormRequest
         }
 
         if ($accessIp !== '') {
-            $dup = (clone $base)->where('access_ip', $accessIp)->first();
+            $dup = $service->findDuplicateAccessIp($customerId, $accessIp, $currentId);
             if ($dup) {
                 $validator->errors()->add(
                     'access_ip',
