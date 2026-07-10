@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
-    /** Nome do cookie que marca o dispositivo como confiável. */
+    /** Nome do cookie que guarda o token secreto do dispositivo confiável. */
     private const TRUSTED_COOKIE = '2fa_trusted';
 
-    /** Validade do dispositivo confiável, em minutos (24h = "pedir o código uma vez por dia"). */
+    /** Validade do dispositivo confiável, em minutos (24h = "pedir o código uma vez por dia por dispositivo/IP"). */
     private const TRUSTED_MINUTES = 1440;
 
     /** Validade do código de verificação, em minutos. */
@@ -45,7 +46,7 @@ class LoginController extends Controller
             ])->onlyInput('email');
         }
 
-        // Dispositivo já confiável (código pedido nas últimas 24h) → login direto.
+        // Mesmo dispositivo E mesmo IP já verificados nas últimas 24h → login direto.
         if ($this->deviceIsTrusted($request, $user)) {
             Auth::login($user, $remember);
             $request->session()->regenerate();
@@ -118,8 +119,8 @@ class LoginController extends Controller
         Auth::login($user, $remember);
         $request->session()->regenerate();
 
-        // Marca este dispositivo como confiável por 24h (não pedir o código de novo hoje).
-        $cookie = Cookie::make(self::TRUSTED_COOKIE, (string) $user->id, self::TRUSTED_MINUTES);
+        // Marca este dispositivo/IP como confiável por 24h (não pedir o código de novo hoje).
+        $cookie = $this->trustDevice($request, $user);
 
         return redirect()->intended(route('home'))->withCookie($cookie);
     }
@@ -180,9 +181,51 @@ class LoginController extends Controller
 
     /**
      * Verifica se o dispositivo atual já passou pela verificação nas últimas 24h.
+     *
+     * A confiança é vinculada ao dispositivo (token secreto guardado no cookie)
+     * E ao IP a partir do qual a verificação foi concluída. Um novo dispositivo
+     * ou um IP diferente sempre exige um novo código — não basta o usuário ter
+     * logado no sistema nas últimas 24h.
      */
     private function deviceIsTrusted(Request $request, User $user): bool
     {
-        return $request->cookie(self::TRUSTED_COOKIE) === (string) $user->id;
+        $token = $request->cookie(self::TRUSTED_COOKIE);
+
+        if (! $token) {
+            return false;
+        }
+
+        $device = DB::table('trusted_devices')
+            ->where('user_id', $user->id)
+            ->where('token', hash('sha256', $token))
+            ->where('expires_at', '>', now())
+            ->first();
+
+        return $device !== null && hash_equals($device->ip_address, (string) $request->ip());
+    }
+
+    /**
+     * Registra o dispositivo/IP atual como confiável por 24h e devolve o cookie
+     * com o token secreto correspondente.
+     */
+    private function trustDevice(Request $request, User $user)
+    {
+        $token = Str::random(60);
+
+        // Limpa registros expirados deste usuário para não acumular lixo.
+        DB::table('trusted_devices')
+            ->where('user_id', $user->id)
+            ->where('expires_at', '<=', now())
+            ->delete();
+
+        DB::table('trusted_devices')->insert([
+            'user_id'    => $user->id,
+            'token'      => hash('sha256', $token),
+            'ip_address' => (string) $request->ip(),
+            'expires_at' => now()->addMinutes(self::TRUSTED_MINUTES),
+            'created_at' => now(),
+        ]);
+
+        return Cookie::make(self::TRUSTED_COOKIE, $token, self::TRUSTED_MINUTES);
     }
 }
